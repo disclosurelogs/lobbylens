@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	color:#000;
+}
+h1 {
+	font-size: 12pt;	
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+h2 {
+	font-size: 16pt;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	text-align: right;
+}
+h3 {
+	font-size: 14pt;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+h4 {
+	font-size: 12pt;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+h5 {
+	font-size: 10pt;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+h6 {	
+	font-size: 10pt;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+p, ul, ol dl, li {
+	font-size: 10pt;
+}
+
+
+#content a[href^="http"]:after {
+	padding-left: 3px;
+	padding-right: 3px;
+	content: " <" attr(href) "> ";
+	text-decoration: none;
+	}

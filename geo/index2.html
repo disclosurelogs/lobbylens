@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Map</title>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../style-screen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style-print.css" media="print" />
+
+    <script src="OpenLayers.js" type="text/javascript"></script>
+    <script type="text/javascript" src="cloudmade.js"></script>
+
+
+    <script type="text/javascript">
+
+
+        var map;
+        var agnlayer;
+        var zoom = 3;
+
+        var strategy = new OpenLayers.Strategy.Cluster({distance: 15, threshold: 3});
+        var strategy2 = new OpenLayers.Strategy.BBOX({resFactor: 1.1});
+
+        var symbolizer = OpenLayers.Util.applyDefaults(
+            {externalGraphic: "http://team7.govhack.net.tmp.anchor.net.au/geo/img/bank.png", pointRadius: 20},
+            OpenLayers.Feature.Vector.style["default"]);
+        var styleMap = new OpenLayers.StyleMap({"default": symbolizer, "select": {pointRadius: 30}});
+
+
+
+
+          // Needed only for interaction, not for the display.
+            function onPopupClose(evt) {
+                // 'this' is the popup.
+                selectControl.unselect(this.feature);
+            }
+            function onFeatureSelect(evt) {
+                feature = evt.feature;
+                popup = new OpenLayers.Popup.FramedCloud("featurePopup",
+                                         feature.geometry.getBounds().getCenterLonLat(),
+                                         new OpenLayers.Size(100,100),
+                                         "<h2>"+feature.attributes.title + "</h2>" +
+                                         feature.attributes.description,
+                                         null, true, onPopupClose);
+                feature.popup = popup;
+                popup.feature = feature;
+                map.addPopup(popup);
+            }
+            function onFeatureUnselect(evt) {
+                feature = evt.feature;
+                if (feature.popup) {
+                    popup.feature = null;
+                    map.removePopup(feature.popup);
+                    feature.popup.destroy();
+                    feature.popup = null;
+                }
+            }
+
+        OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+        OpenLayers.Util.onImageLoadErrorColor = "blue";
+
+        function init(){
+             map = new OpenLayers.Map("bigmap", {
+          controls: [
+             new OpenLayers.Control.Navigation(),
+             new OpenLayers.Control.PanZoomBar(),
+             new OpenLayers.Control.ScaleLine(),
+             new OpenLayers.Control.Attribution()
+            ]
+	    });
+
+            var cloudmade = new OpenLayers.Layer.CloudMade("Base Layer", {
+                    key: 'BC9A493B41014CAABB98F0471D759707'
+            });
+            map.addLayer(cloudmade);
+            map.addControl(new OpenLayers.Control.LayerSwitcher());
+            /*
+             * Layer style
+             */
+            // we want opaque external graphics and non-opaque internal graphics
+
+            agnlayer = new OpenLayers.Layer.Vector("Suppliers", {
+                styleMap: styleMap,
+                strategies: [strategy, strategy2],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: "http://team7.govhack.net.tmp.anchor.net.au/cgi-bin/geo_suppliers.py?agn=Administrative Appeals Tribunal",
+                    format: new OpenLayers.Format.GeoRSS()
+                })
+            });
+
+
+            map.addLayer(agnlayer);
+
+            var electLayer = new OpenLayers.Layer.OSM(
+                "Election Boundaries",
+                "http://ausdiv.kelvinism.com/audivisions/${z}/${x}/${y}.png",
+                {
+                    isBaseLayer: false,
+                    visibility: false,
+                    numZoomLevels: 19
+                });
+
+            map.addLayer(electLayer);
+
+            // Interaction; not needed for initial display.
+            selectControl = new OpenLayers.Control.SelectFeature(agnlayer);
+            map.addControl(selectControl);
+            selectControl.activate();
+
+            agnlayer.events.on({
+                'featureselected': onFeatureSelect,
+                'featureunselected': onFeatureUnselect
+            });
+
+
+            var epsg4326 = new OpenLayers.Projection("EPSG:4326");
+            var center = new OpenLayers.LonLat(150, -34).transform(epsg4326, map.getProjectionObject());
+            map.setCenter(center, 5);
+
+        }
+
+
+
+        function selectOption(num)
+        {
+                var selObj = document.getElementById('selSeaShells1');
+                selObj.selectedIndex = num;
+        }
+
+        function refreshOL(elem){
+
+
+            //alert(elem.value);
+
+            map.removeLayer(agnlayer);
+
+            agnlayer = new OpenLayers.Layer.Vector("Suppliers", {
+                styleMap: styleMap,
+                strategies: [strategy, strategy2],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: "http://team7.govhack.net.tmp.anchor.net.au/cgi-bin/geo_suppliers.py?agn="+elem.value,
+                    format: new OpenLayers.Format.GeoRSS()
+                })
+            });
+            map.addLayer(agnlayer);
+            agnlayer.refresh({force: true});
+
+            selectControl = new OpenLayers.Control.SelectFeature(agnlayer);
+            map.addControl(selectControl);
+            selectControl.activate();
+
+            agnlayer.events.on({
+                'featureselected': onFeatureSelect,
+                'featureunselected': onFeatureUnselect
+            });
+        }
+
+
+    </script>
+</head>
+<body onload="init()">
+<div id="header">
+  <h1><a href="http://team7.govhack.net.tmp.anchor.net.au">Lobby Clue</a></h1>
+</div>
+<div id="nav">
+  <ul>
+    <li><a href="../index2.php">home</a></li>
+    <li><a href="../about2.php">about</a></li>
+    <li><a href="../supplier2.php">suppliers</a></li>
+
+    <li><a href="../agencyWordCloud2.php">agencies</a></li>
+    <li><a href="../lobbyistWordCloud2.php">lobbyists</a></li>
+    <li><a href="../categories2.php">industries</a></li>
+    <li><a href="../networkgraph2.php">network graph</a></li>
+    <li><a href="index2.html" class="current">geospatial visualisation</a></li>
+  </ul>
+
+</div>
+<div id="content">
+    <br />
+    <div id="bigmap"></div>
+    <br />
+    <h4>Government Agencies:</h4>
+    <form name="myform" action="" method="POST">
+        <select name="mydropdown" id="dropdown">
+            <option>Administrative Appeals Tribunal</option>
+            <option>Attorney-General's Department</option>
+            <option>AusAid</option>
+            <option>Austrade</option>
+            <option>Australian Antarctic Division</option>
+            <option>Australian Bureau of Statistics</option>
+            <option>Australian Centre for International Agricultural Research</option>
+            <option>Australian Communications and Media Authority (ACMA)</option>
+            <option>Australian Competition and Consumer Commission</option>
+            <option>Australian Crime Commission</option>
+            <option>Australian Customs Service</option>
+            <option>Australian Electoral Commission</option>
+            <option>Australian Fair Pay Commission</option>
+            <option>Australian Federal Police</option>
+            <option>Australian Industrial Registry</option>
+            <option>Australian Institute of Family Studies</option>
+            <option>Australian Maritime Safety Authority</option>
+            <option>Australian National Audit Office (ANAO)</option>
+            <option>Australian Office of Financial Management</option>
+            <option>Australian Pesticides and Veterinary Medicines Authority</option>
+            <option>Australian Prudential Regulation Authority (APRA)</option>
+            <option>Australian Public Service Commission</option>
+            <option>Australian Radiation Protection and Nuclear Safety Agency (ARPANSA)</option>
+            <option>Australian Research Council</option>
+            <option>Australian Securities and Investments Commission</option>
+            <option>Australian Sports Anti-Doping Authority (ASADA)</option>
+            <option>Australian Taxation Office</option>
+            <option>Australian Transaction Reports and Analysis Centre (AUSTRAC)</option>
+            <option>Bureau of Meteorology</option>
+            <option>Cancer Australia</option>
+            <option>Centrelink</option>
+            <option>Child Support Agency</option>
+            <option>Civil Aviation Safety Authority</option>
+            <option>Comsuper</option>
+            <option>Crimtrac</option>
+            <option>CRS Australia</option>
+            <option>CSIRO</option>
+            <option>Dairy Adjustment Authority</option>
+            <option>Defence Materiel Organisation</option>
+            <option>Department of Agriculture, Fisheries and Forestry</option>
+            <option>Department of Broadband, Communications and the Digital Economy</option>
+            <option>Department of Climate Change</option>
+            <option>Department of Communications, Information Technology and the Arts</option>
+            <option>Department of Defence (Too Large)</option>
+            <option>Department of Education, Employment and Workplace Relations</option>
+            <option>Department of Families, Housing, Community Services and Indigenous Affairs</option>
+            <option>Department of Finance and Deregulation</option>
+            <option>Department of Foreign Affairs and Trade</option>
+            <option>Department of Health and Ageing</option>
+            <option>Department of Human Services</option>
+            <option>Department of Immigration and Citizenship</option>
+            <option>Department of Infrastructure, Transport, Regional Development and Local Government</option>
+            <option>Department of Innovation, Industry, Science and Research</option>
+            <option>Department of Parliamentary Services</option>
+            <option>Department of Resources, Energy and Tourism</option>
+            <option>Department of the Environment and Heritage</option>
+            <option>Department of the Environment and Water Resources</option>
+            <option>Department of the Environment, Water, Heritage and the Arts</option>
+            <option>Department of the House of Representatives</option>
+            <option>Department of the Prime Minister and Cabinet</option>
+            <option>Department of the Senate</option>
+            <option>Department of the Treasury</option>
+            <option>Department of Veterans' Affairs</option>
+            <option>Director of National Parks</option>
+            <option>Equal Opportunity for Women in the Workplace Agency</option>
+            <option>Export Wheat Commission</option>
+            <option>Family Court of Australia</option>
+            <option>Federal Court of Australia</option>
+            <option>Federal Magistrates Court</option>
+            <option>Future Fund Management Agency</option>
+            <option>Geoscience Australia</option>
+            <option>Great Barrier Reef Marine Park Authority</option>
+            <option>Human Rights and Equal Opportunity Commission</option>
+            <option>Insolvency and Trustee Service Australia (ITSA)</option>
+            <option>IP Australia</option>
+            <option>Medicare Australia</option>
+            <option>Migration Review Tribunal and Refugee Review Tribunal (MRT-RRT)</option>
+            <option>National Archives of Australia</option>
+            <option>National Blood Authority</option>
+            <option>National Capital Authority</option>
+            <option>National Competition Council</option>
+            <option>National Health and Medical Research Council</option>
+            <option>National Library of Australia</option>
+            <option>National Museum of Australia</option>
+            <option>National Native Title Tribunal</option>
+            <option>National Offshore Petroleum Safety Authority</option>
+            <option>National Water Commission</option>
+            <option>Office of Parliamentary Counsel</option>
+            <option>Office of the Australian Building and Construction Commissioner (ABCC)</option>
+            <option>Office of the Commonwealth Ombudsman</option>
+            <option>Office of the Director of Public Prosecutions</option>
+            <option>Office of the Inspector-General of Intelligence and Security</option>
+            <option>Office of the Official Secretary to the Governor-General</option>
+            <option>Office of the Privacy Commissioner</option>
+            <option>Office of the Renewable Energy Regulator</option>
+            <option>Productivity Commission</option>
+            <option>Professional Services Review</option>
+            <option>Questacon</option>
+            <option>Reserve Bank of Australia</option>
+            <option>Royal Australian Mint</option>
+            <option>Therapeutic Goods Administration</option>
+            <option>Tourism Australia</option>
+            <option>Workplace Authority</option>
+            <option>Workplace Ombudsman</option>
+        </select>
+    </form>
+    <a href="javascript:refreshOL(document.getElementById('dropdown'));">Refresh Map</a>
+    <br />
+    <h2>Description</h2>
+    <p>The above map depicts what suppliers are used by the various government agencies. The suppliers will automatically refresh after pressing "Refresh Map", but may take a moment to appear (if there are a lot of suppliers).  If a supplier is highlighted and it displays "Untitled", please zoom in on the location, as multiple suppliers have been selected.</p>
+</div>
+</body>
+</html>
+
+

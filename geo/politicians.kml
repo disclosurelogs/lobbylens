@@ -1,0 +1,3808 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+  <Document>
+    <name>Politician Data</name>
+    <open>1</open>
+    <description>GovHack Rules</description>
+    <Folder>
+   <Style id="companyIcon">
+      <IconStyle>
+         <Icon>
+            <href>http://team7.govhack.net.tmp.anchor.net.au/geo/img/historicalquarter.png</href>
+         </Icon>
+      </IconStyle>
+   </Style>
+      <name>Paths</name>
+      <visibility>1</visibility>
+      <description>Connections</description>
+     <Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.24, -33.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.635, -42.111</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.89, -26.593</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.724, -26.828</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.146, -33.898</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.187, -37.932</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.211, -37.826</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.12, -31.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.611, -34.221</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.611, -34.221</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.18, -37.76</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.356, -28.504</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.356, -28.504</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.842, -33.758</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.98, -33.7</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.16, -38.042</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.285, -37.377</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.285, -37.377</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.44, -37.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.123, -34.083</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.67, -41.175</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.19, -33.867</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.0, -32.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.0, -32.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.211, -37.826</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.888, -33.543</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.678, -34.121</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.187, -37.932</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.211, -37.826</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.793, -32.3</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.916, -31.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.306, -27.859</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.082, -27.67</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.0, -27.437</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.975, -20.21</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -38.168</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.548, -35.201</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.879, -34.298</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.252, -33.665</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.801, -31.962</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.752, -31.787</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.356, -28.504</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.158, -36.886</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.873, -33.832</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.208, -33.959</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.7, -33.765</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.12, -33.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.395, -28.14</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.975, -20.21</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.208, -33.959</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.018, -38.358</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.018, -38.358</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.0, -27.13</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.99, -33.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.503, -36.779</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.513, -33.03</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.9, -32.35</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.18, -37.76</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.18, -37.76</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.158, -36.886</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.937, -37.73</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.05, -32.498</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -37.87</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -37.87</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.1, -33.935</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.16, -38.042</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.635, -42.111</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.545, -34.772</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.29, -38.038</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.98, -33.7</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.53, -34.93</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.306, -27.859</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.07, -27.49</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.04, -27.56</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.82, -31.878</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.503, -36.779</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.3, -27.0</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.99, -33.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>121.079, -23.879</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.525, -41.147</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.252, -33.665</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.866, -37.75</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.6, -34.907</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.123, -34.083</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.885, -29.344</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.885, -29.344</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.611, -34.221</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.422, -32.118</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.548, -35.201</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.16, -38.042</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.44, -37.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.906, -31.912</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>143.984, -38.24</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -38.168</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -38.168</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.3, -38.352</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.363, -28.013</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.998, -33.89</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.937, -37.73</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.937, -37.73</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.285, -37.377</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.285, -37.377</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.12, -31.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.031, -30.842</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.031, -30.842</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.218, -33.422</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.25, -33.885</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.63, -43.196</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.513, -33.03</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.149, -33.734</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.351, -25.331</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.3, -27.0</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.16, -38.042</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.05, -37.86</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>121.079, -23.879</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.031, -30.842</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.351, -25.331</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.5, -31.47</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.548, -35.201</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.99, -28.009</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.102, -37.94</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.0, -27.437</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.873, -33.832</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.0, -27.437</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.0, -27.437</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.018, -38.358</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.018, -38.358</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.047, -27.297</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.97, -37.85</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.18, -35.275</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.08, -27.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.824, -32.125</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.888, -33.543</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.76, -19.29</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.888, -33.543</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.18, -37.76</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.123, -34.083</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.123, -34.083</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.978, -34.028</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.8, -13.9</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.8, -35.13</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.7, -34.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.16, -38.042</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.8, -33.991</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.29, -38.038</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.7, -34.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.547, -27.2</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.114, -33.863</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.84, -31.77</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.072, -33.574</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.82, -31.878</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.25, -33.885</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.356, -28.504</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.99, -33.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.95, -35.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.6, -34.907</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.99, -28.009</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.082, -27.67</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.8, -13.9</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.29, -38.038</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.458, -22.074</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.84, -31.77</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.678, -34.121</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.393, -37.786</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.678, -34.121</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.793, -32.3</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.05, -32.498</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.611, -34.221</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.029, -33.843</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.01, -37.738</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.525, -41.147</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.2, -33.56</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.228, -34.581</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.752, -31.787</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.2, -33.56</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.69, -35.716</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.9, -32.35</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.9, -32.35</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.809, -34.542</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -38.168</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.69, -35.716</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.7, -33.765</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.888, -33.543</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.18, -35.275</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.53, -34.93</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.047, -27.297</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.801, -31.962</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.208, -33.959</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.38, -35.257</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.8, -13.9</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.05, -32.498</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.87, -32.05</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.53, -34.93</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.761, -34.557</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.053, -37.814</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.05, -32.498</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.158, -36.886</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.04, -27.56</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.611, -34.221</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.61, -37.78</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.888, -33.543</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.63, -43.196</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.842, -33.758</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.8, -33.37</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.75, -33.91</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.08, -27.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.18, -33.821</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.793, -32.3</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.765, -32.857</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.187, -37.932</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.866, -37.75</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.67, -41.175</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>121.079, -23.879</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>130.933, -12.439</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.65, -33.1</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.593, -35.01</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.393, -37.786</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.393, -37.786</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.393, -37.786</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.971, -37.802</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.946, -27.6</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.04, -27.56</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -37.87</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.84, -30.295</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.95, -35.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.998, -33.89</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.678, -34.121</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.98, -33.7</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.937, -37.73</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.317, -37.684</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.317, -37.684</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.317, -37.684</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.946, -27.6</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.842, -33.996</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.03, -31.985</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.458, -22.074</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.25, -33.885</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.809, -34.542</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.809, -34.542</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.513, -33.03</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.18, -33.821</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.047, -27.297</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.047, -27.297</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.249, -42.858</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.97, -37.85</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.678, -34.121</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.761, -34.557</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.0, -32.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.0, -32.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.103, -33.797</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.01, -37.738</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.809, -34.542</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.672, -19.767</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.07, -27.49</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.3, -38.352</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.6, -34.907</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.752, -31.787</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.971, -37.802</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.916, -31.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.75, -33.91</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.03, -31.985</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.03, -31.985</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.84, -31.77</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.9, -32.35</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.211, -37.826</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.548, -35.201</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.052, -37.661</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.052, -37.661</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.052, -37.661</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.052, -37.661</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.052, -37.661</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.052, -37.661</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.87, -32.05</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.047, -27.297</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.978, -34.028</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.978, -34.028</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.85, -27.48</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.0, -27.437</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.102, -37.94</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.05, -32.498</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.61, -37.78</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.765, -32.857</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.35, -27.564</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.306, -27.859</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.672, -19.767</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.672, -19.767</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.998, -33.89</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.82, -31.878</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.975, -20.21</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.7, -33.765</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.7, -33.765</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.952, -36.252</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.95, -35.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.02, -37.94</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.102, -37.94</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.547, -27.2</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.249, -42.858</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.04, -27.56</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.076, -37.506</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.25, -33.885</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.873, -33.832</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.38, -35.257</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.44, -37.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.35, -27.564</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.18, -35.275</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.842, -33.996</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.547, -27.2</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.724, -26.828</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.031, -30.842</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.824, -32.125</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.333, -33.244</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.2, -33.56</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.503, -36.779</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.76, -19.29</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.76, -19.29</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.458, -22.074</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.766, -36.282</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.218, -33.422</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.5, -31.47</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.228, -34.581</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.3, -38.352</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.615, -27.438</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.18, -33.821</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.24, -33.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.12, -31.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.13, -37.72</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.02, -37.94</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.114, -33.863</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.458, -22.074</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.8, -33.991</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.8, -33.37</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.399, -38.018</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.678, -34.121</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.879, -34.298</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.879, -34.298</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.879, -34.298</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.028, -33.954</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.916, -31.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.395, -28.14</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -37.87</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>143.984, -38.24</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.12, -33.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.07, -27.49</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.82, -31.878</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.093, -37.65</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.146, -33.898</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.103, -33.797</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>139.877, -35.686</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.906, -31.912</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.593, -35.01</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.146, -33.898</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.146, -33.898</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.1, -33.935</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.1, -33.935</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.19, -33.867</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.114, -33.863</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.18, -35.275</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.95, -35.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.615, -27.438</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.028, -33.954</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.076, -37.506</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.67, -41.175</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.46, -26.1</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.44, -37.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.503, -36.779</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.85, -27.48</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.765, -32.857</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.65, -33.1</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.123, -34.083</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.8, -33.37</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.028, -33.954</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.422, -32.118</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.114, -33.863</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.123, -34.083</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.952, -36.252</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.218, -33.422</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.84, -30.295</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.84, -30.295</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.149, -33.734</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.5, -27.862</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.351, -25.331</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.356, -28.504</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.525, -41.147</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.093, -37.65</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.236, -37.899</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.525, -41.147</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.755, -37.738</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.399, -38.018</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.0, -32.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>135.002, -30.648</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.879, -34.298</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.99, -33.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.824, -32.125</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.053, -37.814</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.236, -37.899</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.04, -27.56</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.19, -33.867</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.076, -37.506</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.61, -37.78</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>139.877, -35.686</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.6, -34.907</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.842, -33.758</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.8, -33.991</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.12, -33.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.663, -34.91</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.63, -43.196</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.99, -28.009</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>135.002, -30.648</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>116.05, -32.498</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.916, -31.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.155, -27.49</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.158, -36.886</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.3, -38.352</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.3, -38.352</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.548, -35.201</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.018, -38.358</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.946, -27.6</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.548, -35.201</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.02, -37.94</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.306, -27.859</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.395, -28.14</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.84, -30.295</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.885, -29.344</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.801, -31.962</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.076, -37.506</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.85, -37.834</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.07, -27.49</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.072, -33.574</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.99, -33.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.885, -29.344</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.952, -36.252</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.236, -37.899</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.211, -37.826</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.545, -34.772</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.399, -38.018</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.228, -34.581</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.35, -27.564</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.35, -27.564</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.3, -27.0</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.53, -34.93</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.946, -27.6</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>139.877, -35.686</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.866, -37.75</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.87, -32.05</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.87, -32.05</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.38, -35.257</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.228, -34.581</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.975, -20.21</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.05, -37.86</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.076, -37.506</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.85, -27.48</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.866, -37.75</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.67, -41.175</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.67, -41.175</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.12, -31.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.018, -38.358</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.84, -31.77</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.236, -30.054</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.236, -30.054</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.724, -26.828</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.724, -26.828</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.547, -27.2</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.393, -37.786</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.525, -41.147</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.906, -31.912</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.525, -41.147</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>147.525, -41.147</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.95, -35.55</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.187, -37.932</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.187, -37.932</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.952, -36.252</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>133.501, -18.558</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.89, -26.593</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.593, -35.01</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.18, -33.821</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.236, -30.054</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -37.87</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.13, -37.72</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.393, -37.786</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.766, -36.282</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>143.984, -38.24</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.0, -27.13</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.363, -28.013</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.08, -27.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.08, -27.4</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.211, -37.826</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.971, -37.802</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.615, -27.438</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.805, -37.597</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.5, -27.862</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.25, -33.885</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.333, -33.244</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.8, -13.9</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.937, -37.73</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.333, -33.244</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.978, -34.028</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>130.933, -12.439</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.611, -23.893</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.46, -26.1</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>117.726, -31.885</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.25, -33.885</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>142.8, -13.9</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.029, -33.843</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.5, -31.47</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.978, -34.028</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.805, -37.597</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.155, -27.49</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.82, -31.878</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>135.002, -30.648</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.218, -33.422</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>135.002, -30.648</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.752, -31.787</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.99, -28.009</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>149.888, -33.543</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.047, -27.297</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.35, -27.564</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.879, -34.298</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.395, -28.14</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.916, -31.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>115.87, -32.05</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>144.85, -37.834</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.16, -38.042</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.236, -30.054</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.44, -37.98</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.885, -29.344</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.114, -33.863</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.393, -37.786</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.128, -37.87</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.6, -34.907</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.458, -22.074</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>145.29, -38.038</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.545, -34.772</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>146.018, -38.358</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>151.114, -33.863</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.7, -34.79</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>153.35, -27.564</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>150.842, -33.996</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.663, -34.91</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>148.093, -37.65</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>152.5, -31.47</coordinates>
+        </Point>
+      </Placemark><Placemark>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates>138.8, -35.13</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

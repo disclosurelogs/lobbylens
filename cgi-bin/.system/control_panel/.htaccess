@@ -1,0 +1,5 @@
+AuthName "Control Panel Security"
+AuthType basic
+AuthPAM_Enabled on
+Require valid-user
+Require group users

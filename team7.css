@@ -1,0 +1,84 @@
+/*
+	#3399CC   	blue
+	#C91053		pink
+*/
+
+body {
+	font-size:16pt;
+	color: #C91053;
+}
+
+h1 {
+	font-size:200%;
+	font-weight:bold;
+	margin:10px;
+}
+
+h1 span.lobby {
+	color:blue;
+}
+
+h1 span.clue {
+	color:#C91053;
+}
+
+h2 {
+	font-size:150%;
+	font-weight:bold;
+}
+
+h3 {
+	font-size:100%;
+}
+
+
+a, a:visited {
+	text-decoration:none;
+	color: #3399CC;
+}
+
+a:hover {
+	color:#C91053;
+}
+
+li {
+	padding:6px;
+}
+
+#header {
+	height: 17%;
+}
+
+#nav {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+#nav li {
+	display:inline;
+}
+
+table#categories {
+	margin:20px;
+}
+
+#about {
+    color:black;
+    margin:20px;
+	text-align:left;
+}
+
+#about ul {
+    font-size:75%;
+    list-style-type: square;
+	margin-left:10px;
+}
+
+#about table { width:60%; margin:20px; }
+#about table td { vertical-align:text-top; }
+#about table td { border-spacing:10px; }
+
+div.tagCloud {
+	font-size:80%;
+	padding:1em;
+}

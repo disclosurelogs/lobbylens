@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml
+  xmlns="http://earth.google.com/kml/2.1"
+  xmlns:py="http://genshi.edgewall.org/"
+  >
+
+  <Document>
+    <name>Lobby Data</name>
+    <open>1</open>
+    <description>GovHack Rules</description>
+    <Folder>
+   <Style id="companyIcon">
+      <IconStyle>
+         <Icon>
+            <href>http://team7.govhack.net.tmp.anchor.net.au/geo/img/bank.png</href>
+         </Icon>
+      </IconStyle>
+   </Style>
+
+
+      <name>Paths</name>
+      <visibility>1</visibility>
+      <description>Connections</description>
+     <Placemark py:for="item in collection">
+        <name py:content="item['name']">NAME</name>
+        <styleUrl>#companyIcon</styleUrl>
+        <description>some info</description>
+        <Point id="ID">
+          <!-- specific to Point -->
+          <coordinates py:content="item['coordinates']">
+                LONG,LAT
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

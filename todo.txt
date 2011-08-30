@@ -1,0 +1,70 @@
+fixes:
+send email on XML parsing exception!!!!
+
+drill down for nodes
+- Display time span period of information where dollar values appear
+
+neo-locale view
+- group by state rather than postcode
+- eg. all lobbyists and lobby clients in tasmania
+
+Implement lobbyistclient.inc for ngapi including automatic redirect to govsupplier if required and political donations and multiple lobbying firms
+Include lobbyist clients in supplier search
+Give lobbyists a value (total of all their client' contracts?)
+
+update source/DB release
+
+implement donor-.
+
+Update to November 1st 2009+ tender data
+Radical Right overlay - http://unbelief.org/groups/
+Resize network graph to fit screen using javascript http://www.kaali.co.uk/index.pl?art=94
+
+Political donations viewer
+- Put values on the links not the nodes
+- change weight of links based on amount
+
+Search - http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html?
+	- hidden field for "type" eg supplier, lobbyist; can be used to signify that has been autosuggested
+	- else search.php returns all matches
+	- smart logic for digit input (abn, postcode) vs. string (name)
+
+link suppliers that are also gov agencies (like crimtrac, centerlink CPM) properly
+
+avoid duplication of links for every API backend
+- fix node duplication detection to use xquery
+
+Add LobbYAML 1.0 schema to about screen - include state sources field, ABN etc
+- Add LobbYAML API.
+
+
+network graph/UX improvements:
+	
+A legend of colors
+Improve navigation links to be more user friendly (explore section etc)
+Manage large agencies better
+Add a tooltip for politicians
+Add a link/tooltip to the central bubble (total expenditure for agencies etc)
+	- link to contractdashboard
+Color edges of graph?
+Display lobbyists on agency graph
+Highlight government supplier lobbyist clients in a different color
+
+AJAX "drop in" search. Add nodes to an existing graph and see if there is a connection
+Filter nodes? Allow disabling of postcodes/categories?
+go "back" in graph. use javascript events to record breadcrumbs
+Collapse nodes again?
+Help lightbox/popup for beginning users with examples
+- popup by default on first load
+Screen export as bitmap?
+
+
+future gazing:
+Use Gini coefficient for income disparity of suppliers?
+Include stimulus projects - http://data.australia.gov.au/52
+Use more advanced graph interface? JViz? RGraph?
+SNA tools like http://igraph.sourceforge.net/ (has python interface!)
+Merge suspended agencies into current equivilent via national archives db 
+
+Allow contact with http://www.finance.gov.au/publications/procurement-coordinator/index.html and 
+	http://www.sourcewatch.org/index.php?title=Lobby_groups/Australia and http://lobbyocracy.org.au

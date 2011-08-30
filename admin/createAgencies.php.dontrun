@@ -1,0 +1,20 @@
+<?php
+
+ini_set('display_errors', 1);
+
+require_once 'dbconn.php';
+require_once 'agency2portfolio.php';
+
+$agencies = $dbConn->query('SELECT DISTINCT agencyName FROM contractnotice LIMIT 10 OFFSET 120');
+
+foreach ($agencies->fetchAll() as $a) {
+	$createAgency = $dbConn->prepare('INSERT IGNORE INTO portfolios (portfolio) VALUES (?)');
+	$createAgency->bindValue(1, agency2portfolio($a['agencyName']), PDO::PARAM_STR);
+	$createAgency->execute();
+	$updateAgency = $dbConn->prepare('UPDATE contractnotice SET portfolio=(SELECT id FROM portfolios WHERE portfolio=?) WHERE agencyName=?');
+	$updateAgency->bindValue(1, agency2portfolio($a['agencyName']), PDO::PARAM_INT);
+	$updateAgency->bindVAlue(2, $a['agencyName'], PDO::PARAM_STR);
+	$updateAgency->execute();
+}
+
+?>
