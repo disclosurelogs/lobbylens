@@ -1,7 +1,7 @@
 <?php
 $lobbyistABN = $graphTarget;
 $supplierN = $dbConn->prepare(" SELECT lobbyistID, trading_name as preferred_name
-FROM `lobbyists`
+FROM lobbyists
 WHERE abn = ?
 LIMIT 1 ");
 $supplierN->execute(array(
@@ -27,24 +27,12 @@ WHERE lobbyistID = ?;
 $lobbyistclients->execute(array(
   $lobbyistID
 ));
-createMySQLlink();
 foreach($lobbyistclients->fetchAll() as $row) {
-  $cleanseNames = Array(
-    "Ltd",
-    "Limited",
-    "Australiasia",
-    "The ",
-    "(NSW)",
-    "(QLD)",
-    "Pty",
-    "Ltd."
-  );
-  $searchName = str_ireplace($cleanseNames, "", $row['business_name']);
-    $searchName = trim($searchName);
+    $searchName = searchName($row['business_name']);
   //! todo: use ABNs properly rather than supplierName exclusively to check gov supplier
   //! get ABNs from lobbyist client tbale not supplier table
   $result = mysql_query("SELECT supplierABN
-	FROM `contractnotice`
+	FROM contractnotice
 	WHERE supplierName LIKE \"%" . $searchName . "%\"
 	LIMIT 1 ");
   if ($result) {
@@ -81,18 +69,7 @@ foreach($lobbyistclients->fetchAll() as $row) {
   $link->addAttribute("head_node_id", $head_node_id);
 }
 if ($politicialDonationsEnabled) {
-  $cleanseNames = Array(
-    "Ltd",
-    "Limited",
-    "Australiasia",
-    "The ",
-    "(NSW)",
-    "(QLD)",
-    "Pty",
-    "Ltd."
-  );
-  $searchName = str_ireplace($cleanseNames, "", $lobbyistName);
-    $searchName = trim($searchName);
+    $searchName = searchName($lobbyistName);
   $result = mysql_query("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid from political_donations where DonorClientNm
 			       LIKE \"%" . $searchName . "%\" group by RecipientClientNm order by RecipientClientNm desc");
   if ($result) {

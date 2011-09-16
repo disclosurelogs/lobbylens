@@ -8,12 +8,12 @@ include_header();
 
 
 	$lobbyistcloud = new wordcloud();
-	$lobbyists = $dbConn->prepare("
-SELECT abn AS lobbyist_abn, trading_name as lobbyist_name, count(1) as client_count
+	$lobbyists = $dbConn->prepare('
+SELECT abn AS lobbyist_abn, min(trading_name) as lobbyist_name, count(1) as client_count
 FROM lobbyists
-INNER JOIN lobbyist_relationships ON lobbyists.lobbyistID = lobbyist_relationships.lobbyistID
+INNER JOIN lobbyist_relationships ON lobbyists."lobbyistID" = lobbyist_relationships."lobbyistID"
 GROUP BY lobbyist_abn
-	");
+	');
 	$lobbyists->execute();
 
 	foreach($lobbyists->fetchAll() as $row) {

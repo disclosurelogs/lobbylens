@@ -1,12 +1,12 @@
 <?php
+include ("libs/config.php");
 if (isset($_REQUEST['node_id'])) {
   $selectedNodeID = $_REQUEST['node_id'];
 } else {
-  include "libs/dbconn.php";
-  $agencies = $dbConn->prepare("
-SELECT agencyName
-FROM `contractnotice`
-ORDER BY RAND() LIMIT 0,1; ");
+  $agencies = $dbConn->prepare('
+SELECT "agencyName"
+FROM contractnotice
+ORDER BY random() LIMIT 1; ');
   $agencies->execute();
   $result = $agencies->fetch(PDO::FETCH_ASSOC);
   $selectedNodeID = 'agency-' . $result['agencyName'];
@@ -18,7 +18,7 @@ if (isset($_REQUEST['dev']) || $_SERVER['SERVER_NAME'] == "localhost") {
 }
 ?>
 <?php
-include ("libs/config.php");
+
 include_header();
 ?>
         <p>Click on nodes to expand the network, hover over nodes, or lines joining nodes, to display more 
@@ -26,6 +26,7 @@ information.</p>
 
 	<?php
 $xml = file_get_contents(local_url() . "ngapi.xml.php?node_id=" . urlencode(stripslashes($selectedNodeID)));
+echo local_url() . "ngapi.xml.php?node_id=" . urlencode(stripslashes($selectedNodeID));
 $graph = new SimpleXMLElement($xml);
 echo '<div class="msg_list">
 <p class="msg_head">';

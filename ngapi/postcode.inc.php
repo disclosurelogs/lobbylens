@@ -8,7 +8,7 @@ $xml->addChild('name',$postcode);
 
 $suppliers = $dbConn->prepare("
  SELECT supplierName, supplierABN, value
-FROM `contractnotice`
+FROM contractnotice
 WHERE supplierPostcode = ?
 AND childCN = 0
 GROUP BY supplierABN
@@ -38,11 +38,9 @@ foreach ($suppliers->fetchAll() as $row) {
 	}
 }
 
-$dbConn = null;
-include "../libs/dbconn.php";
 $agencies = $dbConn->prepare("
  SELECT agencyName, contactPostcode, value
-FROM `contractnotice`
+FROM contractnotice
 WHERE contactPostcode = ?
 AND childCN = 0
 GROUP BY agencyName

@@ -7,16 +7,16 @@ include_header();
 <?php
 
 	$agencycloud = new wordcloud();
-	$agencies = $dbConn->prepare("
-	    SELECT agencyName, value
-	    FROM `contractnotice`
-	    GROUP BY agencyName
-	    ORDER BY value DESC
-	");
+	$agencies = $dbConn->prepare('
+	    SELECT "agencyName", sum(value)
+	    FROM contractnotice WHERE "childCN" = 0		
+	    GROUP BY "agencyName"
+	    ORDER BY sum(value) DESC
+	');
 	$agencies->execute();
 
 	foreach($agencies->fetchAll() as $row) {
-	    $agencycloud->addWord($row['agencyName'],$row['value']);
+	    $agencycloud->addWord($row['agencyName'],$row['sum']);
 	}
 
 	$myCloud = $agencycloud->showCloud('array');

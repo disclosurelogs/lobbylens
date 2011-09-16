@@ -6,7 +6,6 @@ $recipientNode->addAttribute("label", $recipientName);
 formatPostcodeNode($recipientNode);
 $xml->addChild('name', $recipientName);
 if ($politicialDonationsEnabled) {
-  createMySQLlink();
   $result = mysql_query("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid from political_donations where RecipientClientNm
 			       LIKE \"%" . $recipientName . "%\" group by DonorClientNm order by DonorClientNm desc");
   if ($result) {
@@ -14,23 +13,12 @@ if ($politicialDonationsEnabled) {
     while ($row = mysql_fetch_array($result)) {
       $tail_node_id = "donor-" . $row['DonorClientNm'];
       $extralabel = "";
-      $cleanseNames = Array(
-        "Ltd",
-        "Limited",
-        "Australiasia",
-        "The ",
-        "(NSW)",
-        "(QLD)",
-        "Pty",
-        "Ltd."
-      );
-      $searchName = str_ireplace($cleanseNames, "", $row['DonorClientNm']);
-      $searchName = trim($searchName);
+      $searchName = searchName($row['DonorClientNm']);
       $supplier = mysql_query("SELECT supplierABN
-	FROM `contractnotice`
+	FROM contractnotice
 	WHERE supplierName LIKE \"%" . $searchName . "%\"
 	LIMIT 1 ");
-      $lobbyclient = mysql_query("SELECT * FROM `lobbyist_clients` WHERE `business_name` LIKE \"%" . $searchName . "%\"");
+      $lobbyclient = mysql_query("SELECT * FROM lobbyist_clients WHERE business_name LIKE \"%" . $searchName . "%\"");
       if ($lobbyclient && mysql_num_rows($lobbyclient) > 0) {
         $abn = mysql_fetch_assoc($lobbyclient);
         $tail_node_id = "lobbyistclient-" . $abn['ABN'];
@@ -41,7 +29,7 @@ if ($politicialDonationsEnabled) {
         $tail_node_id = "supplier-" . $abn['supplierABN'];
         $extralabel = " and government supplier";
       }
-      $lobbyist = mysql_query("SELECT * FROM `lobbyists` WHERE (`business_name` LIKE \"%" . $searchName . "%\" OR `trading_name` = LIKE \"%" . $searchName . "%\"");
+      $lobbyist = mysql_query("SELECT * FROM lobbyists WHERE (business_name LIKE \"%" . $searchName . "%\" OR trading_name = LIKE \"%" . $searchName . "%\"");
       if ($lobbyist && mysql_num_rows($lobbyist) > 0) {
         $abn = mysql_fetch_assoc($lobbyist);
         $tail_node_id = "lobbyist-" . $abn['ABN'];

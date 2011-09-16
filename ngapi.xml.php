@@ -95,8 +95,9 @@ function appendNode($nodeID) {
   global $details;
   global $dev;
   global $xml;
-  $categoriesEnabled = true;
+  $categoriesEnabled = false;
   $postcodesEnabled = false;
+  $politiciansEnabled = false;
   $lobbyistsEnabled = true;
   $politicialDonationsEnabled = true;
   $path = "ngapi/";
@@ -104,17 +105,16 @@ function appendNode($nodeID) {
   $node = explode("-", $nodeID);
   $graphType = array_shift($node);
   $graphTarget = htmlspecialchars_decode(implode("-",$node));
-  createMySQLlink();
   if ($graphType == "agency") {
     include ($path . 'agency.inc.php');
   }
   if ($graphType == "lobbyistclient" && $lobbyistsEnabled) {
-	  $result = mysql_query("SELECT supplierABN
-	FROM `contractnotice`
-	WHERE supplierName LIKE \"%" . $graphTarget . "%\"
-	LIMIT 1 ");
-  if (mysql_num_rows($result) > 0) {
-    $abn = mysql_fetch_assoc($result);
+	  $result =  $dbConn->query('SELECT "supplierABN"
+	FROM contractnotice
+	WHERE supplierName LIKE \'%' . $graphTarget . '%\'
+	LIMIT 1 ');
+  if ($result->rowCount() > 0) {
+    $abn = $result->fetch(PDO::FETCH_ASSOC);
     $graphType = "supplier";
     $graphTarget = $abn['supplierABN'];
   } else {

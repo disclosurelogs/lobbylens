@@ -1,4 +1,6 @@
 <?php
+
+date_default_timezone_set("Australia/ACT");
 if ($_SERVER['SERVER_NAME'] == "localhost" || !$_SERVER['SERVER_NAME']) {
 set_include_path("/var/www/lobbylens/libs/:/var/www/lobbylens/public_html/:" . get_include_path());
 } else {
@@ -15,21 +17,6 @@ function ucsmart($str) {
             (A|An|And|At|For|In|Of|On|Or|The|To|With)
             (?=\W)/e", 'strtolower("$1")', ucwords(strtolower($str)));
 }
-
-function createMySQLlink() {
-if ($_SERVER['SERVER_NAME'] == "localhost" || !$_SERVER['SERVER_NAME']) {
-  $link = mysql_connect('localhost', 'root', '');
-  if (!$link) {
-    die('Could not connect: ' . mysql_error());
-  }
-  @mysql_select_db("contractDashboard") or die("Unable to select database");
-} else {
-	$link = mysql_connect('localhost', 'team7', '');
-  if (!$link) {
-    die('Could not connect: ' . mysql_error());
-  }
-  @mysql_select_db("team7") or die("Unable to select database");
-}}
 
 function abnLookup($orgname) {
   $ch = curl_init();
@@ -48,7 +35,20 @@ function abnLookup($orgname) {
 function local_url() {
   return "http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/";
 }
-
+function searchName($input) {
+        $cleanseNames = Array(
+        "Ltd",
+        "Limited",
+        "Australiasia",
+        "The ",
+        "(NSW)",
+        "(QLD)",
+        "Pty",
+        "Ltd."
+      );
+      $result = str_ireplace($cleanseNames, "", $input);
+      return trim($result);
+}
 function include_header() {
 	header("Content-Type: text/html; charset=UTF-8")
 ?>

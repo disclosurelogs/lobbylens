@@ -1,7 +1,7 @@
 <?php
 $supplierABN = $graphTarget;
 $supplierN = $dbConn->prepare(" SELECT supplierName
-FROM `contractnotice`
+FROM contractnotice
 WHERE supplierABN = ?
 LIMIT 1 ");
 $supplierN->execute(array(
@@ -16,11 +16,9 @@ $supplierName = $name['supplierName'];
 $xml->addChild('name',htmlentities($supplierName));
 
 formatSupplierNode($supplierNode);
-$dbConn = null;
-include "libs/dbconn.php";
 $agencies = $dbConn->prepare("
 SELECT agencyName, value
-FROM `contractnotice`
+FROM contractnotice
 WHERE supplierABN = ?
 AND childCN = 0
 GROUP BY agencyName
@@ -49,11 +47,9 @@ foreach($agencies->fetchAll() as $row) {
   $link->addAttribute("edge_length_weight", $row['value']);
 }
 if ($categoriesEnabled) {
-  $dbConn = null;
-  include "libs/dbconn.php";
   $categories = $dbConn->prepare("
 SELECT category,LEFT(categoryUNSPSC,2) as categoryPrefix, value
-FROM `contractnotice`
+FROM contractnotice
 WHERE supplierABN = ?
 AND childCN = 0
 GROUP BY LEFT(categoryUNSPSC,2)
@@ -86,11 +82,9 @@ $existing = $edges->xpath('//edge[@id="'.$head_node_id . "|" . $tail_node_id.'"]
   }
 }
 if ($postcodesEnabled) {
-  $dbConn = null;
-  include "../libs/dbconn.php";
   $postcodes = $dbConn->prepare("
  SELECT supplierName, supplierPostcode, value
-FROM `contractnotice`
+FROM contractnotice
 WHERE supplierABN = ?
 AND childCN = 0
 GROUP BY supplierPostcode
@@ -119,9 +113,8 @@ GROUP BY supplierPostcode
   }
 }
 if ($lobbyistsEnabled) {
-  createMySQLlink();
   $result = mysql_query(" SELECT lobbyistClientID
-FROM `lobbyist_clients`
+FROM lobbyist_clients
 WHERE abn = $supplierABN
 LIMIT 1 ");
   $lobid = mysql_fetch_assoc($result);
@@ -158,18 +151,8 @@ WHERE lobbyistClientID = ? ;
 }
 
 if ($politicialDonationsEnabled) {
-  $cleanseNames = Array(
-    "Ltd",
-    "Limited",
-    "Australiasia",
-    "The ",
-    "(NSW)",
-    "(QLD)",
-    "Pty",
-    "Ltd."
-  );
-  $searchName = str_ireplace($cleanseNames, "", $supplierName);
-  $searchName = trim($searchName);
+ 
+  $searchName = searchName($supplierName);
   $result = mysql_query("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid from political_donations where DonorClientNm
 			       LIKE \"%" . $searchName . "%\" group by RecipientClientNm order by RecipientClientNm desc");
   if ($result) {

@@ -1,15 +1,8 @@
 <?php
 try {
   if ($_SERVER['SERVER_NAME'] == "localhost") {
-    $dbConn = new PDO(
-    /*DSN */
-    'mysql:host=localhost;dbname=contractDashboard',
-    /*USER*/
-    'root',
-    /*PASS*/
-    '', array(
-      PDO::MYSQL_ATTR_USE_BUFFERED_QUERY
-    ));
+    $dbConn = new PDO("pgsql:dbname=contractDashboard;user=postgres;password=snmc;host=localhost");
+     $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } 
 }
 catch(PDOException $e) {
@@ -18,5 +11,4 @@ catch(PDOException $e) {
 catch(Exception $e) {
   die('Unknown error in ' . __FILE__ . '.');
 }
-$dbConn->exec('SET NAMES \'utf8\'');
 ?>

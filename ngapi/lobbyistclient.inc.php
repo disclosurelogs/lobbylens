@@ -6,7 +6,7 @@ $lobbyistClientNode->addAttribute("label", $lobbyistClientName);
 formatLobbyingClientNode($lobbyistClientNode);
 $xml->addChild('name', htmlentities($lobbyistClientName));
 $supplierN = $dbConn->prepare(" SELECT lobbyistClientID
-FROM `lobbyist_clients`
+FROM lobbyist_clients
 WHERE business_name = ?
 LIMIT 1 ");
 $supplierN->execute(array(
@@ -14,8 +14,6 @@ $supplierN->execute(array(
 ));
 $lobbyistClientID = $supplierN->fetch(PDO::FETCH_OBJ)->lobbyistClientID;
 
-$dbConn = null;
-include "libs/dbconn.php";
 $lobbyists = $dbConn->prepare("
 SELECT *
 FROM lobbyists

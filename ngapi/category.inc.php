@@ -1,9 +1,8 @@
 <?php
 $categoryID = $graphTarget;
-createMySQLlink();
 
 $result = mysql_query (" SELECT Title
-FROM `UNSPSCcategories`
+FROM UNSPSCcategories
 WHERE UNSPSC = $categoryID
 LIMIT 1 ");
 $name = mysql_fetch_assoc($result);
@@ -15,7 +14,7 @@ $xml->addChild('name', htmlentities($name['Title']));
 formatCategoryNode($categoryNode);
 $suppliers = $dbConn->prepare("
  SELECT supplierName, supplierABN, category, value
-FROM `contractnotice`
+FROM contractnotice
 WHERE LEFT(categoryUNSPSC,2) = LEFT(?,2)
 AND childCN = 0
 GROUP BY supplierABN

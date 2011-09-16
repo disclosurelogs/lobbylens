@@ -17,7 +17,6 @@ with Government 2.0 Report</a></p>
   <h3>Data sources</h3>
   <ul>
     <?php
-    include_once("../libs/dbconn.php");
     $datasets = $dbConn->prepare("SELECT * FROM datasets");
 $datasets->execute();
 

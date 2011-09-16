@@ -13,19 +13,17 @@ include_header();
     <?php
 
 	$suppliercloud = new wordcloud();
-	$suppliers = $dbConn->prepare("
-		SELECT supplierName, supplierABN, value
-		FROM `contractnotice`
-		WHERE value > 10000000	
-		AND childCN = 0
-		GROUP BY supplierABN
-		ORDER BY value DESC;
-	");
+	$suppliers = $dbConn->prepare('
+		SELECT min("supplierName") as "supplierName", min("supplierABN") as "supplierABN", sum(value)
+		FROM contractnotice WHERE "childCN" = 0		
+		GROUP BY "supplierABN" HAVING sum(value) > 10000000	
+		ORDER BY sum(value) DESC;
+	');
 	$suppliers->execute();
 	$supplierABNs = Array();
 	
 	foreach ($suppliers->fetchAll() as $row) {
-		$suppliercloud->addWord(ucsmart($row['supplierName']),$row['value']);
+		$suppliercloud->addWord(ucsmart($row['supplierName']),$row['sum']);
 		$supplierABNs[ucsmart($row['supplierName'])] = $row['supplierABN'];
 	}
 	$myCloud = $suppliercloud->showCloud('array');
@@ -34,13 +32,6 @@ include_header();
 		foreach ($myCloud as $key => $value) {
 			echo ' <a href="networkgraph.php?node_id=supplier-'.$supplierABNs[$value['word']].'" class="cloud'.$value['sizeRange'].'">'.$value['word'].'</a> &nbsp;';
 		}
-	}
-	
-	createMySQLlink();
-	
-	$unspscresult = mysql_query ("select * from UNSPSCcategories;");
-	while ($row = mysql_fetch_assoc($unspscresult)) {
-		$unspsc[$row['UNSPSC']] = $row['Title'];
 	}
 	
 ?>
