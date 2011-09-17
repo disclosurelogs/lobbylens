@@ -1,6 +1,0 @@
-SELECT representative_id,firstname,surname,party,house,division_id,	portfolio
-FROM portfolio2representative
-INNER JOIN representatives
-ON portfolio2representative.representative_id=representatives.id
-INNER JOIN portfolios
-ON portfolio2representative.portfolio_id=portfolios.id

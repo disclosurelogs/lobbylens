@@ -1,25 +1,4 @@
 fixes:
-send email on XML parsing exception!!!!
-
-drill down for nodes
-- Display time span period of information where dollar values appear
-
-neo-locale view
-- group by state rather than postcode
-- eg. all lobbyists and lobby clients in tasmania
-
-Implement lobbyistclient.inc for ngapi including automatic redirect to govsupplier if required and political donations and multiple lobbying firms
-Include lobbyist clients in supplier search
-Give lobbyists a value (total of all their client' contracts?)
-
-update source/DB release
-
-implement donor-.
-
-Update to November 1st 2009+ tender data
-Radical Right overlay - http://unbelief.org/groups/
-Resize network graph to fit screen using javascript http://www.kaali.co.uk/index.pl?art=94
-
 Political donations viewer
 - Put values on the links not the nodes
 - change weight of links based on amount
@@ -29,7 +8,7 @@ Search - http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosugg
 	- else search.php returns all matches
 	- smart logic for digit input (abn, postcode) vs. string (name)
 
-link suppliers that are also gov agencies (like crimtrac, centerlink CPM) properly
+
 
 avoid duplication of links for every API backend
 - fix node duplication detection to use xquery

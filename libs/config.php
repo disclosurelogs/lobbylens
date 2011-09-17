@@ -98,7 +98,6 @@ pageTracker._trackPageview();
     <li><a href="agencyWordCloud.php">agencies</a></li>
     <li><a href="lobbyistWordCloud.php">lobbyists</a></li>
     <li><a href="categories.php">industries</a></li>
-    <li><a href="geo/index.html">geospatial visualisation</a></li>
   </ul>
 </div>
 <div id="content">

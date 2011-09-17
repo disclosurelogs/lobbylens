@@ -7,15 +7,15 @@ include_header();
 
 
 	$unspsc = array();
-	$unspscQuery = $dbConn->query('SELECT UNSPSC, Title FROM UNSPSCcategories');
+	$unspscQuery = $dbConn->query('SELECT "UNSPSC", "Title" FROM "UNSPSCcategories" where "UNSPSC"::text like \'%000000\'');
 	foreach ($unspscQuery->fetchAll() as $r) {
 		$unspsc[$r['UNSPSC']] = $r['Title'];
 	}
 
-	$catresult = $dbConn->query('SELECT LEFT( categoryUNSPSC, 2 ) as cat , SUM( value ) as value
-				FROM `contractnotice` WHERE childCN = 0
+	$catresult = $dbConn->query('SELECT distinct substr( "categoryUNSPSC"::text, 0, 3 )  as cat , SUM( value ) as value
+				FROM contractnotice WHERE "childCN" = 0
 				GROUP BY cat
-			ORDER BY value DESC;');
+			ORDER BY sum(value) DESC;');
 
 	echo "<table id=\"categories\">";
 	foreach ($catresult->fetchAll() as $row) {
