@@ -13,9 +13,15 @@ require_once "dbconn.php";
 require_once "wordcloud.php";
 
 function ucsmart($str) {
-  return preg_replace("/(?<=(?<!:|’s)\W)
+  $shortWords = Array("The","Pty","Ltd","Inc","Red","Oil","A","An","And","At","For","In"
+		      ,"Of","On","Or","The","To","With","Uni", "One", "Box", "Utz");
+  $strArray =  explode(" ",preg_replace("/(?<=(?<!:|’s)\W)
             (A|An|And|At|For|In|Of|On|Or|The|To|With)
-            (?=\W)/e", 'strtolower("$1")', ucwords(strtolower($str)));
+            (?=\W)/e", 'strtolower("$1")', ucwords(strtolower($str))));
+  foreach($strArray as &$word) {
+    if (strlen($word) <= 3 && !in_array($word,$shortWords)) $word = strtoupper($word);
+  }
+  return implode(" ",$strArray);
 }
 
 function abnLookup($orgname) {
@@ -49,14 +55,14 @@ function searchName($input) {
       $result = str_ireplace($cleanseNames, "", $input);
       return trim($result);
 }
-function include_header() {
+function include_header($title = "") {
 	header("Content-Type: text/html; charset=UTF-8")
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>LobbyLens</title>
+<title>LobbyLens<?php if ($title != "") echo " - $title"; ?></title>
 <link rel="stylesheet" type="text/css" href="style-screen.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="style-print.css" media="print" />
 <!-- BEGIN IE ActiveX activation workaround by Chris Benjaminsen -->

@@ -1,6 +1,6 @@
 <?php
 include ("libs/config.php");
-include_header();
+include_header("About");
 ?>
   <h2>About LobbyLens</h2>
   <p> LobbyLens 

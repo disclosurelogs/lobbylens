@@ -1,6 +1,6 @@
 <?php
 include	("libs/config.php");
-include_header();
+include_header("Industries");
 ?>
   <h2>Industries</h2>
   <?php

@@ -1,6 +1,6 @@
 <?php
 include	("libs/config.php");
-include_header();
+include_header("Suppliers");
 ?>
   <h2>Suppliers</h2>
   <form action="supplierSearch.php" method="post">

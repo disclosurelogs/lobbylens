@@ -1,6 +1,6 @@
 <?php
 include	("libs/config.php");
-include_header();
+include_header("Lobbyists");
 ?>
   <h2>Lobbyists</h2>
   <div class="tagCloud">
