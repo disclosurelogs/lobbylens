@@ -1,26 +1,29 @@
 <?php
 $categoryID = $graphTarget;
 
-$result = mysql_query (" SELECT Title
+$result = $dbConn->prepare ('SELECT "Title"
 FROM UNSPSCcategories
-WHERE UNSPSC = $categoryID
-LIMIT 1 ");
-$name = mysql_fetch_assoc($result);
+WHERE "UNSPSC" = ?
+LIMIT 1 ');
+$result->execute(array(
+    $categoryID
+));
+$name = $result->fetch();
 
 $categoryNode = $nodes->addChild('node');
 $categoryNode->addAttribute("id","category-".$categoryID);
 $categoryNode->addAttribute("label",$name['Title']);
 $xml->addChild('name', htmlentities($name['Title']));
 formatCategoryNode($categoryNode);
-$suppliers = $dbConn->prepare("
- SELECT supplierName, supplierABN, category, value
+$suppliers = $dbConn->prepare('
+ SELECT "supplierName", "supplierABN", category, sum(value)
 FROM contractnotice
 WHERE LEFT(categoryUNSPSC,2) = LEFT(?,2)
-AND childCN = 0
-GROUP BY supplierABN
+AND "childCN" is null
+GROUP BY "supplierABN"
 ORDER BY value DESC
 LIMIT 0 , 30 
-");
+');
 $suppliers->execute(array($categoryID));
 
 foreach ($suppliers->fetchAll() as $row) {

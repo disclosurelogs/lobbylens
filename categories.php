@@ -13,7 +13,7 @@ include_header("Industries");
 	}
 
 	$catresult = $dbConn->query('SELECT distinct substr( "categoryUNSPSC"::text, 0, 3 )  as cat , SUM( value ) as value
-				FROM contractnotice WHERE "childCN" = 0
+				FROM contractnotice WHERE "childCN" is null
 				GROUP BY cat
 			ORDER BY sum(value) DESC;');
 

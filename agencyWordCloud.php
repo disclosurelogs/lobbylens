@@ -9,7 +9,7 @@ include_header("Agencies");
 	$agencycloud = new wordcloud();
 	$agencies = $dbConn->prepare('
 	    SELECT "agencyName", sum(value)
-	    FROM contractnotice WHERE "childCN" = 0		
+	    FROM contractnotice WHERE "childCN" is null		
 	    GROUP BY "agencyName"
 	    ORDER BY sum(value) DESC
 	');

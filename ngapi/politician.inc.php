@@ -18,8 +18,9 @@ foreach ($portfolios->fetchAll() as $row) {
 	$portfolio[] = $row['portfolio'];
 }
 foreach ($portfolio as $pf) { 
-	$result = mysql_query ("SELECT DISTINCT agencyName from contractnotice where agencyName like '%".$pf."%';");
-	while ($row = mysql_fetch_assoc($result)) {
+	$result = $dbConn->prepare ("SELECT DISTINCT agencyName from contractnotice where agencyName like '%".$pf."%';");
+
+    foreach ($result->fetchAll() as $row) {
   $existing = $nodes->xpath('//node[@id="'."agency-" . $row['agencyName'].'"]');
   $exists = !empty($existing);
         if (!$exists) {

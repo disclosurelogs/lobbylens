@@ -15,7 +15,7 @@ include_header("Suppliers");
 	$suppliercloud = new wordcloud();
 	$suppliers = $dbConn->prepare('
 		SELECT min("supplierName") as "supplierName", min("supplierABN") as "supplierABN", sum(value)
-		FROM contractnotice WHERE "childCN" = 0             
+		FROM contractnotice WHERE "childCN" is null             
 		GROUP BY "supplierABN" HAVING sum(value) > 10000000	
 		ORDER BY sum(value) DESC;
 	');

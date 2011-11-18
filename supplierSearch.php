@@ -18,7 +18,7 @@ if ($suppliersearch != "" && strlen($suppliersearch)> 2) {
     SELECT max("supplierName") as "supplierName", max("supplierABN") as "supplierABN", sum(value) as value
     FROM contractnotice
     WHERE "supplierName" ILIKE ?
-    AND "childCN" = 0
+    AND "childCN" is null
     AND "supplierABN" != 0
     GROUP BY "supplierABN"
     ORDER BY max("supplierName") ASC;

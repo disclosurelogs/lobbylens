@@ -1,9 +1,9 @@
 <?php
 $supplierABN = $graphTarget;
-$supplierN = $dbConn->prepare(" SELECT supplierName
+$supplierN = $dbConn->prepare(' SELECT "supplierName"
 FROM contractnotice
-WHERE supplierABN = ?
-LIMIT 1 ");
+WHERE "supplierABN" = ?
+LIMIT 1 ');
 $supplierN->execute(array(
   $supplierABN
 ));
@@ -16,13 +16,14 @@ $supplierName = $name['supplierName'];
 $xml->addChild('name',htmlentities($supplierName));
 
 formatSupplierNode($supplierNode);
-$agencies = $dbConn->prepare("
-SELECT agencyName, value
+$agencies = $dbConn->prepare('
+SELECT "agencyName", sum(value)
 FROM contractnotice
-WHERE supplierABN = ?
-AND childCN = 0
-GROUP BY agencyName
-");
+WHERE "supplierABN" = ?
+AND "childCN" is null
+GROUP BY "agencyName"
+
+');
 $agencies->execute(array(
   $supplierABN
 ));
@@ -47,13 +48,13 @@ foreach($agencies->fetchAll() as $row) {
   $link->addAttribute("edge_length_weight", $row['value']);
 }
 if ($categoriesEnabled) {
-  $categories = $dbConn->prepare("
-SELECT category,LEFT(categoryUNSPSC,2) as categoryPrefix, value
+  $categories = $dbConn->prepare('
+SELECT category,LEFT("categoryUNSPSC",2) as categoryPrefix, value
 FROM contractnotice
-WHERE supplierABN = ?
-AND childCN = 0
-GROUP BY LEFT(categoryUNSPSC,2)
-");
+WHERE "supplierABN" = ?
+AND "childCN" is null
+GROUP BY LEFT("categoryUNSPSC",2)
+');
   $categories->execute(array(
     $supplierABN
   ));
@@ -82,13 +83,13 @@ $existing = $edges->xpath('//edge[@id="'.$head_node_id . "|" . $tail_node_id.'"]
   }
 }
 if ($postcodesEnabled) {
-  $postcodes = $dbConn->prepare("
- SELECT supplierName, supplierPostcode, value
+  $postcodes = $dbConn->prepare('
+ SELECT "supplierName", "supplierPostcode", value
 FROM contractnotice
-WHERE supplierABN = ?
-AND childCN = 0
-GROUP BY supplierPostcode
-");
+WHERE "supplierABN" = ?
+AND "childCN" is null
+GROUP BY "supplierPostcode"
+');
   $postcodes->execute(array(
     $supplierABN
   ));
@@ -113,22 +114,21 @@ GROUP BY supplierPostcode
   }
 }
 if ($lobbyistsEnabled) {
-  $result = mysql_query(" SELECT lobbyistClientID
+  $result = $dbConn->prepare(' SELECT "lobbyistClientID"
 FROM lobbyist_clients
-WHERE abn = $supplierABN
-LIMIT 1 ");
-  $lobid = mysql_fetch_assoc($result);
-  $supplierID = $lobid['lobbyistClientID'];
-  $dbConn = null;
-  include "libs/dbconn.php";
-  $lobbyists = $dbConn->prepare("
+WHERE "ABN" = ? LIMIT 1 ');
+  $result->execute(Array($supplierABN));
+  $lobid = $result->fetch();
+  $lobbyistClientID = $lobid['lobbyistClientID'];
+  $result->closeCursor();
+  $lobbyists = $dbConn->prepare('
 SELECT *
 FROM lobbyists
-INNER JOIN lobbyist_relationships ON lobbyists.lobbyistID = lobbyist_relationships.lobbyistID
-WHERE lobbyistClientID = ? ;
-");
+INNER JOIN lobbyist_relationships ON lobbyists."lobbyistID" = lobbyist_relationships."lobbyistID"
+WHERE "lobbyistClientID" = ? ;
+');
   $lobbyists->execute(array(
-    $supplierID
+    $lobbyistClientID
   ));
   foreach($lobbyists->fetchAll() as $row) {
 	$existing = $nodes->xpath('//node[@id="'."lobbyist-" . $row['lobbyist_abn'].'"]');
@@ -153,10 +153,15 @@ WHERE lobbyistClientID = ? ;
 if ($politicialDonationsEnabled) {
  
   $searchName = searchName($supplierName);
-  $result = mysql_query("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid from political_donations where DonorClientNm
-			       LIKE \"%" . $searchName . "%\" group by RecipientClientNm order by RecipientClientNm desc");
-  if ($result) {
-    while ($row = mysql_fetch_array($result)) {
+  $result = $dbConn->prepare(
+          'select max("DonorClientNm"),"RecipientClientNm",sum("AmountPaid") as AmountPaid
+              from political_donations where "DonorClientNm"
+		LIKE ? group by "RecipientClientNm" order by "RecipientClientNm" desc');
+  $result->execute(array(
+        $searchName
+    ));
+
+    foreach ($result->fetchAll() as $row) {
       $existing = $nodes->xpath('//node[@id="'."donationrecipient-" . $row['RecipientClientNm'].'"]');
 	$exists = !empty($existing);
       
@@ -175,6 +180,5 @@ if ($politicialDonationsEnabled) {
       $link->addAttribute("tail_node_id", $tail_node_id);
       $link->addAttribute("head_node_id", $head_node_id);
     }
-  }
 }
 ?>

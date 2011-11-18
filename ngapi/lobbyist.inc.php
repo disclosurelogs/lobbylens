@@ -1,9 +1,9 @@
 <?php
 $lobbyistABN = $graphTarget;
-$supplierN = $dbConn->prepare(" SELECT lobbyistID, trading_name as preferred_name
+$supplierN = $dbConn->prepare('SELECT "lobbyistID", trading_name as preferred_name
 FROM lobbyists
 WHERE abn = ?
-LIMIT 1 ");
+LIMIT 1');
 $supplierN->execute(array(
   $lobbyistABN
 ));
@@ -16,29 +16,31 @@ formatLobbyistNode($lobbyistNode);
 $lobbyistID = $name['lobbyistID'];
 $lobbyistName = $name['preferred_name'];
 $xml->addChild('name', htmlentities($lobbyistName));
-$dbConn = null;
-include "libs/dbconn.php";
-$lobbyistclients = $dbConn->prepare("
+$supplierN->closeCursor();
+$lobbyistclients = $dbConn->prepare('
 SELECT *
 FROM lobbyist_clients
-INNER JOIN lobbyist_relationships ON lobbyist_clients.lobbyistClientID = lobbyist_relationships.lobbyistClientID
-WHERE lobbyistID = ?;
-");
+INNER JOIN lobbyist_relationships ON 
+lobbyist_clients."lobbyistClientID" = lobbyist_relationships."lobbyistClientID"
+WHERE "lobbyistID" = ?;
+');
 $lobbyistclients->execute(array(
   $lobbyistID
 ));
 foreach($lobbyistclients->fetchAll() as $row) {
+    print_r($row);
     $searchName = searchName($row['business_name']);
   //! todo: use ABNs properly rather than supplierName exclusively to check gov supplier
   //! get ABNs from lobbyist client tbale not supplier table
-  $result = mysql_query("SELECT supplierABN
+  $result = $dbConn->prepare('SELECT "supplierABN"
 	FROM contractnotice
-	WHERE supplierName LIKE \"%" . $searchName . "%\"
-	LIMIT 1 ");
-  if ($result) {
-    $abn = mysql_fetch_assoc($result);
+	WHERE "supplierName" LIKE ?
+	LIMIT 1 ');
+  $result->execute(Array($searchName));
+  if ($supplier && $supplier->rowCount() > 0) {
+    $abn = $result->fetch(PDO::FETCH_ASSOC);
     $clientABN = $abn['supplierABN'];
-  }
+  
   $exists = false;
   foreach($nodes->node as $node) {
     $attributes = $node->attributes();
@@ -70,11 +72,15 @@ foreach($lobbyistclients->fetchAll() as $row) {
 }
 if ($politicialDonationsEnabled) {
     $searchName = searchName($lobbyistName);
-  $result = mysql_query("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid from political_donations where DonorClientNm
-			       LIKE \"%" . $searchName . "%\" group by RecipientClientNm order by RecipientClientNm desc");
-  if ($result) {
-    while ($row = mysql_fetch_array($result)) {
-      $exists = false;
+  $result = $dbConn->prepare('
+      select max("DonorClientNm"),"RecipientClientNm", sum("AmountPaid") as "AmountPaid" from political_donations where "DonorClientNm"
+			       LIKE ? group by "RecipientClientNm" order by "RecipientClientNm" desc');
+   $result->execute(array(
+        $searchName
+    ));
+
+    foreach ($result->fetchAll() as $row) {
+        $exists = false;
       foreach($nodes->node as $node) {
         $attributes = $node->attributes();
         if ($attributes['id'] == "donationrecipient-" . $row['RecipientClientNm']) {

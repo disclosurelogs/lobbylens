@@ -140,30 +140,27 @@ $totalDonations = 125035725; // select sum(AmountPaid) from political_donations
 $largestDonation = 1000000; //  select AmountPaid from political_donations order by AmountPaid desc limit 1
 $largestDonor = 3900000; // select sum(AmountPaid) as total from political_donations group by DonorClientNm order by total desc limit 1
 $largestRecipient = 20010662; // select sum(AmountPaid) as total from political_donations group by RecipientClientNm order by total desc limit 1
-createMySQLlink();
-$result = mysql_query("select RecipientClientNm, sum(AmountPaid) as AmountPaid from political_donations group by RecipientClientNm");
-if ($result) {
-  while ($row = mysql_fetch_array($result)) {
+$result = $dbConn->prepare("select RecipientClientNm, sum(AmountPaid) as AmountPaid from political_donations group by RecipientClientNm");
+$result->execute();
+foreach ($result->fetchAll() as $row) {
     if (strpos($row['RecipientClientNm'], "Labor") !== false && strpos($row['RecipientClientNm'], "Democratic") === false) $party = "labor";
     else if (strpos($row['RecipientClientNm'], "Liberal") !== false) $party = "liberal";
     else if (strpos($row['RecipientClientNm'], "National") !== false) $party = "national";
     else $party = "other";
     addDonationRecipientNode($row['RecipientClientNm'], $party, $row['AmountPaid']);
-  }
 }
-$result = mysql_query("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid
+$result = $dbConn->prepare("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid
                         from political_donations group by DonorClientNm");
-if ($result) {
-  while ($row = mysql_fetch_array($result)) {
+$result->execute();
+foreach ($result->fetchAll() as $row) {
     addDonorNode($row['DonorClientNm'], $row['AmountPaid']);
-  }
+  
 }
-$result = mysql_query("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid
+$result = $dbConn->prepare("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid
                         from political_donations group by DonorClientNm, RecipientClientNm");
-if ($result) {
-  while ($row = mysql_fetch_array($result)) {
+$result->execute();
+foreach ($result->fetchAll() as $row) {
     addDonationLink($row['DonorClientNm'], $row['RecipientClientNm'], $row['AmountPaid']);
-  }
 }
 $dom = dom_import_simplexml($xml)->ownerDocument;
 $dom->formatOutput = true;

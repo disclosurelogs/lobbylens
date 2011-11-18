@@ -6,15 +6,15 @@ $postcodeNode->addAttribute("label",$postcode);
 formatPostcodeNode($postcodeNode);
 $xml->addChild('name',$postcode);
 
-$suppliers = $dbConn->prepare("
- SELECT supplierName, supplierABN, value
+$suppliers = $dbConn->prepare('
+ SELECT "supplierName", "supplierABN", value
 FROM contractnotice
-WHERE supplierPostcode = ?
-AND childCN = 0
-GROUP BY supplierABN
+WHERE "supplierPostcode" = ?
+AND "childCN" is null
+GROUP BY "supplierABN"
 ORDER BY value DESC
 LIMIT 0 , 30 
-");
+');
 $suppliers->execute(array($postcode));
 
 foreach ($suppliers->fetchAll() as $row) {
@@ -38,13 +38,13 @@ foreach ($suppliers->fetchAll() as $row) {
 	}
 }
 
-$agencies = $dbConn->prepare("
- SELECT agencyName, contactPostcode, value
+$agencies = $dbConn->prepare('
+ SELECT "agencyName", "contactPostcode", value
 FROM contractnotice
-WHERE contactPostcode = ?
-AND childCN = 0
-GROUP BY agencyName
-");
+WHERE "contactPostcode" = ?
+AND "childCN" is null
+GROUP BY "agencyName"
+');
 $agencies->execute(array($postcode));
 
 foreach ($agencies->fetchAll() as $row) {

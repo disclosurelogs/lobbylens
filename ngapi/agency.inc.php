@@ -12,7 +12,7 @@ $suppliersAggregates = $dbConn->prepare('
  SELECT sum(value) as totalvalue, count(*) as "numContracts"
 FROM contractnotice
 WHERE "agencyName" = ?
-AND "childCN" = 0
+AND "childCN" is null
 ');
 $suppliersAggregates->execute(array(
     $agency
@@ -20,13 +20,12 @@ $suppliersAggregates->execute(array(
 $result = $suppliersAggregates->fetch(PDO::FETCH_ASSOC);
 $agencyTotalValue = $result['totalvalue'];
 $agencyTotalContracts = $result['numContracts'];
-$dbConn = null;
-include "libs/dbconn.php";
+$suppliersAggregates->closeCursor();
 $suppliers = $dbConn->prepare('
  SELECT min("supplierName") as "supplierName", "supplierABN", sum(value), count(1) as count
 FROM contractnotice
 WHERE "agencyName" = ?
-AND "childCN" = 0
+AND "childCN" is null
 GROUP BY "supplierABN"
 ORDER BY sum(value) DESC
 LIMIT 30 
@@ -76,7 +75,7 @@ if ($categoriesEnabled) {
 SELECT "agencyName", category,LEFT("categoryUNSPSC",2) as categoryPrefix, value
 FROM contractnotice
 WHERE "agencyName = ?
-AND "childCN" = 0
+AND "childCN" is null
 GROUP BY LEFT(categoryUNSPSC,2)
 ');
     $categories->execute(array(
@@ -111,13 +110,13 @@ GROUP BY LEFT(categoryUNSPSC,2)
 if ($postcodesEnabled) {
 
 
-    $postcodes = $dbConn->prepare("
- SELECT agencyName, contactPostcode, value
+    $postcodes = $dbConn->prepare('
+ SELECT "agencyName", "contactPostcode", value
 FROM contractnotice
-WHERE agencyName = ?
-AND childCN = 0
-GROUP BY contactPostcode
-");
+WHERE "agencyName" = ?
+AND "childCN" is null
+GROUP BY "contactPostcode"
+');
     $postcodes->execute(array(
         $agency
     ));

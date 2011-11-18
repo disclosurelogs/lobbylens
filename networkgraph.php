@@ -16,7 +16,6 @@ if (isset($_REQUEST['dev']) || $_SERVER['SERVER_NAME'] == "localhost") {
 } else {
     $config = '"networkgraph_config.xml"';
 }
-
 // start loading the requested node so it can be in the <title> tag
 // todo, make this a seperate API for faster loading
 // todo, load the XML use AJAX/jQuery to display/change as graph changes

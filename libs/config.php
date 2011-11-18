@@ -53,7 +53,7 @@ function searchName($input) {
         "Ltd."
       );
       $result = str_ireplace($cleanseNames, "", $input);
-      return trim($result);
+      return "%".trim($result)."%";
 }
 function include_header($title = "") {
 	header("Content-Type: text/html; charset=UTF-8")
