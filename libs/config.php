@@ -17,7 +17,43 @@ function ucsmart($str) {
   }
   return implode(" ",$strArray);
 }
+function getPage($url) {
+  
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 45);
+        // ssl ignore
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    $page = curl_exec($ch);
+    if (curl_errno($ch)) {
+        echo "<font color=red> Database temporarily unavailable: ";
+        echo curl_errno($ch) . " " . curl_error($ch);
+        
+            echo $url;
+        
+        echo "</font><br>";
+    }
+    curl_close($ch);
+   
+    return $page;
+}
+# Convert a stdClass to an Array. http://www.php.net/manual/en/language.types.object.php#102735
 
+function object_to_array(stdClass $Class) {
+    # Typecast to (array) automatically converts stdClass -> array.
+    $Class = (array) $Class;
+
+    # Iterate through the former properties looking for any stdClass properties.
+    # Recursively apply (array).
+    foreach ($Class as $key => $value) {
+        if (is_object($value) && get_class($value) === 'stdClass') {
+            $Class[$key] = object_to_array($value);
+        }
+    }
+    return $Class;
+}
 function abnLookup($orgname) {
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -36,7 +72,11 @@ function local_url() {
   return "http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/";
 }
 function searchName($input) {
-        $cleanseNames = Array(
+       
+      return "%".trim(cleanseName($input))."%";
+}
+function cleanseName($input) {
+     $cleanseNames = Array(
         "Ltd",
         "Limited",
         "Australiasia",
@@ -44,10 +84,15 @@ function searchName($input) {
         "(NSW)",
         "(QLD)",
         "Pty",
-        "Ltd."
+        "Ltd",
+         "Aust.",
+        "(NSW/ACT)",
+         "Aust ",
+         "(Aus)"
+        
+         
       );
-      $result = str_ireplace($cleanseNames, "", $input);
-      return "%".trim($result)."%";
+      return str_ireplace($cleanseNames, "", $input);
 }
 function include_header($title = "") {
 	header("Content-Type: text/html; charset=UTF-8")
