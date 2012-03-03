@@ -10,7 +10,6 @@ if ($nodeID == "" || $nodeID == "[node_id]") {
     "agency"
     "supplier"
     "category"
-    "politician"
     "lobbyist"
     "lobbyistclient"
     "donationrecipient"
@@ -94,9 +93,6 @@ function appendNode($nodeID) {
     global $details;
     global $dev;
     global $xml;
-    $categoriesEnabled = false;
-    $postcodesEnabled = false;
-    $politiciansEnabled = false;
     $lobbyistsEnabled = true;
     $politicialDonationsEnabled = true;
     $path = "ngapi/";
@@ -126,14 +122,8 @@ function appendNode($nodeID) {
     if ($graphType == "category" && $categoriesEnabled) {
         include ($path . 'category.inc.php');
     }
-    if ($graphType == "politician") {
-        include ($path . 'politician.inc.php');
-    }
     if ($graphType == "lobbyist" && $lobbyistsEnabled) {
         include ($path . 'lobbyist.inc.php');
-    }
-    if ($graphType == "postcode" && $postcodesEnabled) {
-        include ($path . 'postcode.inc.php');
     }
     if ($graphType == "donationrecipient" && $politicialDonationsEnabled) {
         include ($path . 'donationrecipient.inc.php');

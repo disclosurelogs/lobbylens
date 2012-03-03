@@ -1,13 +1,7 @@
 <?php
 
 date_default_timezone_set("Australia/ACT");
-if ($_SERVER['SERVER_NAME'] == "localhost" || !$_SERVER['SERVER_NAME']) {
-set_include_path("/var/www/lobbylens/libs/:/var/www/lobbylens/public_html/:" . get_include_path());
-} else {
-set_include_path("/home/team7/libs/:/home/team7/public_html/:".get_include_path());	
-}
-error_reporting(E_ALL ^ E_NOTICE);
-ini_set('display_errors', 1);
+
 // common libs
 require_once "dbconn.php";
 require_once "wordcloud.php";
@@ -69,7 +63,7 @@ function include_header($title = "") {
 <script type="text/javascript">function writeHTML(a){document.write(a)}</script>
 <script type="text/javascript" src="javascript:'function writeHTML(a){document.write(a)}'"></script>
 <!-- END Workaround -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {

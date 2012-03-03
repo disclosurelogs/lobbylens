@@ -47,7 +47,7 @@ foreach($agencies->fetchAll() as $row) {
   $link->addAttribute("head_node_id", $head_node_id);
   $link->addAttribute("edge_length_weight", $row['value']);
 }
-if ($categoriesEnabled) {
+
   $categories = $dbConn->prepare('
 SELECT category,LEFT("categoryUNSPSC",2) as categoryPrefix, value
 FROM contractnotice
@@ -80,39 +80,9 @@ $existing = $edges->xpath('//edge[@id="'.$head_node_id . "|" . $tail_node_id.'"]
       $link->addAttribute("tail_node_id", $tail_node_id);
       $link->addAttribute("head_node_id", $head_node_id);
     }
-  }
+  
 }
-if ($postcodesEnabled) {
-  $postcodes = $dbConn->prepare('
- SELECT "supplierName", "supplierPostcode", value
-FROM contractnotice
-WHERE "supplierABN" = ?
-AND "childCN" is null
-GROUP BY "supplierPostcode"
-');
-  $postcodes->execute(array(
-    $supplierABN
-  ));
-  foreach($postcodes->fetchAll() as $row) {
-	$existing = $nodes->xpath('//node[@id="'."postcode-" . $row['supplierPostcode'].'"]');
-	$exists = !empty($existing);
 
-    if (!$exists) {
-      $node = $nodes->addChild('node');
-      $node->addAttribute("id", "postcode-" . $row['supplierPostcode']);
-      $node->addAttribute("label", $row['supplierPostcode']);
-      $node->addAttribute("tooltip", "$" . number_format($row['value'], 2, '.', ','));
-      formatPostcodeNode($node);
-      $link = $edges->addChild('edge');
-      $tail_node_id = "postcode-" . $row['supplierPostcode'];
-      $head_node_id = "supplier-" . $supplierABN;
-      $link->addAttribute("id", $head_node_id . "|" . $tail_node_id);
-      $link->addAttribute("tooltip", $name['supplierName'] . " operates a business in postcode" . $row['supplierPostcode']);
-      $link->addAttribute("tail_node_id", $tail_node_id);
-      $link->addAttribute("head_node_id", $head_node_id);
-    }
-  }
-}
 if ($lobbyistsEnabled) {
   $result = $dbConn->prepare(' SELECT "lobbyistClientID"
 FROM lobbyist_clients
