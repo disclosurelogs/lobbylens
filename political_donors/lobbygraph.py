@@ -6,6 +6,8 @@ G=nx.Graph()
 dom = parse("political_donors.xml")
 for node in dom.getElementsByTagName('node'):
 	nodeID = G.add_node(node.attributes["id"].value)
+        if "label" in node.attributes.keys():
+		G.node[node.attributes["id"].value]['label'] = node.attributes["label"].value
 	if "weight" in node.attributes.keys():
 		G.node[node.attributes["id"].value]['weight'] = node.attributes["weight"].value
 	if "graphic_fill_color" in node.attributes.keys():
@@ -18,14 +20,11 @@ for edge in dom.getElementsByTagName('edge'):
 		G.add_edge(edge.attributes["tail_node_id"].value, edge.attributes["head_node_id"].value)
 
 #nx.write_pajek(G,"test.pj")
-
+nx.write_gexf(G,"test.gexf")
 #nx.draw(G)
 #plt.show()
-#     <node id="donationrecipient-Australian Labor Party (ACT Branch)" label="Donation Recipient: Australian Labor Party (ACT Branch)" 
-#weight="0.048587647924891" shape="circle"
-# label_bg_line_color="#0000FF" graphic_fill_color="#0000FF" graphic_line_color="#0000FF"/>
 
-server = xmlrpclib.Server('http://127.0.0.1:20738/RPC2')
+server = xmlrpclib.Server('http://192.168.117.138:20738/RPC2')
 ubi_server = server.ubigraph
 ubi_server.clear()
 edges={}    # Dictionary to record UbiGraph edge ids

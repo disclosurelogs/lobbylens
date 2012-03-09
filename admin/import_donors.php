@@ -1,6 +1,7 @@
 <?php
 
 include "../libs/config.php";
+ set_time_limit(60);
 $donations = json_decode(getPage('https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-federal-electoral-donations&query=select+*+from+`swdata`&apikey='));
 $stmt = $dbConn->prepare('insert into political_donations ("DonationDt","AmountPaid","RecipientClientNm","DonorClientNm") VALUES (:DonationDt,:AmountPaid,:RecipientClientNm,:DonorClientNm)');
 foreach ($donations as $donation) {
@@ -8,7 +9,30 @@ foreach ($donations as $donation) {
     $paid = explode(".", $donation["AmountPaid"]);
     $donation["AmountPaid"] = $paid[0];
     $donation["DonorClientNm"] = str_replace("Australasia Ltd (formally called Rothma", "", $donation["DonorClientNm"]);
-    // $donation["DonorClientNm"] = cleanseName($donation["DonorClientNm"]);
+    $donation["DonorClientNm"] = str_replace(" & ", " and ", $donation["DonorClientNm"]);
+
+    $donation["DonorClientNm"] = cleanseName($donation["DonorClientNm"]);
+    if (endsWith($donation["DonorClientNm"], "Australia")) {
+        $donation["DonorClientNm"] = trim(str_replace("Australia", "", $donation["DonorClientNm"]));
+    }
+    if (startsWith($donation["DonorClientNm"], "CEPU")) {
+        $donation["DonorClientNm"] = "CEPU";
+    }
+     if (startsWith($donation["DonorClientNm"], "CFMEU")) {
+        $donation["DonorClientNm"] = "CFMEU";
+    }
+   if (startsWith($donation["DonorClientNm"],  "Electrical Trades Union")) {
+        $donation["DonorClientNm"] = "Electrical Trades Union";
+    }
+    if (startsWith($donation["DonorClientNm"],  "Emily's List")) {
+        $donation["DonorClientNm"] = "Emily's List";
+    }
+    if (startsWith($donation["DonorClientNm"], "Health Services Union")) {
+        $donation["DonorClientNm"] = "Health Services Union";
+    }
+    if (startsWith($donation["DonorClientNm"],"Maritime Union of Australia")) {
+        $donation["DonorClientNm"] = "Maritime Union of Australia";
+    }
     if ($donation["DonationDt"] == "")
         $donation["DonationDt"] = "1/1/1999 12:00:00 AM";
     if (!strstr($donation["DonationDt"], "AM"))
@@ -20,7 +44,6 @@ foreach ($donations as $donation) {
     if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
         print_r($donation);
         print_r($err);
-        die("terminated import due to db error above");
     } else {
         echo ".";
         set_time_limit(10);

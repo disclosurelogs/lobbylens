@@ -73,7 +73,7 @@ function local_url() {
 }
 function searchName($input) {
        
-      return "%".trim(cleanseName($input))."%";
+      return "%".cleanseName($input)."%";
 }
 function cleanseName($input) {
      $cleanseNames = Array(
@@ -88,11 +88,68 @@ function cleanseName($input) {
          "Aust.",
         "(NSW/ACT)",
          "Aust ",
-         "(Aus)"
+         "(Aus)",
+         "(Inc)",
+         "(WA)",
+         "(Southern Region)",
+         "Contractors",
+         "P/L",
+         "(N.S.W.)",
+         "(SA Branch)",
+         "NSW",
+         "Inc.",
+         "Inc",
+         "Incorporated",
+         "SA Branch",
+         "ACT",
+         "QLD",
+         ", SA",
+         " WA",
+         "- QLD Services Branch",
+"- Central and Southern Q",
+"- SA and NT Branch",
+         "- TAS",
+"NSW & ACT Services Branch",
+"SA-NT Branch",
+         "- National Office",
+"- Victoria Branch",
+         "- National",
+         "- Victoria Branch",
+"(Greater SA)",
+"(SA)",
+"(VIC)",
+         "Hornibrook",
+         "- NATIONAL",
+         ". .",
+         "(IAG)",
+         "(NSW Div)",
+         "(Queensland Branch)",
+         "(ACT/NSW Bra",
+         "(SA/NT)",
+", WA Branch"
+
+
+
+
+         
+         
         
          
       );
-      return str_ireplace($cleanseNames, "", $input);
+      return trim(str_ireplace($cleanseNames, "", $input));
+}
+function startsWith($haystack, $needle, $case = true) {
+    if ($case) {
+        return (strcmp(substr($haystack, 0, strlen($needle)), $needle) === 0);
+    }
+    return (strcasecmp(substr($haystack, 0, strlen($needle)), $needle) === 0);
+}
+
+function endsWith($haystack, $needle, $case = true) {
+    if ($case) {
+        return (strcmp(substr($haystack, strlen($haystack) - strlen($needle)), $needle) === 0);
+    }
+    return (strcasecmp(substr($haystack, strlen($haystack) - strlen($needle)), $needle) === 0);
 }
 function include_header($title = "") {
 	header("Content-Type: text/html; charset=UTF-8")
