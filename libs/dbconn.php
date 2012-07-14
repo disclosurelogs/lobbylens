@@ -1,9 +1,7 @@
 <?php
 try {
-  if ($_SERVER['SERVER_NAME'] == "localhost") {
     $dbConn = new PDO("pgsql:dbname=contractDashboard;user=postgres;password=snmc;host=localhost");
      $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } 
 }
 catch(PDOException $e) {
   die('Unable to connect to database server.');

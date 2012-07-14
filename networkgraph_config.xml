@@ -121,7 +121,7 @@
 		   - [depth]     - the depth of the tree to load from the server
 		   - [timestamp] - the current unix timestamp.  use to break caching
 		   -->
-		<url>http://team7.govhack.net.tmp.anchor.net.au/ngapi.xml.php?node_id=[node_id]&depth=[depth]</url>
+		<url>http://lobbyists.disclosurelo.gs/ngapi.xml.php?node_id=[node_id]&depth=[depth]</url>
 		
 		<!-- the depth of the tree to load from the server. in any tree
 		   - interface mode, the client will request a tree of this
