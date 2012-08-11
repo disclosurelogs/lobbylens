@@ -58,11 +58,13 @@ if (isset($_REQUEST['section']) == false) {
         }
     }
     if ($_REQUEST['section'] == "category") {
-       $result = $dbConn->query('SELECT LEFT( "categoryUNSPSC", 2 ) as cat FROM contractnotice
+       $result = $dbConn->query('SELECT substr( "categoryUNSPSC"::text, 0, 3 ) as cat FROM contractnotice
 				GROUP BY cat;');
        foreach ($result->fetchAll() as $row) {
+           if ($row['cat'] != "") {
             echo " <url><loc>" . local_url() . "networkgraph.php?node_id=category-{$row['cat']}000000</loc>
       <lastmod>" . $last_updated['supplier'] . "</lastmod></url>\n";
+           }
         }
     }
     if ($_REQUEST['section'] == "lobbyist") {
@@ -77,16 +79,6 @@ if (isset($_REQUEST['section']) == false) {
        foreach ($result->fetchAll() as $row) {
             echo " <url><loc>" . local_url() . "networkgraph.php?node_id=lobbyistclient-" . urlencode($row['business_name']) . "</loc>
       <lastmod>" . $last_updated['lobbyistclient'] . "</lastmod></url>\n";
-        }
-    }
-    if ($_REQUEST['section'] == "politician") {
-       $result = $dbConn->query("SELECT distinct concat(concat(firstname,'.'), surname) as name
-FROM portfolio2representative
-INNER JOIN representatives ON portfolio2representative.representative_id = representatives.id
-INNER JOIN portfolios ON portfolio2representative.portfolio_id = portfolios.id");
-       foreach ($result->fetchAll() as $row) {
-            echo " <url><loc>" . local_url() . "networkgraph.php?node_id=politician-{$row['name']}</loc>
-      <lastmod>" . $last_updated['politician'] . "</lastmod></url>\n";
         }
     }
     if ($_REQUEST['section'] == "donationrecipient") {
