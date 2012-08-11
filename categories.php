@@ -19,11 +19,12 @@ include_header("Industries");
 
 	echo "<table id=\"categories\">";
 	foreach ($catresult->fetchAll() as $row) {
-        $catName = $unspsc[$row['cat']."000000"];
+        
         if ($row['cat'] == "") {
 			$catName = "null";
 			continue;
 		} else {
+                    $catName = $unspsc[$row['cat']."000000"];
         	echo "<tr><td><a href=\"networkgraph.php?node_id=category-".$row['cat']."000000"."\">$catName</a></td><td>"."$".number_format($row['value'],
 		2, '.',',')."</td></tr>";
 		}

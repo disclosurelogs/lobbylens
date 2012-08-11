@@ -2,7 +2,7 @@
 $categoryID = $graphTarget;
 
 $result = $dbConn->prepare ('SELECT "Title"
-FROM UNSPSCcategories
+FROM "UNSPSCcategories"
 WHERE "UNSPSC" = ?
 LIMIT 1 ');
 $result->execute(array(
@@ -16,13 +16,13 @@ $categoryNode->addAttribute("label",$name['Title']);
 $xml->addChild('name', htmlentities($name['Title']));
 formatCategoryNode($categoryNode);
 $suppliers = $dbConn->prepare('
- SELECT "supplierName", "supplierABN", category, sum(value)
+ SELECT max("supplierName") as "supplierName",max("supplierABN") as "supplierABN", max(category) as category, sum(value) as value
 FROM contractnotice
-WHERE LEFT(categoryUNSPSC,2) = LEFT(?,2)
+WHERE substr( "categoryUNSPSC"::text, 0, 3 ) = substr( ?, 0, 3 )
 AND "childCN" is null
 GROUP BY "supplierABN"
-ORDER BY value DESC
-LIMIT 0 , 30 
+ORDER BY sum(value) DESC
+LIMIT 30 
 ');
 $suppliers->execute(array($categoryID));
 
