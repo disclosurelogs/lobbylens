@@ -49,11 +49,11 @@ foreach($agencies->fetchAll() as $row) {
 }
 
   $categories = $dbConn->prepare('
-SELECT category,LEFT("categoryUNSPSC",2) as categoryPrefix, value
+SELECT max(category) as category,substr( "categoryUNSPSC"::text, 0, 3 ) as "categoryPrefix", sum(value)
 FROM contractnotice
 WHERE "supplierABN" = ?
 AND "childCN" is null
-GROUP BY LEFT("categoryUNSPSC",2)
+GROUP BY substr( "categoryUNSPSC"::text, 0, 3 )
 ');
   $categories->execute(array(
     $supplierABN
@@ -83,7 +83,6 @@ $existing = $edges->xpath('//edge[@id="'.$head_node_id . "|" . $tail_node_id.'"]
   
 }
 
-if ($lobbyistsEnabled) {
   $result = $dbConn->prepare(' SELECT "lobbyistClientID"
 FROM lobbyist_clients
 WHERE "ABN" = ? LIMIT 1 ');
@@ -117,10 +116,9 @@ WHERE "lobbyistClientID" = ? ;
       $link->addAttribute("tail_node_id", $tail_node_id);
       $link->addAttribute("head_node_id", $head_node_id);
     }
-  }
+  
 }
 
-if ($politicialDonationsEnabled) {
  
   $searchName = searchName($supplierName);
   $result = $dbConn->prepare(
@@ -149,6 +147,6 @@ if ($politicialDonationsEnabled) {
       $link->addAttribute("tooltip", $supplierName . " donated $" . money_format('%i',$row['AmountPaid']) . " to " . $row['RecipientClientNm']);
       $link->addAttribute("tail_node_id", $tail_node_id);
       $link->addAttribute("head_node_id", $head_node_id);
-    }
+    
 }
 ?>
