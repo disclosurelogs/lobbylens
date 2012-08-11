@@ -2,8 +2,8 @@
 include "libs/config.php";
 error_reporting(1);
 setlocale(LC_MONETARY, 'en_AU');
-$nodeID = $_REQUEST['node_id'];
-$details = $_REQUEST['details'] != "";
+$nodeID = (isset($_REQUEST['node_id']) ? $_REQUEST['node_id'] : "");
+$details = (isset($_REQUEST['details']) && $_REQUEST['details'] != "");
 if ($nodeID == "" || $nodeID == "[node_id]") {
     ?>
     Network Graph API supports the following central node types:
@@ -93,8 +93,6 @@ function appendNode($nodeID) {
     global $details;
     global $dev;
     global $xml;
-    $lobbyistsEnabled = true;
-    $politicialDonationsEnabled = true;
     $path = "ngapi/";
     //if ($dev) $path = "ngapi-dev/";
     $node = explode("-", $nodeID);
@@ -119,24 +117,25 @@ function appendNode($nodeID) {
     if ($graphType == "supplier") {
         include ($path . 'supplier.inc.php');
     }
-    if ($graphType == "category" && $categoriesEnabled) {
+    if ($graphType == "category") {
         include ($path . 'category.inc.php');
     }
-    if ($graphType == "lobbyist" && $lobbyistsEnabled) {
+    if ($graphType == "lobbyist") {
         include ($path . 'lobbyist.inc.php');
     }
-    if ($graphType == "donationrecipient" && $politicialDonationsEnabled) {
+    if ($graphType == "donationrecipient") {
         include ($path . 'donationrecipient.inc.php');
     }
 }
 
-$depth = $_REQUEST['depth'];
-$nodeID = $_REQUEST['node_id'];
-if ($argc > 1)
+$depth = (isset($_REQUEST['depth']) ? $_REQUEST['depth'] : 0);
+if (isset($argc) && $argc > 1) {
     $nodeID = $argv[1];
-$dev = ($_REQUEST['dev'] == "yes");
-if ($argv[2] == "dev")
+}
+$dev = (isset($_REQUEST['dev']) && $_REQUEST['dev'] == "yes");
+if (isset($argv) && $argv[2] == "dev"){
     $dev = true;
+}
 if ($nodeID == "" || $nodeID == "[node_id]") {
     die("bad URL" . $nodeID);
 } else {

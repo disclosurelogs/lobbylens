@@ -20,11 +20,12 @@ if (isset($_REQUEST['dev']) || $_SERVER['SERVER_NAME'] == "localhost") {
 // todo, make this a seperate API for faster loading
 // todo, load the XML use AJAX/jQuery to display/change as graph changes
 $xml = file_get_contents(local_url() . "ngapi.xml.php?node_id=" . urlencode(stripslashes($selectedNodeID)));
-//echo local_url() . "ngapi.xml.php?node_id=" . urlencode(stripslashes($selectedNodeID));
 $graph = new SimpleXMLElement($xml);
 $name = $graph->xpath('//name');
 
 include_header($name[0]);
+
+echo "<!--". local_url() . "ngapi.xml.php?node_id=" . urlencode(stripslashes($selectedNodeID)) . "-->";
 echo '<p>Click on nodes to expand the network, hover over nodes, or lines joining nodes, to display more 
 information.</p>';
 echo '<div class="msg_list">
