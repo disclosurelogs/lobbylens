@@ -5,13 +5,12 @@ $sections = Array(
     "agency",
     "category",
     "lobbyist",
-    "politician",
     "supplier",
     "donationrecipient",
     "lobbyistclient"
 );
 require_once "libs/config.php";
-$result = $dbConn->query('SELECT title, to_char("lastUpdated",\'YY-MM-DD\') as "lastUpdated" from datasets');
+$result = $dbConn->query('SELECT title, to_char("lastUpdated",\'YYYY-MM-DD\') as "lastUpdated" from datasets');
 foreach ($result->fetchAll() as $row) {
     if ($row['title'] == "Contract Notices") {
         $last_updated['agency'] = $row['lastUpdated'];
