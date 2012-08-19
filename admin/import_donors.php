@@ -2,6 +2,7 @@
 
 include "../libs/config.php";
  set_time_limit(60);
+  $dbConn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT );
 $donations = json_decode(getPage('https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-federal-electoral-donations&query=select+*+from+`swdata`&apikey='));
 $stmt = $dbConn->prepare('insert into political_donations ("DonationDt","AmountPaid","RecipientClientNm","DonorClientNm") VALUES (:DonationDt,:AmountPaid,:RecipientClientNm,:DonorClientNm)');
 foreach ($donations as $donation) {
@@ -49,4 +50,5 @@ foreach ($donations as $donation) {
         set_time_limit(10);
     }
 }
+$dbConn->exec("update datasets set \"lastUpdated\" = NOW() where title = 'Annual Financial Disclosure Returns (Political Donations)'");
 ?>
