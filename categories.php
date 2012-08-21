@@ -30,7 +30,6 @@ include_header("Industries");
 		}
 	}	
 echo "</table>";
+include_footer();
 ?>
-</div>
-</body>
-</html>
+

@@ -30,6 +30,7 @@ GROUP BY lobbyist_abn
 
 ?>
   </div>
-</div>
-</body>
-</html>
+<?php
+include_footer();
+?>
+
