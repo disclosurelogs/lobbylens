@@ -67,7 +67,7 @@ if (isset($_REQUEST['section']) == false) {
         }
     }
     if ($_REQUEST['section'] == "lobbyist") {
-       $result = $dbConn->query('SELECT DISTINCT "ABN" from lobbyists');
+       $result = $dbConn->query('SELECT DISTINCT abn from lobbyists');
        foreach ($result->fetchAll() as $row) {
             echo " <url><loc>" . local_url() . "networkgraph.php?node_id=lobbyist-{$row['abn']}</loc>
       <lastmod>" . $last_updated['lobbyist'] . "</lastmod></url>\n";
