@@ -103,6 +103,7 @@ echo '</ul>
         + 'pluginspage="http://www.macromedia.com/go/getflashplayer" /></object>');
     -->
 </script>
-</div>
-</body>
-</html>
+<?php
+include_footer();
+?>
+

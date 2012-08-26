@@ -36,6 +36,7 @@ include_header("Suppliers");
 	
 ?>
   </div>
-</div>
-</body>
-</html>
+<?php
+include_footer();
+?>
+

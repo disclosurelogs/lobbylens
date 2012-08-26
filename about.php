@@ -49,6 +49,7 @@ foreach ($datasets->fetchAll() as $row) {
   </ul>
   <h3>Contact us</h3>
   <p><a href="mailto:govhack@lambdacomplex.org">govhack@lambdacomplex.org</a> </p>
-</div>
-</body>
-</html>
+
+<?php
+include_footer();
+?>

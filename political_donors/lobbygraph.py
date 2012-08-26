@@ -1,5 +1,4 @@
 import networkx as nx
-import xmlrpclib, time
 #import matplotlib.pyplot as plt
 from xml.dom.minidom import parse
 G=nx.Graph()
@@ -24,22 +23,3 @@ nx.write_gexf(G,"test.gexf")
 #nx.draw(G)
 #plt.show()
 
-server = xmlrpclib.Server('http://192.168.117.138:20738/RPC2')
-ubi_server = server.ubigraph
-ubi_server.clear()
-edges={}    # Dictionary to record UbiGraph edge ids
-newIDs = {}
-# Add nodes
-for n in G.nodes(data=True):
-    oldid = str(n[0])
-    # newid = int("".join ( ['%d'%ord(b) for b in oldid] ))
-    newid = ubi_server.new_vertex()
-    newIDs[oldid] = newid
-    ubi_server.set_vertex_attribute(newid, "size", n[1].get('weight','0.5'))
-    ubi_server.set_vertex_attribute(newid, "color", n[1].get('color','32'))
-# Add edges
-for e in G.edges(data=True):
-    e_id=ubi_server.new_edge(newIDs[e[0]],newIDs[e[1]])
-    ubi_server.set_edge_attribute(e_id, "strength", e[2].get('weight','0.5'))
-    #ubi_server.set_edge_attribute(newid, "color", oldid)
-    time.sleep(0.0125)

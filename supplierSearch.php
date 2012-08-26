@@ -35,6 +35,7 @@ if ($suppliersearch != "" && strlen($suppliersearch)> 2) {
 }
 ?>
 </div>
-</div>
-</body>
-</html>
+<?php
+include_footer();
+?>
+

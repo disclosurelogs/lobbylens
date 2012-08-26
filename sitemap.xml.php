@@ -24,7 +24,7 @@ foreach ($result->fetchAll() as $row) {
     if ($row['title'] == "Portfolio Responsibilities") {
         $last_updated['politician'] = $row['lastUpdated'];
     }
-    if ($row['title'] == "Annual Financial Disclosure Returns (Political Donations) 2004-2009") {
+    if ($row['title'] == "Annual Financial Disclosure Returns (Political Donations) 2004-2008") {
         $last_updated['donationrecipient'] = $row['lastUpdated'];
     }
 }
@@ -67,7 +67,7 @@ if (isset($_REQUEST['section']) == false) {
         }
     }
     if ($_REQUEST['section'] == "lobbyist") {
-       $result = $dbConn->query('SELECT DISTINCT "ABN" from lobbyists');
+       $result = $dbConn->query('SELECT DISTINCT abn from lobbyists');
        foreach ($result->fetchAll() as $row) {
             echo " <url><loc>" . local_url() . "networkgraph.php?node_id=lobbyist-{$row['abn']}</loc>
       <lastmod>" . $last_updated['lobbyist'] . "</lastmod></url>\n";
