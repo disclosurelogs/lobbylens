@@ -17,7 +17,7 @@ $xml->addChild('name',htmlentities($supplierName));
 
 formatSupplierNode($supplierNode);
 $agencies = $dbConn->prepare('
-SELECT "agencyName", sum(value)
+SELECT "agencyName", sum(value) as value
 FROM contractnotice
 WHERE "supplierABN" = ?
 AND "childCN" is null
@@ -49,7 +49,7 @@ foreach($agencies->fetchAll() as $row) {
 }
 
   $categories = $dbConn->prepare('
-SELECT max(category) as category,substr( "categoryUNSPSC"::text, 0, 3 ) as "categoryPrefix", sum(value)
+SELECT max(category) as category,substr( "categoryUNSPSC"::text, 0, 3 ) as "categoryPrefix", sum(value) as value
 FROM contractnotice
 WHERE "supplierABN" = ?
 AND "childCN" is null
@@ -91,7 +91,7 @@ WHERE "ABN" = ? LIMIT 1 ');
   $lobbyistClientID = $lobid['lobbyistClientID'];
   $result->closeCursor();
   $lobbyists = $dbConn->prepare('
-SELECT *
+SELECT *, abn as lobbyist_abn
 FROM lobbyists
 INNER JOIN lobbyist_relationships ON lobbyists."lobbyistID" = lobbyist_relationships."lobbyistID"
 WHERE "lobbyistClientID" = ? ;

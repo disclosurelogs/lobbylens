@@ -103,7 +103,7 @@ class wordCloud {
           $return[$word]['word'] = $word;
           $return[$word]['ref'] = $this->refsArray[$word];
           $return[$word]['sizeRange'] = $sizeRange;
-          if ($currentColour) $return[$word]['randomColour'] = $currentColour;
+          //if ($currentColour) $return[$word]['randomColour'] = $currentColour;
         } else if ($returnType == "html") {
           $return.= "<span class='word size{$sizeRange}'> {$word} </span>";
         }
