@@ -4,3 +4,6 @@
 [submodule "libs/orient"]
 	path = libs/orient
 	url = https://github.com/congow/Orient.git
+[submodule "js/sigma"]
+	path = js/sigma
+	url = https://github.com/jacomyal/sigma.js.git
