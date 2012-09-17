@@ -13,7 +13,7 @@ $name = $result->fetch();
 $categoryNode = $nodes->addChild('node');
 $categoryNode->addAttribute("id","category-".$categoryID);
 $categoryNode->addAttribute("label",$name['Title']);
-$xml->addChild('name', htmlentities($name['Title']));
+$xml->addChild('name', htmlspecialchars($name['Title']));
 formatCategoryNode($categoryNode);
 $suppliers = $dbConn->prepare('
  SELECT max("supplierName") as "supplierName",max("supplierABN") as "supplierABN", max(category) as category, sum(value) as value

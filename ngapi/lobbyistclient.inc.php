@@ -5,7 +5,7 @@ $lobbyistClientNode = $nodes->addChild('node');
 $lobbyistClientNode->addAttribute("id", "lobbyistclient-" . $lobbyistClientName);
 $lobbyistClientNode->addAttribute("label", $lobbyistClientName);
 formatLobbyingClientNode($lobbyistClientNode);
-$xml->addChild('name', htmlentities($lobbyistClientName));
+$xml->addChild('name', htmlspecialchars($lobbyistClientName));
 $supplierN = $dbConn->prepare(' SELECT "lobbyistClientID"
 FROM lobbyist_clients
 WHERE business_name = ?

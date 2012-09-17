@@ -1,5 +1,6 @@
 <?php
 $supplierABN = $graphTarget;
+if ($supplierABN == "") die("no abn specified");
 $supplierN = $dbConn->prepare(' SELECT "supplierName"
 FROM contractnotice
 WHERE "supplierABN" = ?
@@ -13,7 +14,7 @@ $supplierNode = $nodes->addChild('node');
 $supplierNode->addAttribute("id", "supplier-" . $supplierABN);
 $supplierNode->addAttribute("label", $name['supplierName']);
 $supplierName = $name['supplierName'];
-$xml->addChild('name',htmlentities($supplierName));
+$xml->addChild('name',htmlspecialchars($supplierName));
 
 formatSupplierNode($supplierNode);
 $agencies = $dbConn->prepare('

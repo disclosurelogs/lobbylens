@@ -16,7 +16,7 @@ $lobbyistNode->addAttribute("label", $name['preferred_name']);
 formatLobbyistNode($lobbyistNode);
 $lobbyistID = $name['lobbyistID'];
 $lobbyistName = $name['preferred_name'];
-$xml->addChild('name', htmlentities($lobbyistName));
+$xml->addChild('name', htmlspecialchars($lobbyistName));
 $lobbyistN->closeCursor();
 $lobbyistclients = $dbConn->prepare('
 SELECT *

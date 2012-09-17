@@ -2,7 +2,7 @@
 
 $agency = $graphTarget;
 $agency = stripslashes($agency);
-$xml->addChild('name', htmlentities($agency));
+$xml->addChild('name', htmlspecialchars($agency));
 $agencyNode = $nodes->addChild('node');
 $agencyNode->addAttribute("id", "agency-" . $agency);
 $agencyNode->addAttribute("label", $agency);
