@@ -24,7 +24,7 @@ foreach ($result->fetchAll() as $row) {
     if ($row['title'] == "Portfolio Responsibilities") {
         $last_updated['politician'] = $row['lastUpdated'];
     }
-    if ($row['title'] == "Annual Financial Disclosure Returns (Political Donations) 2004-2009") {
+    if ($row['title'] == "Annual Financial Disclosure Returns (Political Donations) 2004-2008") {
         $last_updated['donationrecipient'] = $row['lastUpdated'];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 include "libs/config.php";
-error_reporting(1);
+//error_reporting(1);
 setlocale(LC_MONETARY, 'en_AU');
 $nodeID = (isset($_REQUEST['node_id']) ? $_REQUEST['node_id'] : "");
 $details = (isset($_REQUEST['details']) && $_REQUEST['details'] != "");
@@ -101,10 +101,10 @@ function appendNode($nodeID) {
     if ($graphType == "agency") {
         include ($path . 'agency.inc.php');
     }
-    if ($graphType == "lobbyistclient" && $lobbyistsEnabled) {
+    if ($graphType == "lobbyistclient") {
         $result = $dbConn->query('SELECT "supplierABN"
 	FROM contractnotice
-	WHERE supplierName LIKE \'%' . $graphTarget . '%\'
+	WHERE "supplierName" LIKE \'%' . $graphTarget . '%\'
 	LIMIT 1 ');
         if ($result->rowCount() > 0) {
             $abn = $result->fetch(PDO::FETCH_ASSOC);

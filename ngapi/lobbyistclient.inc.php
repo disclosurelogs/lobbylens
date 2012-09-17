@@ -6,21 +6,21 @@ $lobbyistClientNode->addAttribute("id", "lobbyistclient-" . $lobbyistClientName)
 $lobbyistClientNode->addAttribute("label", $lobbyistClientName);
 formatLobbyingClientNode($lobbyistClientNode);
 $xml->addChild('name', htmlentities($lobbyistClientName));
-$supplierN = $dbConn->prepare(" SELECT lobbyistClientID
+$supplierN = $dbConn->prepare(' SELECT "lobbyistClientID"
 FROM lobbyist_clients
 WHERE business_name = ?
-LIMIT 1 ");
+LIMIT 1 ');
 $supplierN->execute(array(
     $lobbyistClientName
 ));
 $lobbyistClientID = $supplierN->fetch(PDO::FETCH_OBJ)->lobbyistClientID;
 
-$lobbyists = $dbConn->prepare("
+$lobbyists = $dbConn->prepare('
 SELECT *
 FROM lobbyists
-INNER JOIN lobbyist_relationships ON lobbyists.lobbyistID = lobbyist_relationships.lobbyistID
-WHERE lobbyistClientID = ? ;
-");
+INNER JOIN lobbyist_relationships ON lobbyists."lobbyistID" = lobbyist_relationships."lobbyistID"
+WHERE "lobbyistClientID" = ? ;
+');
 $lobbyists->execute(array(
     $lobbyistClientID
 ));
@@ -47,11 +47,11 @@ foreach ($lobbyists->fetchAll() as $row) {
     $link->addAttribute("tail_node_id", $tail_node_id);
     $link->addAttribute("head_node_id", $head_node_id);
 }
-if ($politicialDonationsEnabled) {
+// donations
 
     $searchName = searchName($lobbyistClientName);
-    $result = $dbConn->prepare("select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid from political_donations where DonorClientNm
-			       LIKE ? group by RecipientClientNm order by RecipientClientNm desc");
+    $result = $dbConn->prepare('select min("DonorClientNm") as "DonorClientNm",min("RecipientClientNm") as "RecipientClientNm",min("DonationDt") as "DonationDt",sum("AmountPaid") as "AmountPaid" from political_donations where "DonorClientNm"
+			       LIKE ? group by "RecipientClientNm" order by "RecipientClientNm" desc');
     $result->execute(array(
         $searchName
     ));
@@ -78,6 +78,6 @@ if ($politicialDonationsEnabled) {
         $link->addAttribute("tooltip", $lobbyistClientName . " donated $" . money_format('%i', $row['AmountPaid']) . " to " . $row['RecipientClientNm']);
         $link->addAttribute("tail_node_id", $tail_node_id);
         $link->addAttribute("head_node_id", $head_node_id);
-    }
+    
 }
 ?>
