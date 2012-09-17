@@ -122,7 +122,7 @@ WHERE "lobbyistClientID" = ? ;
  
   $searchName = searchName($supplierName);
   $result = $dbConn->prepare(
-          'select max("DonorClientNm"),"RecipientClientNm",sum("AmountPaid") as AmountPaid
+          'select max("DonorClientNm"),"RecipientClientNm",sum("AmountPaid") as "AmountPaid"
               from political_donations where "DonorClientNm"
 		LIKE ? group by "RecipientClientNm" order by "RecipientClientNm" desc');
   $result->execute(array(
