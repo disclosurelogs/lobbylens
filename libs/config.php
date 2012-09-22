@@ -7,7 +7,7 @@ require_once "wordcloud.php";
 require "amon-php/amon.php";
 Amon::config(array('address'=> 'http://127.0.0.1:2465', 
 		'protocol' => 'http', 
-		'secret_key' => "g99127n3lkzigg8ob2rllth97d1pb4sj"));
+		'secret_key' => "GNLu8aqN7aXxoh8JoDGJjqeScAXd6L8Zq4sjixmVwLo"));
 Amon::setup_exception_handler();
 
 function ucsmart($str) {
