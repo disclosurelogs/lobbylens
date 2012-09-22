@@ -7,3 +7,6 @@
 [submodule "js/sigma"]
 	path = js/sigma
 	url = https://github.com/jacomyal/sigma.js.git
+[submodule "libs/amon-php"]
+	path = libs/amon-php
+	url = https://github.com/martinrusev/amon-php.git

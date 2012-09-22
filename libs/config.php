@@ -4,6 +4,11 @@ date_default_timezone_set("Australia/ACT");
 // common libs
 require_once "dbconn.php";
 require_once "wordcloud.php";
+require "amon-php/amon.php";
+Amon::config(array('address'=> 'http://127.0.0.1:2465', 
+		'protocol' => 'http', 
+		'secret_key' => "g99127n3lkzigg8ob2rllth97d1pb4sj"));
+Amon::setup_exception_handler();
 
 function ucsmart($str) {
     $shortWords = Array("The", "Pty", "Ltd", "Inc", "Red", "Oil", "A", "An", "And", "At", "For", "In"
@@ -31,7 +36,7 @@ function getPage($url) {
     if (curl_errno($ch)) {
         echo "<font color=red> Database temporarily unavailable: ";
         echo curl_errno($ch) . " " . curl_error($ch);
-
+Amon::log(curl_errno($ch) . " " . curl_error($ch), array('error'));
         echo $url;
 
         echo "</font><br>";
