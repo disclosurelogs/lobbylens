@@ -102,19 +102,21 @@ function appendNode($nodeID) {
         include ($path . 'agency.inc.php');
     }
     if ($graphType == "lobbyistclient") {
-        $searchTarget = '%'.$graphTarget.'%';
+        $searchTarget = '%' . $graphTarget . '%';
         $result = $dbConn->prepare('SELECT "supplierABN"
 	FROM contractnotice
 	WHERE "supplierName" LIKE ?
 	LIMIT 1 ');
 
-$result->execute(array(
-  $searchTarget
-));
-
+        $result->execute(array(
+            $searchTarget
+        ));
+        $abn = null;
         if ($result->rowCount() > 0) {
-            
+
             $abn = $result->fetch(PDO::FETCH_ASSOC);
+        }
+        if ($abn['supplierABN'] != '') {
             $graphType = "supplier";
             $graphTarget = $abn['supplierABN'];
         } else {
@@ -140,7 +142,7 @@ if (isset($argc) && $argc > 1) {
     $nodeID = $argv[1];
 }
 $dev = (isset($_REQUEST['dev']) && $_REQUEST['dev'] == "yes");
-if (isset($argv) && $argv[2] == "dev"){
+if (isset($argv) && $argv[2] == "dev") {
     $dev = true;
 }
 if ($nodeID == "" || $nodeID == "[node_id]") {

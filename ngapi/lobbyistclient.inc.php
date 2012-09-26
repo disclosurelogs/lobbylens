@@ -49,35 +49,34 @@ foreach ($lobbyists->fetchAll() as $row) {
 }
 // donations
 
-    $searchName = searchName($lobbyistClientName);
-    $result = $dbConn->prepare('select min("DonorClientNm") as "DonorClientNm",min("RecipientClientNm") as "RecipientClientNm",min("DonationDt") as "DonationDt",sum("AmountPaid") as "AmountPaid" from political_donations where "DonorClientNm"
+$searchName = searchName($lobbyistClientName);
+$result = $dbConn->prepare('select min("DonorClientNm") as "DonorClientNm",min("RecipientClientNm") as "RecipientClientNm",min("DonationDt") as "DonationDt",sum("AmountPaid") as "AmountPaid" from political_donations where "DonorClientNm"
 			       LIKE ? group by "RecipientClientNm" order by "RecipientClientNm" desc');
-    $result->execute(array(
-        $searchName
-    ));
+$result->execute(array(
+    $searchName
+));
 
-    foreach ($result->fetchAll() as $row) {
-        $exists = false;
-        foreach ($nodes->node as $node) {
-            $attributes = $node->attributes();
-            if ($attributes['id'] == "donationrecipient-" . $row['RecipientClientNm']) {
-                $exists = true;
-                break;
-            }
+foreach ($result->fetchAll() as $row) {
+    $exists = false;
+    foreach ($nodes->node as $node) {
+        $attributes = $node->attributes();
+        if ($attributes['id'] == "donationrecipient-" . $row['RecipientClientNm']) {
+            $exists = true;
+            break;
         }
-        $head_node_id = "donationrecipient-" . $row['RecipientClientNm'];
-        if (!$exists) {
-            $node = $nodes->addChild('node');
-            $node->addAttribute("id", $head_node_id);
-            $node->addAttribute("label", "Donation Recipient: " . $row['RecipientClientNm']);
-            formatLobbyistNode($node);
-        }
-        $link = $edges->addChild('edge');
-        $tail_node_id = "lobbyistclient-" . $lobbyistClientName;
-        $link->addAttribute("id", $head_node_id . "|" . $tail_node_id);
-        $link->addAttribute("tooltip", $lobbyistClientName . " donated $" . money_format('%i', $row['AmountPaid']) . " to " . $row['RecipientClientNm']);
-        $link->addAttribute("tail_node_id", $tail_node_id);
-        $link->addAttribute("head_node_id", $head_node_id);
-    
+    }
+    $head_node_id = "donationrecipient-" . $row['RecipientClientNm'];
+    if (!$exists) {
+        $node = $nodes->addChild('node');
+        $node->addAttribute("id", $head_node_id);
+        $node->addAttribute("label", "Donation Recipient: " . $row['RecipientClientNm']);
+        formatLobbyistNode($node);
+    }
+    $link = $edges->addChild('edge');
+    $tail_node_id = "lobbyistclient-" . $lobbyistClientName;
+    $link->addAttribute("id", $head_node_id . "|" . $tail_node_id);
+    $link->addAttribute("tooltip", $lobbyistClientName . " donated $" . money_format('%i', $row['AmountPaid']) . " to " . $row['RecipientClientNm']);
+    $link->addAttribute("tail_node_id", $tail_node_id);
+    $link->addAttribute("head_node_id", $head_node_id);
 }
 ?>
