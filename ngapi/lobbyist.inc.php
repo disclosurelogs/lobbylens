@@ -102,7 +102,5 @@ foreach ($result->fetchAll() as $row) {
     $link->addAttribute("tooltip", $lobbyistName . " donated $" . money_format('%i', $row['AmountPaid']) . " to " . $row['RecipientClientNm']);
     $link->addAttribute("tail_node_id", $tail_node_id);
     $link->addAttribute("head_node_id", $head_node_id);
-
-
 }
 ?>
