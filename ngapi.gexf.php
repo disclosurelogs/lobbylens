@@ -3,14 +3,14 @@ include "libs/config.php";
 
 function add_node($id, $label, $parent="") {
 
-          echo "<node id='$id' label=\"".htmlentities($label,ENT_XML1)."\" ".($parent != ""? "pid='$parent'><viz:size value='1'/>":"><viz:size value='2'/>")
+          echo "<node id='".urlencode($id)."' label=\"".htmlentities($label,ENT_XML1)."\" ".($parent != ""? "pid='$parent'><viz:size value='".rand(1,50)."'/>":"><viz:size value='2'/>")
               ."<viz:color b='".rand(0,255)."' g='".rand(0,255)."' r='".rand(0,255)."'/>"
                   ."</node>". PHP_EOL;
 }
 
 function add_edge($from, $to) {
 
-          echo "<edge id='$from$to' source='$from' target='$to' />". PHP_EOL;
+          echo "<edge id='".urlencode($from.$to)."' source='".urlencode($from)."' target='".urlencode($to)."' />". PHP_EOL;
 
 }
 

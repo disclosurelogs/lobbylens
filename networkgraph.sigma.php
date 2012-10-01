@@ -64,23 +64,27 @@ echo '</ul>
     defaultEdgeType: 'curve'
   }).graphProperties({
     minNodeSize: 0.5,
-    maxNodeSize: 5,
-    minEdgeSize: 5,
-    maxEdgeSize: 5
+    maxNodeSize: 15,
+    minEdgeSize: 0.5,
+    maxEdgeSize: 15
   }).mouseProperties({
     maxRatio: 32
   });
 
   // Parse a GEXF encoded file to fill the graph
   // (requires "sigma.parseGexf.js" to be included)
-  sigInst.parseGexf('ngapi.gexf.php?node_id=<?php echo $selectedNodeID ?>');
+  sigInst.parseGexf('ngapi.gexf.php?node_id=<?php echo urlencode($selectedNodeID) ?>');
  sigInst.bind('downnodes',function(event){
     var nodes = event.content;
  });
   // Start the ForceAtlas2 algorithm
   // (requires "sigma.forceatlas2.js" to be included)
   sigInst.startForceAtlas2();
-  
+    document.getElementById('sigma-example').addEventListener('click',function(){
+         sigInst.stopForceAtlas2();
+    
+    sigInst.position(0,0,1).draw();
+  },true);
   // Draw the graph :
   sigInst.draw();
 }
