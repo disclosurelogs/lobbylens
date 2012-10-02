@@ -6,14 +6,20 @@ $lobbyistClientNode->addAttribute("id", "lobbyistclient-" . $lobbyistClientName)
 $lobbyistClientNode->addAttribute("label", $lobbyistClientName);
 formatLobbyingClientNode($lobbyistClientNode);
 $xml->addChild('name', htmlspecialchars($lobbyistClientName));
+$lobbyistClientSearchName = $lobbyistClientName."%";
 $supplierN = $dbConn->prepare(' SELECT "lobbyistClientID"
 FROM lobbyist_clients
-WHERE business_name = ?
+WHERE business_name like ?
 LIMIT 1 ');
 $supplierN->execute(array(
-    $lobbyistClientName
+    $lobbyistClientSearchName
 ));
-$lobbyistClientID = $supplierN->fetch(PDO::FETCH_OBJ)->lobbyistClientID;
+$lobbyistC = $supplierN->fetch(PDO::FETCH_OBJ);
+if ($lobbyistC) {
+$lobbyistClientID = $lobbyistC->lobbyistClientID;
+} else {
+    die ("lobbyist client $lobbyistClientName not found");
+}
 
 $lobbyists = $dbConn->prepare('
 SELECT *

@@ -7,8 +7,9 @@ $recipientNode->addAttribute("label", $recipientName);
 formatPostcodeNode($recipientNode);
 $xml->addChild('name', $recipientName);
 
-$result = $dbConn->prepare('select DonorClientNm,RecipientClientNm,DonationDt,sum(AmountPaid) as AmountPaid from political_donations where RecipientClientNm
-			       LIKE ? group by DonorClientNm order by DonorClientNm desc');
+$result = $dbConn->prepare('select "DonorClientNm",max("RecipientClientNm") as "RecipientClientNm",
+    max("DonationDt") as "DonationDt",sum("AmountPaid") as "AmountPaid" from political_donations where "RecipientClientNm"
+			       LIKE ? group by "DonorClientNm" order by "DonorClientNm" desc');
 
 $head_node_id = "donationrecipient-" . $recipientName;
 $recipientName = "%" . $recipientName . "%";

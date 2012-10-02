@@ -8,7 +8,7 @@ require "amon-php/amon.php";
 Amon::config(array('address'=> 'http://127.0.0.1:2464', 
 		'protocol' => 'http', 
 		'secret_key' => "GNLu8aqN7aXxoh8JoDGJjqeScAXd6L8Zq4sjixmVwLo"));
-Amon::setup_exception_handler();
+//Amon::setup_exception_handler();
 
 function ucsmart($str) {
     $shortWords = Array("The", "Pty", "Ltd", "Inc", "Red", "Oil", "A", "An", "And", "At", "For", "In"
@@ -23,6 +23,11 @@ function ucsmart($str) {
     return implode(" ", $strArray);
 }
 
+if (!function_exists('money_format')) {
+    function money_format($a,$b) {
+        return $b;
+    }
+}
 function getPage($url) {
 
     $ch = curl_init($url);
