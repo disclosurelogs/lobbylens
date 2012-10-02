@@ -1,13 +1,26 @@
 <?php
+if (strlen($graphTarget) == 11 && is_numeric($graphTarget)) {
+    // is ABN
 
+$supplierN = $dbConn->prepare(' SELECT *
+FROM lobbyist_clients
+WHERE "ABN" = ?
+LIMIT 1 ');
+$supplierN->execute(array(
+    $graphTarget
+));
+$lobbyistC = $supplierN->fetch(PDO::FETCH_OBJ);
+if ($lobbyistC) {
+$lobbyistClientID = $lobbyistC->lobbyistClientID;
+ $lobbyistClientName = $lobbyistC->business_name;
+} else {
+    die ("lobbyist abn $graphTarget not found");
+}
+} else {
+    // is business name
 $lobbyistClientName = $graphTarget;
-$lobbyistClientNode = $nodes->addChild('node');
-$lobbyistClientNode->addAttribute("id", "lobbyistclient-" . $lobbyistClientName);
-$lobbyistClientNode->addAttribute("label", $lobbyistClientName);
-formatLobbyingClientNode($lobbyistClientNode);
-$xml->addChild('name', htmlspecialchars($lobbyistClientName));
 $lobbyistClientSearchName = $lobbyistClientName."%";
-$supplierN = $dbConn->prepare(' SELECT "lobbyistClientID"
+$supplierN = $dbConn->prepare(' SELECT *
 FROM lobbyist_clients
 WHERE business_name like ?
 LIMIT 1 ');
@@ -20,6 +33,13 @@ $lobbyistClientID = $lobbyistC->lobbyistClientID;
 } else {
     die ("lobbyist client $lobbyistClientName not found");
 }
+}
+
+$lobbyistClientNode = $nodes->addChild('node');
+$lobbyistClientNode->addAttribute("id", "lobbyistclient-" . $lobbyistClientName);
+$lobbyistClientNode->addAttribute("label", $lobbyistClientName);
+formatLobbyingClientNode($lobbyistClientNode);
+$xml->addChild('name', htmlspecialchars($lobbyistClientName));
 
 $lobbyists = $dbConn->prepare('
 SELECT *
@@ -30,6 +50,9 @@ WHERE "lobbyistClientID" = ? ;
 $lobbyists->execute(array(
     $lobbyistClientID
 ));
+
+
+
 foreach ($lobbyists->fetchAll() as $row) {
     $exists = false;
     foreach ($nodes->node as $node) {

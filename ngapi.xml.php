@@ -148,7 +148,13 @@ if (isset($argv) && $argv[2] == "dev") {
 if ($nodeID == "" || $nodeID == "[node_id]") {
     die("bad URL" . $nodeID);
 } else {
+    if (strpos($nodeID, '|')) {
+        foreach (explode('|',$nodeID) as $altNodeID) {
+            appendNode($altNodeID);
+        }
+    } else {
     appendNode($nodeID);
+    }
 }
 $dom = dom_import_simplexml($xml)->ownerDocument;
 $dom->formatOutput = true;
