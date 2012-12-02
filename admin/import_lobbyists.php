@@ -1,6 +1,13 @@
 <?php
 
 include "../libs/config.php";
+include '../libs/Yaml/Yaml.php';
+include '../libs/Yaml/Parser.php';
+include '../libs/Yaml/Inline.php';
+include '../libs/Yaml/Dumper.php';
+include '../libs/Yaml/Escaper.php';
+include '../libs/Yaml/Unescaper.php';
+use Symfony\Component\Yaml\Yaml;
 $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
 $state_datasets = Array(
@@ -270,14 +277,13 @@ foreach ($state_urls as $state => $url) {
         $abn = str_replace("No A.B.N","",$lobbyist->abn);
         $lobbyistID = add_lobbyist(strtolower($state), $abn, $lobbyist->business_name, $lobbyist->trading_name);
         //print_r($lobbyist->clients);
-        echo $lobbyist->clients;
-        foreach (json_decode($lobbyist->clients) as $client) {
-            echo $client;
+        $clients = Yaml::parse(str_replace("--- ","",$lobbyist->clients)); 
+        foreach ($clients as $client) {
+            //echo $client;
             $clientID = add_client(strtolower($state), $client);
             add_relationship(strtolower($state), $lobbyistID, $clientID);
         }
     }
-    die();
     }
 }
 ?>

@@ -10,3 +10,6 @@
 [submodule "libs/amon-php"]
 	path = libs/amon-php
 	url = https://github.com/martinrusev/amon-php.git
+[submodule "libs/Yaml"]
+	path = libs/Yaml
+	url = git://github.com/symfony/Yaml.git
