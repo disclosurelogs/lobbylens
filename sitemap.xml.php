@@ -62,7 +62,7 @@ if (isset($_REQUEST['section']) == false) {
        foreach ($result->fetchAll() as $row) {
            if ($row['cat'] != "") {
             echo " <url><loc>" . local_url() . "networkgraph.php?node_id=category-{$row['cat']}000000</loc>
-      <lastmod>" . $last_updated['supplier'] . "</lastmod></url>\n";
+      <lastmod>" . $last_updated['category'] . "</lastmod></url>\n";
            }
         }
     }

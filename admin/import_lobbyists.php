@@ -31,7 +31,7 @@ $state_urls = Array(
 
 function add_lobbyist($state, $abn, $business_name, $trading_name) {
     global $dbConn;
-    $abn = str_replace(Array(" ","-","N/A"),"",$abn);
+    $abn = str_replace(Array(" ", "-", "N/A"), "", $abn);
     if ($abn == "")
         $abn = NULL;
     $lobbyistID = find_lobbyist($abn, $business_name, $trading_name);
@@ -44,7 +44,7 @@ function add_lobbyist($state, $abn, $business_name, $trading_name) {
         $lobins->execute(Array($business_name, $trading_name, $abn));
         $err = $dbConn->errorInfo();
         if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
-            echo  " failed lobbyist insert.<br>";
+            echo " failed lobbyist insert.<br>";
             print_r($err);
             die();
         } else {
@@ -87,13 +87,24 @@ function find_lobbyist($abn, $business_name, $trading_name) {
     $err = $dbConn->errorInfo();
     //echo $findlobbyist->rowCount() . " rows found <br>\n";
     if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
-        echo $query . " failed relation insert.<br>\n";
+        echo " failed lobbyist search.<br>\n";
         print_r($err);
         die();
     } else {
         if ($findlobbyist->rowCount() == 0) {
             echo "not found <Br>\n";
-            return NULL;
+            $findlobbyistalias = $dbConn->prepare('SELECT "lobbyistID" from lobbyists_aliases where alias = ? OR alias = ?;');
+            $findlobbyistalias->execute(Array($business_name, $trading_name));
+            if ($findlobbyistalias->rowCount() == 0) {
+                echo "not found alias <Br>\n";
+                return NULL;
+            } else {
+                $lobbyist = $findlobbyistalias->fetch(PDO :: FETCH_ASSOC);
+                //print_r($lobbyist);
+                echo "found alias " . $lobbyist['lobbyistID'] . " <br>\n";
+                set_time_limit(30);
+                return $lobbyist['lobbyistID'];
+            }
         } else {
             $lobbyist = $findlobbyist->fetch(PDO :: FETCH_ASSOC);
             //print_r($lobbyist);
@@ -120,7 +131,18 @@ function find_lobbyist_by_name($name) {
     } else {
         if ($findlobbyist->rowCount() == 0) {
             echo "not found <Br>\n";
-            return NULL;
+            $findlobbyistalias = $dbConn->prepare('SELECT "lobbyistID" from lobbyists_aliases where alias = ?;');
+            $findlobbyistalias->execute(Array($name));
+            if ($findlobbyistalias->rowCount() == 0) {
+                echo "not found alias <Br>\n";
+                return NULL;
+            } else {
+                $lobbyist = $findlobbyistalias->fetch(PDO :: FETCH_ASSOC);
+                //print_r($lobbyist);
+                echo "found alias " . $lobbyist['lobbyistID'] . " <br>\n";
+                set_time_limit(30);
+                return $lobbyist['lobbyistID'];
+            }
         } else {
             $lobbyist = $findlobbyist->fetch(PDO :: FETCH_ASSOC);
             //print_r($lobbyist);
@@ -130,9 +152,22 @@ function find_lobbyist_by_name($name) {
         }
     }
 }
-
+function add_client_alias($lobbyistClientID, $clientName) {
+        $insclient = $dbConn->prepare('INSERT INTO lobbyist_clients_aliases ("lobbyistClientID", alias)
+          VALUES (?,?);');
+        $insclient->bindParam(1, $lobbyistClientID);
+        $insclient->bindParam(2, $clientName);
+        $insclient->execute();
+        $err = $dbConn->errorInfo();
+        if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
+            echo " failed client insert.<br>\n";
+            print_r($err);
+            die();
+        }
+}
 function add_client($state, $clientName) {
     global $dbConn;
+    $alias = false;
     $searchName = "%" . cleanseName($clientName) . "%";
     echo "client: $clientName (searched as '$searchName')<br>\n";
     flush();
@@ -163,6 +198,7 @@ function add_client($state, $clientName) {
             if ($row['supplierABN'] != null && $row['supplierABN'] > 0) {
                 $abn = $row['supplierABN'];
             }
+            $alias = true;
         }
         if ($abn == 0) {
             // lookup online 
@@ -180,27 +216,24 @@ function add_client($state, $clientName) {
         if ($findclientbyABN->rowCount() != 0) {
             $row = $findclientbyABN->fetch(PDO :: FETCH_ASSOC);
             $clientID = $row['lobbyistClientID'];
+            $alias = true;
         }
     } else {
         // found ABN or clientID
         $row = $findclient->fetch(PDO :: FETCH_ASSOC);
         $clientID = $row['lobbyistClientID'];
         $abn = $row['ABN'];
+    $alias = false;
     }
 
     if ($clientID == 0) {
-        // search for existing clientID
+        // insert new client
         echo "$clientName, $abn";
         $insclient = $dbConn->prepare('INSERT INTO lobbyist_clients (business_name, "ABN", ' . $state . ')
           VALUES (?,?,\'True\') RETURNING "lobbyistClientID";');
         $insclient->bindParam(1, $clientName);
         $insclient->bindParam(2, $abn);
         $insclient->execute();
-        /*        echo "$clientName, $abn";
-          $query = 'INSERT INTO lobbyist_clients (business_name, "ABN", ' . $state . ')
-          VALUES ('.$dbConn->quote($clientName).','.$dbConn->quote($abn).',\'True\') RETURNING "lobbyistClientID";';
-          echo $query;
-          $insclient = $dbConn->exec($query); */
         $err = $dbConn->errorInfo();
         if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
             echo " failed client insert.<br>\n";
@@ -215,6 +248,9 @@ function add_client($state, $clientName) {
         }
     } else {
         echo "exists @ ID: " . $clientID . "<br>\n";
+        if($alias) {
+            add_client_alias($clientID, $clientName);
+        }
         return $clientID;
     }
 }
@@ -279,7 +315,7 @@ foreach ($state_urls as $state => $url) {
     } else {
         $lobbyists = json_decode(getPage($url));
         foreach ($lobbyists as $lobbyist) {
-            $abn = str_replace(Array("No A.B.N","tba","ACN"), "", $lobbyist->abn);
+            $abn = str_replace(Array("No A.B.N", "tba", "ACN"), "", $lobbyist->abn);
             $lobbyistID = add_lobbyist(strtolower($state), $abn, $lobbyist->business_name, $lobbyist->trading_name);
             //print_r($lobbyist->clients);
             $clients = Yaml::parse(str_replace("--- ", "", $lobbyist->clients));
@@ -288,7 +324,7 @@ foreach ($state_urls as $state => $url) {
                 if (is_array($client)) {
                     $clientID = add_client(strtolower($state), $client['name']);
                 } else {
-                $clientID = add_client(strtolower($state), $client);
+                    $clientID = add_client(strtolower($state), $client);
                 }
                 add_relationship(strtolower($state), $lobbyistID, $clientID);
             }
