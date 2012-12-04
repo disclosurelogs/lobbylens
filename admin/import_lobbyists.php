@@ -22,10 +22,10 @@ $state_datasets = Array(
 );
 $state_urls = Array(
     //"SA" => '',
-    //"WA" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-wa-register-of-lobbyists&query=select+*+from+`swdata`&apikey=',
-    //"VIC" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-vic-register-of-lobbyists&query=select+*+from+`swdata`&apikey=',
-    //"TAS" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-tas-register-of-lobbyists&query=select+*+from+`swdata`&apikey=',
-    //"QLD" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-qld-register-of-lobbyists&query=select+*+from+`swdata`&apikey=',
+    "WA" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-wa-register-of-lobbyists&query=select+*+from+`swdata`&apikey=',
+    "VIC" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-vic-register-of-lobbyists&query=select+*+from+`swdata`&apikey=',
+    "TAS" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-tas-register-of-lobbyists&query=select+*+from+`swdata`&apikey=',
+    "QLD" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-qld-register-of-lobbyists&query=select+*+from+`swdata`&apikey=',
     "NSW" => 'https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=json&name=au-nsw-register-of-lobbyists&query=select+*+from+`swdata`&apikey='
 );
 
@@ -152,19 +152,22 @@ function find_lobbyist_by_name($name) {
         }
     }
 }
+
 function add_client_alias($lobbyistClientID, $clientName) {
-        $insclient = $dbConn->prepare('INSERT INTO lobbyist_clients_aliases ("lobbyistClientID", alias)
+    global $dbConn;
+    $insclient = $dbConn->prepare('INSERT INTO lobbyist_clients_aliases ("lobbyistClientID", alias)
           VALUES (?,?);');
-        $insclient->bindParam(1, $lobbyistClientID);
-        $insclient->bindParam(2, $clientName);
-        $insclient->execute();
-        $err = $dbConn->errorInfo();
-        if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
-            echo " failed client insert.<br>\n";
-            print_r($err);
-            die();
-        }
+    $insclient->bindParam(1, $lobbyistClientID);
+    $insclient->bindParam(2, $clientName);
+    $insclient->execute();
+    $err = $dbConn->errorInfo();
+    if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
+        echo " failed client insert.<br>\n";
+        print_r($err);
+        die();
+    }
 }
+
 function add_client($state, $clientName) {
     global $dbConn;
     $alias = false;
@@ -184,46 +187,63 @@ function add_client($state, $clientName) {
     $clientID = 0;
     $abn = 0;
     if ($findclient->rowCount() == 0) {
-        // if name did not match.
-        $findsupplier = $dbConn->prepare('SELECT "supplierABN" from supplierDetails where "supplierName" LIKE ?;');
-        $findsupplier->execute(Array($searchName));
+        // check cached aliases
+        $findclientalias = $dbConn->prepare('SELECT "lobbyistClientID" from lobbyist_clients_aliases where alias = ?');
+        $findclientalias->execute(Array($clientName));
         $err = $dbConn->errorInfo();
         if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
-            echo "find supplier err<br>\n";
+            echo " find client alias err<br>\n";
             print_r($err);
             die();
         }
-        if ($findsupplier->rowCount() != 0) {
-            $row = $findsupplier->fetch(PDO :: FETCH_ASSOC);
-            if ($row['supplierABN'] != null && $row['supplierABN'] > 0) {
-                $abn = $row['supplierABN'];
+        if ($findclientalias->rowCount() == 0) {
+            // if name still did not match.
+            $findsupplier = $dbConn->prepare('SELECT "supplierName", "supplierABN" from supplierDetails where "supplierName" LIKE ?;');
+            $findsupplier->execute(Array($searchName));
+            $err = $dbConn->errorInfo();
+            if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
+                echo "find supplier err<br>\n";
+                print_r($err);
+                die();
             }
-            $alias = true;
-        }
-        if ($abn == 0) {
-            // lookup online 
-            //set_time_limit(30);
-            $abn = abnLookup($clientName);
-        }
-        $findclientbyABN = $dbConn->prepare('SELECT "lobbyistClientID" from lobbyist_clients where "ABN" = ?;');
-        $findclientbyABN->execute(Array($abn));
-        $err = $dbConn->errorInfo();
-        if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
-            echo " rfind client by abn err<br>\n";
-            print_r($err);
-            die();
-        }
-        if ($findclientbyABN->rowCount() != 0) {
-            $row = $findclientbyABN->fetch(PDO :: FETCH_ASSOC);
+            if ($findsupplier->rowCount() != 0) {
+                $row = $findsupplier->fetch(PDO :: FETCH_ASSOC);
+                if ($row['supplierABN'] != null && $row['supplierABN'] > 0) {
+                    $abn = $row['supplierABN'];
+                }
+                $alias = true;
+            }
+            if ($abn == 0) {
+                echo "lookup ABN online ";
+                //set_time_limit(30);
+                $abn = abnLookup($clientName);
+            }
+            $findclientbyABN = $dbConn->prepare('SELECT "lobbyistClientID" from lobbyist_clients where "ABN" = ?;');
+            $findclientbyABN->execute(Array($abn));
+            $err = $dbConn->errorInfo();
+            if ($err[2] != "" && strpos($err[2], "duplicate key") === false) {
+                echo " rfind client by abn err<br>\n";
+                print_r($err);
+                die();
+            }
+            if ($findclientbyABN->rowCount() != 0) {
+                $row = $findclientbyABN->fetch(PDO :: FETCH_ASSOC);
+                $clientID = $row['lobbyistClientID'];
+                $alias = true;
+            }
+        } else {
+            echo "found client via alias";
+            $row = $findclientalias->fetch(PDO :: FETCH_ASSOC);
             $clientID = $row['lobbyistClientID'];
-            $alias = true;
+            //$abn = $row['ABN'];
+            $alias = false;
         }
     } else {
         // found ABN or clientID
         $row = $findclient->fetch(PDO :: FETCH_ASSOC);
         $clientID = $row['lobbyistClientID'];
         $abn = $row['ABN'];
-    $alias = false;
+        $alias = false;
     }
 
     if ($clientID == 0) {
@@ -248,7 +268,7 @@ function add_client($state, $clientName) {
         }
     } else {
         echo "exists @ ID: " . $clientID . "<br>\n";
-        if($alias) {
+        if ($alias) {
             add_client_alias($clientID, $clientName);
         }
         return $clientID;

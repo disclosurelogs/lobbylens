@@ -141,7 +141,8 @@ function cleanseName($input) {
         "(Queensland Branch)",
         "(ACT/NSW Bra",
         "(SA/NT)",
-        ", WA Branch"
+        ", WA Branch",
+        "- a coalition of professional associations and firms"
     );
     return trim(str_ireplace($cleanseNames, "", $input));
 }
