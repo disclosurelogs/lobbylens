@@ -3,7 +3,7 @@ include "libs/config.php";
 
 function add_node($id, $label, $parent="") {
 
-          echo "<node id='".urlencode($id)."' label=\"".htmlentities($label,ENT_XML1)."\" ".($parent != ""? "pid='$parent'><viz:size value='".rand(1,50)."'/>":"><viz:size value='2'/>")
+          echo "<node id='".urlencode($id)."' label=\"".htmlentities($label)."\" ".($parent != ""? "pid='$parent'><viz:size value='".rand(1,50)."'/>":"><viz:size value='2'/>")
               ."<viz:color b='".rand(0,255)."' g='".rand(0,255)."' r='".rand(0,255)."'/>"
                   ."</node>". PHP_EOL;
 }

@@ -48,12 +48,19 @@ foreach ($graph->xpath('//edge') as $edge) {
 echo '</ul>
 </div>
 </div>';
-?>
-     <div id="sigma-example" width="960" style="min-height:800px;background-color: #333;"></div>
+?>    <div id="wrapper">
+    <div id="left" style="width:70%">
+     <div id="sigma-example" width="70%" style="min-height:800px;background-color: #333;"></div>
   <script src="js/sigma.min.js"></script>
   <script src="js/sigma/plugins/sigma.parseGexf.js"></script>
   <script src="js/sigma/plugins/sigma.forceatlas2.js"></script>
-  <script type="text/javascript">function init() {
+  <script type="text/javascript">
+function onClick(event) {
+    window.console.log("clicked!");
+    window.console.log(event.content[0]);
+} 
+
+function init() {
   // Instanciate sigma.js and customize rendering :
   var sigInst = sigma.init(document.getElementById('sigma-example')).drawingProperties({
     defaultLabelColor: '#fff',
@@ -85,6 +92,7 @@ echo '</ul>
     
     sigInst.position(0,0,1).draw();
   },true);
+sigInst.bind('downnodes',onClick).draw();
   // Draw the graph :
   sigInst.draw();
 }
@@ -94,8 +102,11 @@ if (document.addEventListener) {
 } else {
   window.onload = init;
 }
-</script>
 
+</script>
+    </div>
+    <div id="right" style="float: right; width: 100px;">dfhfgdhghgdfjdjfhghgdjgfhj</div>
+    </div>
 <?php
 include_footer();
 ?>
