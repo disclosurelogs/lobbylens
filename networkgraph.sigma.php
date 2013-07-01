@@ -48,7 +48,25 @@ foreach ($graph->xpath('//edge') as $edge) {
 echo '</ul>
 </div>
 </div>';
-?>    <div id="wrapper">
+?>
+
+<div id="right" style="float: right; width: 29%;">
+    <b>Current Node</b>
+    Find links to ...
+    Find closest link(s) to a lobbyist
+    Find closest link(s) to a political party
+    if agency: View Agency Details, View Agency FOI Documents, Make an FOI request to Agency
+    if supplier: View Supplier Details
+
+    <b>Current Searches</b>
+    x NodeA
+    x NodeA links to NodeB
+    x
+
+    <b>Add search</b>
+
+    autociompleting search box here
+</div>
     <div id="left" style="width:70%">
      <div id="sigma-example" width="70%" style="min-height:800px;background-color: #333;"></div>
   <script src="js/sigma.min.js"></script>
@@ -105,8 +123,7 @@ if (document.addEventListener) {
 
 </script>
     </div>
-    <div id="right" style="float: right; width: 100px;">dfhfgdhghgdfjdjfhghgdjgfhj</div>
-    </div>
+
 <?php
 include_footer();
 ?>

@@ -50,7 +50,7 @@ if (isset($_REQUEST['section']) == false) {
         }
     }
     if ($_REQUEST['section'] == "supplier") {
-       $result = $dbConn->query('SELECT DISTINCT "supplierABN" from contractnotice');
+       $result = $dbConn->query('SELECT DISTINCT "supplierABN" from contractnotice where "supplierABN" is not null');
        foreach ($result->fetchAll() as $row) {
             echo " <url><loc>" . local_url() . "networkgraph.php?node_id=supplier-{$row['supplierABN']}</loc>
       <lastmod>" . $last_updated['supplier'] . "</lastmod></url>\n";

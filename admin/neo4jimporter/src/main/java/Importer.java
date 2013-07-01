@@ -27,13 +27,12 @@ import org.neo4j.unsafe.batchinsert.BatchInserters;
 public class Importer {
 
     public static void main(String[] argv) {
-Map<String, String> config = new HashMap<String, String>();
-config.put( "neostore.nodestore.db.mapped_memory", "90M" );
-BatchInserter inserter = BatchInserters.inserter("target/batchinserter-example-config", config );
+        Map<String, String> config = new HashMap<String, String>();
+        config.put("neostore.nodestore.db.mapped_memory", "90M");
+        BatchInserter inserter = BatchInserters.inserter("target/batchinserter-example-config", config);
         //BatchInserterIndexProvider indexProvider = new LuceneBatchInserterIndexProvider(inserter);
         //BatchInserterIndex names = indexProvider.nodeIndex("names", MapUtil.stringMap("type", "exact"));
         //names.setCacheCapacity("name", 100000);
-
 
 
         System.out.println("-------- PostgreSQL "
@@ -85,28 +84,75 @@ BatchInserter inserter = BatchInserters.inserter("target/batchinserter-example-c
             // Get a statement from the connection
             Statement stmt = conn.createStatement();
 
-            // Execute the query
-            ResultSet rs = stmt.executeQuery("SELECT contractnotice.\"agencyName\", "
+            HashMap<String, Long> supplierIDs = new HashMap<String, Long>();
+            HashMap<String, Long> agencyIDs = new HashMap<String, Long>();
+            HashMap<String, Long> lobbyingFirmIDs = new HashMap<String, Long>();
+            HashMap<String, Long> lobbyistClientIDs = new HashMap<String, Long>();
+            HashMap<String, Long> donorIDs = new HashMap<String, Long>();
+            HashMap<String, Long> partyIDs = new HashMap<String, Long>();
+            Label agencyLabel = DynamicLabel.label("Agency");
+            inserter.createDeferredSchemaIndex(agencyLabel).on("name");
+            Label supplierLabel = DynamicLabel.label("Supplier");
+            inserter.createDeferredSchemaIndex(agencyLabel).on("name");
+            Label donorLabel = DynamicLabel.label("Political Donor");
+            inserter.createDeferredSchemaIndex(donorLabel).on("name");
+            Label partyLabel = DynamicLabel.label("Political Party");
+            inserter.createDeferredSchemaIndex(partyLabel).on("name");
+            Label lobbyistClientLabel = DynamicLabel.label("Lobbyist Client");
+            inserter.createDeferredSchemaIndex(lobbyistClientLabel).on("name");
+            Label lobbyistLabel = DynamicLabel.label("Lobbyist");
+            inserter.createDeferredSchemaIndex(lobbyistLabel).on("name");
+            Label lobbyingFirmLabel = DynamicLabel.label("Lobbying Firm");
+            inserter.createDeferredSchemaIndex(lobbyingFirmLabel).on("name");
+
+            // TODO pregenerate suppliers and mark those that are donors/lobbyist clients
+
+            ResultSet rs = stmt.executeQuery("SELECT min(\"supplierName\") as \"supplierName\",max(\"supplierABN\") as \"supplierABN\",\"lobbyistClientID\" from contractnotice inner join lobbyist_clients on  \"supplierABN\" = \"ABN\"  where \"supplierABN\" is not null group by \"lobbyistClientID\"");
+            // TODO include alias lobbyist client names
+
+           while (rs.next()) {
+               long supplierID;
+                Map<String, Object> properties = new HashMap<String, Object>();
+
+                properties.put("name", rs.getString("supplierName"));
+                properties.put("abn", rs.getString("supplierABN"));
+                properties.put("supplier", "true");
+               properties.put("lobbyistclient", "true");
+                supplierID = inserter.createNode(properties, supplierLabel, lobbyistClientLabel); // http://api.neo4j.org/2.0.0-M03/org/neo4j/unsafe/batchinsert/BatchInserter.html#setNodeLabels(long, org.neo4j.graphdb.Label...)
+                supplierIDs.put(rs.getString("supplierABN"), supplierID);
+                lobbyistClientIDs.put(rs.getString("lobbyistClientID"), supplierID);
+                if (supplierID % 1000 == 0) {
+                    System.out.println("Supplier + lobbyist client" + supplierID);
+                }
+            }
+            rs.close();
+
+            //SELECT DISTINCT "supplierABN" from contractnotice,  (select max("DonorClientNm"),"RecipientClientNm",sum("AmountPaid") as "AmountPaid"
+            //from political_donations group by "RecipientClientNm" order by "RecipientClientNm" desc) donors where "supplierABN" is not null limit 10
+
+
+            // TODO pregenerate lobbying firms with their lobbyists and mark those firms that are donors
+
+
+            // TODO pregenerate lobbyist clients that are donors
+
+            //  agency/supplier relationships
+            // TODO detect suppliers that are also agencies
+            rs = stmt.executeQuery("SELECT contractnotice.\"agencyName\", "
                     + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END) as supplierID , max(contractnotice.\"supplierName\") as \"supplierName\",sum(value) as sum "
                     + "FROM  public.contractnotice  GROUP BY contractnotice.\"agencyName\", "
                     + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END)");
-            HashMap<String, Long> supplierIDs = new HashMap<String, Long>();
-            HashMap<String, Long> agencyIDs = new HashMap<String, Long>();
 
-Label agencyLabel = DynamicLabel.label( "Agency" );
-inserter.createDeferredSchemaIndex( agencyLabel ).on( "name" );
-Label supplierLabel = DynamicLabel.label( "Supplier" );
-inserter.createDeferredSchemaIndex( agencyLabel ).on( "name" );
 
             // Loop through the result set
             while (rs.next()) {
                 long supplierID, agencyID;
                 String supplierKey;
                 if (agencyIDs.get(rs.getString("agencyName")) == null) {
-		    Map<String, Object> properties = new HashMap<String, Object>();
+                    Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("agencyName"));
-                    properties.put("type", rs.getString("agency"));
-		    agencyID = inserter.createNode(properties, agencyLabel);
+                    properties.put("agency", "true");
+                    agencyID = inserter.createNode(properties, agencyLabel);
                     agencyIDs.put(rs.getString("agencyName"), agencyID);
                     if (agencyID % 10 == 0) {
                         System.out.println("Agency " + agencyID);
@@ -117,10 +163,10 @@ inserter.createDeferredSchemaIndex( agencyLabel ).on( "name" );
 
                 // inject some data 
                 if (supplierIDs.get(rs.getString("supplierID")) == null) {
-		    Map<String, Object> properties = new HashMap<String, Object>();
+                    Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("supplierName"));
-                    properties.put("type", rs.getString("supplier"));
-		    supplierID = inserter.createNode(properties, supplierLabel);
+                    properties.put("supplier", "true");
+                    supplierID = inserter.createNode(properties, supplierLabel);
                     supplierIDs.put(rs.getString("supplierID"), supplierID);
                     if (supplierID % 1000 == 0) {
                         System.out.println("Supplier " + supplierID);
@@ -131,8 +177,8 @@ inserter.createDeferredSchemaIndex( agencyLabel ).on( "name" );
 
 // To set properties on the relationship, use a properties map
 // instead of null as the last parameter.
-Map<String, Object> properties = new HashMap<String, Object>();
-properties.put( "value", rs.getDouble("sum"));
+                Map<String, Object> properties = new HashMap<String, Object>();
+                properties.put("value", rs.getDouble("sum"));
                 inserter.createRelationship(agencyID, supplierID,
                         DynamicRelationshipType.withName("PAYS"), properties);
                 inserter.createRelationship(supplierID, agencyID,
@@ -140,6 +186,120 @@ properties.put( "value", rs.getDouble("sum"));
             }
             // Close the result set, statement and the connection
             rs.close();
+
+            //  donor/donation recipient relationships
+            /*'select "DonorClientNm",max("RecipientClientNm") as "RecipientClientNm",
+            max("DonationDt") as "DonationDt", sum("AmountPaid") as "AmountPaid" from political_donations where
+            "RecipientClientNm"
+            LIKE ? group by "DonorClientNm" order by "DonorClientNm" desc '
+
+            ResultSet rs = stmt.executeQuery("SELECT contractnotice.\"agencyName\", "
+                    + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END) as supplierID , max(contractnotice.\"supplierName\") as \"supplierName\",sum(value) as sum "
+                    + "FROM  public.contractnotice  GROUP BY contractnotice.\"agencyName\", "
+                    + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END)");
+
+
+            // Loop through the result set
+            while (rs.next()) {
+                long supplierID, agencyID;
+                String supplierKey;
+                if (agencyIDs.get(rs.getString("agencyName")) == null) {
+                    Map<String, Object> properties = new HashMap<String, Object>();
+                    properties.put("name", rs.getString("agencyName"));
+                    properties.put("agency", rs.getString("true"));
+                    agencyID = inserter.createNode(properties, agencyLabel);
+                    agencyIDs.put(rs.getString("agencyName"), agencyID);
+                    if (agencyID % 10 == 0) {
+                        System.out.println("Agency " + agencyID);
+                    }
+                }
+                agencyID = agencyIDs.get(rs.getString("agencyName"));
+
+
+                // inject some data
+                if (supplierIDs.get(rs.getString("supplierID")) == null) {
+                    Map<String, Object> properties = new HashMap<String, Object>();
+                    properties.put("name", rs.getString("supplierName"));
+                    properties.put("supplier", rs.getString("true"));
+                    supplierID = inserter.createNode(properties, supplierLabel);
+                    supplierIDs.put(rs.getString("supplierID"), supplierID);
+                    if (supplierID % 1000 == 0) {
+                        System.out.println("Supplier " + supplierID);
+                    }
+                }
+                supplierID = supplierIDs.get(rs.getString("supplierID"));
+
+
+// To set properties on the relationship, use a properties map
+// instead of null as the last parameter.
+                Map<String, Object> properties = new HashMap<String, Object>();
+                properties.put("value", rs.getDouble("sum"));
+                inserter.createRelationship(agencyID, supplierID,
+                        DynamicRelationshipType.withName("PAYS"), properties);
+                inserter.createRelationship(supplierID, agencyID,
+                        DynamicRelationshipType.withName("PAID_BY"), properties);
+            }
+            // Close the result set, statement and the connection
+            rs.close();
+
+            //  lobbying firm/client relationships
+            '
+            SELECT *, abn as lobbyist_abn
+            FROM lobbyists
+            INNER JOIN lobbyist_relationships ON lobbyists. "lobbyistID" = lobbyist_relationships. "lobbyistID"
+            WHERE "lobbyistClientID" =?;
+            '
+
+
+            ResultSet rs = stmt.executeQuery("SELECT contractnotice.\"agencyName\", "
+                    + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END) as supplierID , max(contractnotice.\"supplierName\") as \"supplierName\",sum(value) as sum "
+                    + "FROM  public.contractnotice  GROUP BY contractnotice.\"agencyName\", "
+                    + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END)");
+
+
+            // Loop through the result set
+            while (rs.next()) {
+                long supplierID, agencyID;
+                String supplierKey;
+                if (agencyIDs.get(rs.getString("agencyName")) == null) {
+                    Map<String, Object> properties = new HashMap<String, Object>();
+                    properties.put("name", rs.getString("agencyName"));
+                    properties.put("agency", rs.getString("true"));
+                    agencyID = inserter.createNode(properties, agencyLabel);
+                    agencyIDs.put(rs.getString("agencyName"), agencyID);
+                    if (agencyID % 10 == 0) {
+                        System.out.println("Agency " + agencyID);
+                    }
+                }
+                agencyID = agencyIDs.get(rs.getString("agencyName"));
+
+
+                // inject some data
+                if (supplierIDs.get(rs.getString("supplierID")) == null) {
+                    Map<String, Object> properties = new HashMap<String, Object>();
+                    properties.put("name", rs.getString("supplierName"));
+                    properties.put("supplier", rs.getString("true"));
+                    supplierID = inserter.createNode(properties, supplierLabel);
+                    supplierIDs.put(rs.getString("supplierID"), supplierID);
+                    if (supplierID % 1000 == 0) {
+                        System.out.println("Supplier " + supplierID);
+                    }
+                }
+                supplierID = supplierIDs.get(rs.getString("supplierID"));
+
+
+// To set properties on the relationship, use a properties map
+// instead of null as the last parameter.
+                Map<String, Object> properties = new HashMap<String, Object>();
+                properties.put("value", rs.getDouble("sum"));
+                inserter.createRelationship(agencyID, supplierID,
+                        DynamicRelationshipType.withName("PAYS"), properties);
+                inserter.createRelationship(supplierID, agencyID,
+                        DynamicRelationshipType.withName("PAID_BY"), properties);
+            }
+            // Close the result set, statement and the connection
+            rs.close();*/
+
             stmt.close();
             conn.close();
         } catch (SQLException se) {

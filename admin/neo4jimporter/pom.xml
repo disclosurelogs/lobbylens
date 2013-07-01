@@ -15,4 +15,23 @@
     <version>9.1-901.jdbc4</version>
 </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>Importer</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
