@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/lobbylens/lobbylens.iml" filepath="$PROJECT_DIR$/lobbylens/lobbylens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/admin/neo4jimporter/neo4jimporter.iml" filepath="$PROJECT_DIR$/admin/neo4jimporter/neo4jimporter.iml" />
       <module fileurl="file://$PROJECT_DIR$/admin/orientexporter/src/main/orientimport.iml" filepath="$PROJECT_DIR$/admin/orientexporter/src/main/orientimport.iml" />
     </modules>
   </component>
