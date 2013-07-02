@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6a78360-1af5-48a2-8fe0-60c660fccd0f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/neo4jphp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/neo4japi.gexf.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/amon-php" afterPath="$PROJECT_DIR$/libs/amon-php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sigma" afterPath="$PROJECT_DIR$/js/sigma" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitmodules" afterPath="$PROJECT_DIR$/.gitmodules" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java" afterPath="$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/neo4jimporter/run.sh" afterPath="$PROJECT_DIR$/admin/neo4jimporter/run.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/neo4japi.gexf.php" afterPath="$PROJECT_DIR$/neo4japi.gexf.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/networkgraph.sigma.php" afterPath="$PROJECT_DIR$/networkgraph.sigma.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="lobbylens.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="c6a78360-1af5-48a2-8fe0-60c660fccd0f" time="1372736158722" ignored="false" />
+    <file path="/Dummy.txt" changelist="c6a78360-1af5-48a2-8fe0-60c660fccd0f" time="1372744432860" ignored="false" />
     <file path="/networkgraph.sigma.php" changelist="c6a78360-1af5-48a2-8fe0-60c660fccd0f" time="1372592330391" ignored="false" />
     <file path="/Importer.java" changelist="c6a78360-1af5-48a2-8fe0-60c660fccd0f" time="1372742537614" ignored="false" />
     <file path="db-console:/40c8a225/7376ad4d-8191-4b52-97f0-f2d785da0f23/" changelist="c6a78360-1af5-48a2-8fe0-60c660fccd0f" time="1372742885676" ignored="false" />
+    <file path="/neo4japi.gexf.php" changelist="c6a78360-1af5-48a2-8fe0-60c660fccd0f" time="1372746027720" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +34,6 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -73,6 +68,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -85,44 +81,28 @@
       <file leaf-file-name="networkgraph.sigma.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/networkgraph.sigma.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="35" selection-start="3055" selection-end="3055" vertical-scroll-proportion="-0.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Importer.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="445" column="87" selection-start="19111" selection-end="19111" vertical-scroll-proportion="0.7424893">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#853#867#0" expanded="true" />
-                <element signature="e#920#934#0" expanded="true" />
-                <element signature="e#993#1007#0" expanded="true" />
-                <element signature="e#1068#1082#0" expanded="true" />
-                <element signature="e#1134#1148#0" expanded="true" />
-                <element signature="e#1200#1214#0" expanded="true" />
-                <element signature="e#2916#2932#0" expanded="true" />
-                <element signature="e#6292#6308#0" expanded="true" />
-                <element signature="e#7073#7089#0" expanded="true" />
-                <element signature="e#9159#9175#0" expanded="true" />
-                <element signature="e#9875#9891#0" expanded="true" />
-                <element signature="e#10560#10576#0" expanded="true" />
-                <element signature="e#12307#12323#0" expanded="true" />
-                <element signature="e#13102#13118#0" expanded="true" />
-                <element signature="e#17046#17062#0" expanded="true" />
-                <element signature="e#18639#18655#0" expanded="true" />
-                <element signature="e#20572#20588#0" expanded="true" />
+                <marker date="1372745971960" expanded="true" signature="683:796" placeholder="..." />
+                <marker date="1372745971960" expanded="true" signature="827:848" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="neo4japi.gexf.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Importer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="113" column="72" selection-start="4206" selection-end="4206" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="neo4japi.gexf.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/neo4japi.gexf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="19" column="9" selection-start="469" selection-end="469" vertical-scroll-proportion="0.42222223">
               <folding />
             </state>
           </provider>
@@ -147,8 +127,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/ngapi.gexf.php" />
-        <option value="$PROJECT_DIR$/networkgraph.sigma.php" />
         <option value="$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java" />
+        <option value="$PROJECT_DIR$/networkgraph.sigma.php" />
+        <option value="$PROJECT_DIR$/neo4japi.gexf.php" />
       </list>
     </option>
   </component>
@@ -192,6 +173,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -258,7 +240,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -274,11 +255,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin/neo4jimporter" />
     <property name="FullScreen" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin/neo4jimporter" />
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -318,6 +299,27 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -337,27 +339,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -418,25 +399,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1608" height="874" extended-state="7" />
+    <frame x="-4" y="0" width="1608" height="874" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278237" sideWeight="0.497426" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292011" sideWeight="0.497426" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24839126" sideWeight="0.6707989" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.6707989" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.6707989" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292011" sideWeight="0.4980695" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292011" sideWeight="0.497426" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -503,67 +484,59 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/networkgraph.sigma.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="50" selection-start="3055" selection-end="3055" vertical-scroll-proportion="0.0">
+        <state line="86" column="35" selection-start="3055" selection-end="3055" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1372745971960" expanded="true" signature="683:796" placeholder="..." />
+            <marker date="1372745971960" expanded="true" signature="827:848" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="72" selection-start="4206" selection-end="4206" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neo4japi.gexf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="57" selection-start="597" selection-end="597" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/networkgraph.sigma.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="50" selection-start="3055" selection-end="3055" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1372745971960" expanded="true" signature="683:796" placeholder="..." />
+            <marker date="1372745971960" expanded="true" signature="827:848" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="390" column="39" selection-start="16670" selection-end="16670" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#853#867#0" expanded="true" />
-            <element signature="e#920#934#0" expanded="true" />
-            <element signature="e#993#1007#0" expanded="true" />
-            <element signature="e#1068#1082#0" expanded="true" />
-            <element signature="e#1134#1148#0" expanded="true" />
-            <element signature="e#1200#1214#0" expanded="true" />
-            <element signature="e#2916#2932#0" expanded="true" />
-            <element signature="e#6292#6308#0" expanded="true" />
-            <element signature="e#7073#7089#0" expanded="true" />
-            <element signature="e#9159#9175#0" expanded="true" />
-            <element signature="e#9875#9891#0" expanded="true" />
-            <element signature="e#10560#10576#0" expanded="true" />
-            <element signature="e#12307#12323#0" expanded="true" />
-            <element signature="e#13102#13118#0" expanded="true" />
-            <element signature="e#17046#17062#0" expanded="true" />
-            <element signature="e#18639#18655#0" expanded="true" />
-            <element signature="e#20572#20588#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/networkgraph.sigma.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="50" selection-start="2673" selection-end="2673" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1372745971960" expanded="true" signature="683:796" placeholder="..." />
+            <marker date="1372745971960" expanded="true" signature="827:848" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="4" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#853#867#0" expanded="true" />
-            <element signature="e#920#934#0" expanded="true" />
-            <element signature="e#993#1007#0" expanded="true" />
-            <element signature="e#1068#1082#0" expanded="true" />
-            <element signature="e#1134#1148#0" expanded="true" />
-            <element signature="e#1200#1214#0" expanded="true" />
-            <element signature="e#2916#2932#0" expanded="true" />
-            <element signature="e#6292#6308#0" expanded="true" />
-            <element signature="e#7073#7089#0" expanded="true" />
-            <element signature="e#9159#9175#0" expanded="true" />
-            <element signature="e#9875#9891#0" expanded="true" />
-            <element signature="e#10560#10576#0" expanded="true" />
-            <element signature="e#12307#12323#0" expanded="true" />
-            <element signature="e#13102#13118#0" expanded="true" />
-            <element signature="e#17046#17062#0" expanded="true" />
-            <element signature="e#18639#18655#0" expanded="true" />
-            <element signature="e#20572#20588#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -577,43 +550,27 @@
         <state line="22" column="33" selection-start="779" selection-end="779" vertical-scroll-proportion="0.5007587" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neo4japi.gexf.php">
+    <entry file="file://$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="113" column="72" selection-start="4206" selection-end="4206" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/networkgraph.sigma.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="35" selection-start="3055" selection-end="3055" vertical-scroll-proportion="-0.625">
-          <folding />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding>
+            <marker date="1372745971960" expanded="true" signature="683:796" placeholder="..." />
+            <marker date="1372745971960" expanded="true" signature="827:848" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/neo4jimporter/src/main/java/Importer.java">
+    <entry file="file://$PROJECT_DIR$/neo4japi.gexf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="445" column="87" selection-start="19111" selection-end="19111" vertical-scroll-proportion="0.7424893">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#853#867#0" expanded="true" />
-            <element signature="e#920#934#0" expanded="true" />
-            <element signature="e#993#1007#0" expanded="true" />
-            <element signature="e#1068#1082#0" expanded="true" />
-            <element signature="e#1134#1148#0" expanded="true" />
-            <element signature="e#1200#1214#0" expanded="true" />
-            <element signature="e#2916#2932#0" expanded="true" />
-            <element signature="e#6292#6308#0" expanded="true" />
-            <element signature="e#7073#7089#0" expanded="true" />
-            <element signature="e#9159#9175#0" expanded="true" />
-            <element signature="e#9875#9891#0" expanded="true" />
-            <element signature="e#10560#10576#0" expanded="true" />
-            <element signature="e#12307#12323#0" expanded="true" />
-            <element signature="e#13102#13118#0" expanded="true" />
-            <element signature="e#17046#17062#0" expanded="true" />
-            <element signature="e#18639#18655#0" expanded="true" />
-            <element signature="e#20572#20588#0" expanded="true" />
-          </folding>
+        <state line="19" column="9" selection-start="469" selection-end="469" vertical-scroll-proportion="0.42222223">
+          <folding />
         </state>
       </provider>
     </entry>

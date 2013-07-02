@@ -98,7 +98,7 @@ function init() {
 
   // Parse a GEXF encoded file to fill the graph
   // (requires "sigma.parseGexf.js" to be included)
-  sigInst.parseGexf('ngapi.gexf.php?node_id=<?php echo urlencode($selectedNodeID) ?>');
+  sigInst.parseGexf('neo4japi.gexf.php?node_id=<?php echo urlencode($selectedNodeID) ?>');
  sigInst.bind('downnodes',function(event){
     var nodes = event.content;
  });
