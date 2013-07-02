@@ -107,19 +107,22 @@ public class Importer {
 
         pregenerateSuppliers();
 
+        // TODO  regexp_replace('Thomas', '.[mN]a.', 'M') http://www.postgresql.org/docs/9.1/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP
+// TODO http://stackoverflow.com/questions/3772584/postgresql-join-using-like-ilike
 
-        // TODO pregenerate lobbying firms with their lobbyists and mark those firms that are donors
-        //pregenerateLobbyingFirms();
+        // pregenerate lobbying firms and mark those firms that are donors
+        // TODO include individual lobbyists and their previous gov represetitive data
+        pregenerateLobbyingFirms();
 
-        // TODO pregenerate lobbyist clients that are donors
-        //pregenerateLobbyingClients();
+        // pregenerate lobbyist clients that are donors
+        pregenerateLobbyingClients();
 
         agencySupplierRelationships();
 
-        // TODO donor/donation recipient relationships
+        // donor/donation recipient relationships
         donorPartyRelationships();
 
-        // TODO lobbying firm/client relationships
+        // lobbying firm/client relationships
         lobbyingFirmClientRelationships();
 
 
@@ -198,7 +201,7 @@ public class Importer {
 // instead of null as the last parameter.
 
                 inserter.createRelationship(lobbyingFirmID, lobbyingClientID,
-                        DynamicRelationshipType.withName("HIRES"), null);
+                        DynamicRelationshipType.withName("HIRES_TO_LOBBY"), null);
                 inserter.createRelationship(lobbyingClientID, lobbyingFirmID,
                         DynamicRelationshipType.withName("LOBBIES_FOR"), null);
             }
@@ -263,9 +266,9 @@ public class Importer {
                 Map<String, Object> properties = new HashMap<String, Object>();
                 properties.put("value", rs.getDouble("AmountPaid"));
                 inserter.createRelationship(partyID, donorID,
-                        DynamicRelationshipType.withName("PAYS"), properties);
+                        DynamicRelationshipType.withName("DONATES_TO"), properties);
                 inserter.createRelationship(donorID, partyID,
-                        DynamicRelationshipType.withName("PAID_BY"), properties);
+                        DynamicRelationshipType.withName("RECEIVES_DONATIONS_FROM"), properties);
             }
             // Close the result set, statement and the connection
             rs.close();
@@ -382,6 +385,79 @@ public class Importer {
         }
     }
 
+    private void pregenerateLobbyingFirms() {
+        try {
+            // Print all warnings
+            getWarnings();
+
+            // Get a statement from the connection
+            Statement stmt = conn.createStatement();
+
+
+            // pregenerate donors+lobbying firms
+
+            ResultSet rs = stmt.executeQuery("SELECT max(\"lobbyistID\") as \"lobbyistID\", min(\"business_name\"),\"DonorClientNm\",sum(\"AmountPaid\") from lobbyists inner join political_donations on \"DonorClientNm\" = \"business_name\" or \"DonorClientNm\" = \"trading_name\" group by \"DonorClientNm\" order by \"DonorClientNm\"; ");
+
+            while (rs.next()) {
+                if (donorIDs.get(rs.getString("DonorClientNm")) == null) {
+                    Map<String, Object> properties = new HashMap<String, Object>();
+                    properties.put("name", rs.getString("DonorClientNm"));
+                    properties.put("donor", "true");
+                    properties.put("lobbying_firm", "true");
+                    long donorID = inserter.createNode(properties,  donorLabel, lobbyingFirmLabel);
+                    donorIDs.put(rs.getString("DonorClientNm"), donorID);
+                    lobbyingFirmIDs.put(rs.getString("lobbyistID"), donorID);
+                    if (donorID % 100 == 0) {
+                        System.out.println("donor + lobbyist " + donorID);
+                    }
+                }
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception:");
+
+            getExceptions(se);
+        }
+    }
+    private void pregenerateLobbyingClients() {
+        try {
+            // Print all warnings
+            getWarnings();
+
+            // Get a statement from the connection
+            Statement stmt = conn.createStatement();
+
+
+            // pregenerate donors+lobbyist clients
+
+            ResultSet rs = stmt.executeQuery("SELECT max(\"lobbyistClientID\") as \"lobbyistClientID\", min(\"business_name\"),\"DonorClientNm\",sum(\"AmountPaid\") from lobbyist_clients inner join political_donations on \"DonorClientNm\" = \"business_name\" group by \"DonorClientNm\" order by \"DonorClientNm\";");
+
+            while (rs.next()) {
+                if (donorIDs.get(rs.getString("DonorClientNm")) == null) {
+                    Map<String, Object> properties = new HashMap<String, Object>();
+                    properties.put("name", rs.getString("DonorClientNm"));
+                    properties.put("donor", "true");
+                    properties.put("lobbying_client", "true");
+                    long donorID = inserter.createNode(properties,  donorLabel, lobbyingClientLabel);
+                    donorIDs.put(rs.getString("DonorClientNm"), donorID);
+                    lobbyingClientIDs.put(rs.getString("lobbyistClientID"), donorID);
+                    if (donorID % 100 == 0) {
+                        System.out.println("donor + lobbying client " + donorID);
+                    }
+                }
+            }
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception:");
+
+            getExceptions(se);
+        }
+    }
     private void getWarnings() {
         try {
             for (SQLWarning warn = conn.getWarnings(); warn != null; warn = warn.getNextWarning()) {

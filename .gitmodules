@@ -13,3 +13,6 @@
 [submodule "libs/Yaml"]
 	path = libs/Yaml
 	url = git://github.com/symfony/Yaml.git
+[submodule "libs/neo4jphp"]
+	path = libs/neo4jphp
+	url = https://github.com/jadell/neo4jphp.git
