@@ -30,14 +30,14 @@ public class Importer {
     HashMap<String, Long> supplierIDs = new HashMap<String, Long>();
     HashMap<String, Long> agencyIDs = new HashMap<String, Long>();
     HashMap<String, Long> lobbyingFirmIDs = new HashMap<String, Long>();
-    HashMap<String, Long> lobbyistClientIDs = new HashMap<String, Long>();
+    HashMap<String, Long> lobbyingClientIDs = new HashMap<String, Long>();
     HashMap<String, Long> donorIDs = new HashMap<String, Long>();
     HashMap<String, Long> partyIDs = new HashMap<String, Long>();
     Label agencyLabel = DynamicLabel.label("Agency");
     Label supplierLabel = DynamicLabel.label("Supplier");
     Label donorLabel = DynamicLabel.label("Political Donor");
     Label partyLabel = DynamicLabel.label("Political Party");
-    Label lobbyistClientLabel = DynamicLabel.label("Lobbyist Client");
+    Label lobbyingClientLabel = DynamicLabel.label("Lobbyist Client");
     Label lobbyistLabel = DynamicLabel.label("Lobbyist");
     Label lobbyingFirmLabel = DynamicLabel.label("Lobbying Firm");
     BatchInserter inserter;
@@ -99,7 +99,7 @@ public class Importer {
         inserter.createDeferredSchemaIndex(agencyLabel).on("name");
         inserter.createDeferredSchemaIndex(donorLabel).on("name");
         inserter.createDeferredSchemaIndex(partyLabel).on("name");
-        inserter.createDeferredSchemaIndex(lobbyistClientLabel).on("name");
+        inserter.createDeferredSchemaIndex(lobbyingClientLabel).on("name");
         inserter.createDeferredSchemaIndex(lobbyistLabel).on("name");
         inserter.createDeferredSchemaIndex(lobbyingFirmLabel).on("name");
 
@@ -116,11 +116,11 @@ public class Importer {
 
         agencySupplierRelationships();
 
-        //  donor/donation recipient relationships
-        //donorPartyRelationships();
+        // TODO donor/donation recipient relationships
+        donorPartyRelationships();
 
-        //  lobbying firm/client relationships
-        //lobbyingFirmClientRelationships();
+        // TODO lobbying firm/client relationships
+        lobbyingFirmClientRelationships();
 
 
 //make the changes visible for reading, use this sparsely, requires IO!
@@ -128,134 +128,154 @@ public class Importer {
 
 // Make sure to shut down the index provider
 //        indexProvider.shutdown();
-dbClose();
+        dbClose();
         inserter.shutdown();
     }
-           private void dbClose() {
-               try {
-                   // Print all warnings
-                   getWarnings();
 
-                   conn.close();
-               } catch (SQLException se) {
-                   System.out.println("SQL Exception:");
+    private void dbClose() {
+        try {
+            // Print all warnings
+            getWarnings();
 
-                   getExceptions(se);
-               }
-           }
-    private void lobbyingFirmClientRelationships() {
-     /*           '
-            SELECT *, abn as lobbyist_abn
-            FROM lobbyists
-            INNER JOIN lobbyist_relationships ON lobbyists. "lobbyistID" = lobbyist_relationships. "lobbyistID"
-            WHERE "lobbyistClientID" =?;
-            '
+            conn.close();
+        } catch (SQLException se) {
+            System.out.println("SQL Exception:");
 
-
-            ResultSet rs = stmt.executeQuery("SELECT contractnotice.\"agencyName\", "
-                    + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END) as supplierID , max(contractnotice.\"supplierName\") as \"supplierName\",sum(value) as sum "
-                    + "FROM  public.contractnotice  GROUP BY contractnotice.\"agencyName\", "
-                    + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END)");
-
-
-            // Loop through the result set
-            while (rs.next()) {
-                long supplierID, agencyID;
-                String supplierKey;
-                if (agencyIDs.get(rs.getString("agencyName")) == null) {
-                    Map<String, Object> properties = new HashMap<String, Object>();
-                    properties.put("name", rs.getString("agencyName"));
-                    properties.put("agency", rs.getString("true"));
-                    agencyID = inserter.createNode(properties, agencyLabel);
-                    agencyIDs.put(rs.getString("agencyName"), agencyID);
-                    if (agencyID % 10 == 0) {
-                        System.out.println("Agency " + agencyID);
-                    }
-                }
-                agencyID = agencyIDs.get(rs.getString("agencyName"));
-
-
-                // inject some data
-                if (supplierIDs.get(rs.getString("supplierID")) == null) {
-                    Map<String, Object> properties = new HashMap<String, Object>();
-                    properties.put("name", rs.getString("supplierName"));
-                    properties.put("supplier", rs.getString("true"));
-                    supplierID = inserter.createNode(properties, supplierLabel);
-                    supplierIDs.put(rs.getString("supplierID"), supplierID);
-                    if (supplierID % 1000 == 0) {
-                        System.out.println("Supplier " + supplierID);
-                    }
-                }
-                supplierID = supplierIDs.get(rs.getString("supplierID"));
-
-
-// To set properties on the relationship, use a properties map
-// instead of null as the last parameter.
-                Map<String, Object> properties = new HashMap<String, Object>();
-                properties.put("value", rs.getDouble("sum"));
-                inserter.createRelationship(agencyID, supplierID,
-                        DynamicRelationshipType.withName("PAYS"), properties);
-                inserter.createRelationship(supplierID, agencyID,
-                        DynamicRelationshipType.withName("PAID_BY"), properties);
-            }
-            // Close the result set, statement and the connection
-            rs.close();*/
+            getExceptions(se);
+        }
     }
 
-    private void donorPartyRelationships() {
-           /*'select "DonorClientNm",max("RecipientClientNm") as "RecipientClientNm",
-            max("DonationDt") as "DonationDt", sum("AmountPaid") as "AmountPaid" from political_donations where
-            "RecipientClientNm"
-            LIKE ? group by "DonorClientNm" order by "DonorClientNm" desc '
+    private void lobbyingFirmClientRelationships() {
 
-            ResultSet rs = stmt.executeQuery("SELECT contractnotice.\"agencyName\", "
-                    + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END) as supplierID , max(contractnotice.\"supplierName\") as \"supplierName\",sum(value) as sum "
-                    + "FROM  public.contractnotice  GROUP BY contractnotice.\"agencyName\", "
-                    + " (case when \"supplierABN\" != 0 THEN \"supplierABN\"::text ELSE \"supplierName\" END)");
+        try {
+            // Print all warnings
+            getWarnings();
+
+            // Get a statement from the connection
+        Statement stmt = conn.createStatement();
+
+
+
+            ResultSet rs = stmt.executeQuery("SELECT lobbyists.\"lobbyistID\" as \"lobbyistID\", lobbyists.business_name as lobbyist_business_name, lobbyist_clients.\"lobbyistClientID\" as \"lobbyistClientID\", lobbyist_clients.business_name as client_business_name \n" +
+                    "            FROM lobbyists\n" +
+                    "            INNER JOIN lobbyist_relationships ON lobbyists. \"lobbyistID\" = lobbyist_relationships. \"lobbyistID\" \n" +
+                    "INNER JOIN lobbyist_clients on lobbyist_relationships. \"lobbyistClientID\" = lobbyist_clients. \"lobbyistClientID\"\n" +
+                    " where lobbyists.\"lobbyistID\" != 0");
 
 
             // Loop through the result set
             while (rs.next()) {
-                long supplierID, agencyID;
-                String supplierKey;
-                if (agencyIDs.get(rs.getString("agencyName")) == null) {
+                long lobbyingClientID, lobbyingFirmID;
+                String lobbyingClientKey;
+                if (lobbyingFirmIDs.get(rs.getString("lobbyistID")) == null) {
                     Map<String, Object> properties = new HashMap<String, Object>();
-                    properties.put("name", rs.getString("agencyName"));
-                    properties.put("agency", rs.getString("true"));
-                    agencyID = inserter.createNode(properties, agencyLabel);
-                    agencyIDs.put(rs.getString("agencyName"), agencyID);
-                    if (agencyID % 10 == 0) {
-                        System.out.println("Agency " + agencyID);
+                    properties.put("name", rs.getString("lobbyist_business_name"));
+                    properties.put("lobbyingFirm", "true");
+                    lobbyingFirmID = inserter.createNode(properties, lobbyingFirmLabel);
+                    lobbyingFirmIDs.put(rs.getString("lobbyistID"), lobbyingFirmID);
+                    if (lobbyingFirmID % 100 == 0) {
+                        System.out.println("lobbying Firm " + lobbyingFirmID);
                     }
                 }
-                agencyID = agencyIDs.get(rs.getString("agencyName"));
+                lobbyingFirmID = lobbyingFirmIDs.get(rs.getString("lobbyistID"));
 
 
                 // inject some data
-                if (supplierIDs.get(rs.getString("supplierID")) == null) {
+                if (lobbyingClientIDs.get(rs.getString("lobbyistClientID")) == null) {
                     Map<String, Object> properties = new HashMap<String, Object>();
-                    properties.put("name", rs.getString("supplierName"));
-                    properties.put("supplier", rs.getString("true"));
-                    supplierID = inserter.createNode(properties, supplierLabel);
-                    supplierIDs.put(rs.getString("supplierID"), supplierID);
-                    if (supplierID % 1000 == 0) {
-                        System.out.println("Supplier " + supplierID);
+                    properties.put("name", rs.getString("client_business_name"));
+                    properties.put("lobbyingClient", "true");
+                    lobbyingClientID = inserter.createNode(properties, lobbyingClientLabel);
+                    lobbyingClientIDs.put(rs.getString("lobbyistClientID"), lobbyingClientID);
+                    if (lobbyingClientID % 1000 == 0) {
+                        System.out.println("Lobbying Client " + lobbyingClientID);
                     }
                 }
-                supplierID = supplierIDs.get(rs.getString("supplierID"));
+                lobbyingClientID = lobbyingClientIDs.get(rs.getString("lobbyistClientID"));
+
+
+// To set properties on the relationship, use a properties map
+// instead of null as the last parameter.
+
+                inserter.createRelationship(lobbyingFirmID, lobbyingClientID,
+                        DynamicRelationshipType.withName("HIRES"), null);
+                inserter.createRelationship(lobbyingClientID, lobbyingFirmID,
+                        DynamicRelationshipType.withName("LOBBIES_FOR"), null);
+            }
+
+            // Close the result set, statement and the connection
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception:");
+
+            getExceptions(se);
+        }
+    }
+
+
+    private void donorPartyRelationships() {
+        try {
+            // Print all warnings
+            getWarnings();
+
+            // Get a statement from the connection
+        Statement stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery("select \"DonorClientNm\",max(\"RecipientClientNm\") as \"RecipientClientNm\"," +
+                    "             sum(\"AmountPaid\") as \"AmountPaid\" from political_donations group by \"DonorClientNm\" order by \"DonorClientNm\" desc");
+
+
+            // Loop through the result set
+            while (rs.next()) {
+                long donorID, partyID;
+
+                if (partyIDs.get(rs.getString("RecipientClientNm")) == null) {
+                    Map<String, Object> properties = new HashMap<String, Object>();
+                    properties.put("name", rs.getString("RecipientClientNm"));
+                    properties.put("political_party", "true");
+                    partyID = inserter.createNode(properties, partyLabel);
+                    partyIDs.put(rs.getString("RecipientClientNm"), partyID);
+                    if (partyID % 10 == 0) {
+                        System.out.println("Party " + partyID);
+                    }
+                }
+                partyID = partyIDs.get(rs.getString("RecipientClientNm"));
+
+
+                // inject some data
+                if (donorIDs.get(rs.getString("DonorClientNm")) == null) {
+                    Map<String, Object> properties = new HashMap<String, Object>();
+                    properties.put("name", rs.getString("DonorClientNm"));
+                    properties.put("donor", "true");
+                    donorID = inserter.createNode(properties, donorLabel);
+                    donorIDs.put(rs.getString("DonorClientNm"), donorID);
+                    if (donorID % 100 == 0) {
+                        System.out.println("Donor " + donorID);
+                    }
+                }
+                donorID = donorIDs.get(rs.getString("DonorClientNm"));
 
 
 // To set properties on the relationship, use a properties map
 // instead of null as the last parameter.
                 Map<String, Object> properties = new HashMap<String, Object>();
-                properties.put("value", rs.getDouble("sum"));
-                inserter.createRelationship(agencyID, supplierID,
+                properties.put("value", rs.getDouble("AmountPaid"));
+                inserter.createRelationship(partyID, donorID,
                         DynamicRelationshipType.withName("PAYS"), properties);
-                inserter.createRelationship(supplierID, agencyID,
+                inserter.createRelationship(donorID, partyID,
                         DynamicRelationshipType.withName("PAID_BY"), properties);
             }
             // Close the result set, statement and the connection
-            rs.close();*/
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception:");
+
+            getExceptions(se);
+        }
     }
 
     private void agencySupplierRelationships() {
@@ -322,7 +342,7 @@ dbClose();
             Statement stmt = conn.createStatement();
 
 
-            // TODO pregenerate suppliers and mark those that are donors/lobbyist clients
+            // pregenerate suppliers and mark those that are donors/lobbyist clients
 
             ResultSet rs = stmt.executeQuery("SELECT min(\"supplierName\") as \"supplierName\",max(\"supplierABN\") as \"supplierABN\",\"lobbyistClientID\" from contractnotice inner join lobbyist_clients on  \"supplierABN\" = \"ABN\"  where \"supplierABN\" is not null group by \"lobbyistClientID\"");
             // TODO include alias lobbyist client names
@@ -330,16 +350,30 @@ dbClose();
             while (rs.next()) {
                 long supplierID = getOrCreateSupplier(rs.getString("supplierName"), rs.getString("supplierABN"));
 
-                inserter.setNodeLabels(supplierID, supplierLabel, lobbyistClientLabel); // http://api.neo4j.org/2.0.0-M03/org/neo4j/unsafe/batchinsert/BatchInserter.html#setNodeLabels(long, org.neo4j.graphdb.Label...)
+                inserter.setNodeLabels(supplierID, supplierLabel, lobbyingClientLabel); // http://api.neo4j.org/2.0.0-M03/org/neo4j/unsafe/batchinsert/BatchInserter.html#setNodeLabels(long, org.neo4j.graphdb.Label...)
                 inserter.setNodeProperty(supplierID, "lobbyistclient", "true");
-                lobbyistClientIDs.put(rs.getString("lobbyistClientID"), supplierID);
+                lobbyingClientIDs.put(rs.getString("lobbyistClientID"), supplierID);
+
+            }
+            rs.close();
+
+            // pregenerate suppliers that are also political donors
+            rs = stmt.executeQuery("SELECT min(\"supplierName\") as \"supplierName\",max(\"supplierABN\") as \"supplierABN\"," +
+                    "\"DonorClientNm\",sum(\"AmountPaid\") from contractnotice inner join political_donations on \"DonorClientNm\" = \"supplierName\" group by \"DonorClientNm\" order by \"DonorClientNm\"");
+
+            while (rs.next()) {
+                long supplierID = getOrCreateSupplier(rs.getString("supplierName"), (rs.getString("supplierABN") != null ? rs.getString("supplierABN") : rs.getString("supplierName")));
+                if (inserter.nodeHasLabel(supplierID, lobbyingClientLabel)) {
+                    inserter.setNodeLabels(supplierID, supplierLabel, donorLabel, lobbyingClientLabel);
+                } else {
+                    inserter.setNodeLabels(supplierID, supplierLabel, donorLabel);
+                }
+                inserter.setNodeProperty(supplierID, "donor", "true");
+                donorIDs.put(rs.getString("DonorClientNm"), supplierID);
 
             }
             rs.close();
             stmt.close();
-
-            //SELECT DISTINCT "supplierABN" from contractnotice,  (select max("DonorClientNm"),"RecipientClientNm",sum("AmountPaid") as "AmountPaid"
-            //from political_donations group by "RecipientClientNm" order by "RecipientClientNm" desc) donors where "supplierABN" is not null limit 10
 
         } catch (SQLException se) {
             System.out.println("SQL Exception:");
@@ -350,12 +384,12 @@ dbClose();
 
     private void getWarnings() {
         try {
-        for (SQLWarning warn = conn.getWarnings(); warn != null; warn = warn.getNextWarning()) {
-            System.out.println("SQL Warning:");
-            System.out.println("State  : " + warn.getSQLState());
-            System.out.println("Message: " + warn.getMessage());
-            System.out.println("Error  : " + warn.getErrorCode());
-        }
+            for (SQLWarning warn = conn.getWarnings(); warn != null; warn = warn.getNextWarning()) {
+                System.out.println("SQL Warning:");
+                System.out.println("State  : " + warn.getSQLState());
+                System.out.println("Message: " + warn.getMessage());
+                System.out.println("Error  : " + warn.getErrorCode());
+            }
         } catch (SQLException se) {
             System.out.println("SQL Exception:");
 
@@ -381,7 +415,7 @@ dbClose();
             properties.put("supplier", "true");
             long supplierID = inserter.createNode(properties, supplierLabel);
             supplierIDs.put(id, supplierID);
-            if (supplierID % 1000 == 0) {
+            if (supplierID % 100 == 0) {
                 System.out.println("Supplier " + supplierID);
             }
             return supplierID;
