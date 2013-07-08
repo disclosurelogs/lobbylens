@@ -4,10 +4,10 @@ date_default_timezone_set("Australia/ACT");
 // common libs
 require_once "dbconn.php";
 require_once "wordcloud.php";
-require "amon-php/amon.php";
+/*require "amon-php/amon.php";
 Amon::config(array('address'=> 'http://127.0.0.1:2464', 
 		'protocol' => 'http', 
-		'secret_key' => "GNLu8aqN7aXxoh8JoDGJjqeScAXd6L8Zq4sjixmVwLo"));
+		'secret_key' => "GNLu8aqN7aXxoh8JoDGJjqeScAXd6L8Zq4sjixmVwLo"));*/
 //Amon::setup_exception_handler();
 
 function ucsmart($str) {

@@ -46,7 +46,8 @@ $nodeID = (isset($_REQUEST['node_id']) ? $_REQUEST['node_id'] : "");
 } */
 
 // Connecting to the default port 7474 on localhost
-$client = new Everyman\Neo4j\Client();
+//$client = new Everyman\Neo4j\Client();
+$client = new Everyman\Neo4j\Client('192.168.1.127');
 //print_r($client->getServerInfo());
 
 //https://github.com/jadell/neo4jphp/wiki/Caching
@@ -59,18 +60,28 @@ $memcached->addServer('localhost', 11211);
 $plugin = new Everyman\Neo4j\Cache\Memcached($memcached);
 $client->getEntityCache()->setCache($plugin);*/
 
-$character = $client->getNode(100);
-add_node($character->getId(), $character->getProperty("name"));
+$requests = Array(
+    Array("type" => "node", id=>"100", "options" => Array()),
+    Array("type" => "node", id=>"101", "options" => Array()),
+   // Array("type" => "path", from=>"1234", to=>"4321","options" => Array())
+);
+foreach ($requests as $request) {
+    if ($request['type'] == 'node') {
+        $character = $client->getNode($request['id']);
+        add_node($character->getId(), $character->getProperty("name"));
 
-foreach ($character->getProperties() as $key => $value) {
-   // echo "$key: $value\n";
+        foreach ($character->getProperties() as $key => $value) {
+            // echo "$key: $value\n";
+        }
+        foreach ($character->getRelationships() as $rel) {
+            //echo($rel->getStartNode()->getId()." -> ".$rel->getEndNode()->getId()."<br>");
+            add_edge($rel->getStartNode()->getId(),$rel->getEndNode()->getId());
+            add_node($rel->getStartNode()->getId(), $rel->getStartNode()->getProperty("name"));
+            add_node($rel->getEndNode()->getId(), $rel->getEndNode()->getProperty("name"));
+        }
+    }
 }
-foreach ($character->getRelationships() as $rel) {
-    //echo($rel->getStartNode()->getId()." -> ".$rel->getEndNode()->getId()."<br>");
-    add_edge($rel->getStartNode()->getId(),$rel->getEndNode()->getId());
-    add_node($rel->getStartNode()->getId(), $rel->getStartNode()->getProperty("name"));
-    add_node($rel->getEndNode()->getId(), $rel->getEndNode()->getProperty("name"));
-}
+
 
 // https://github.com/jadell/neo4jphp/wiki/Paths
 
