@@ -2,6 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/js/sigma" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/OrientDB-PHP" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/Yaml" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/amon-php" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/neo4jphp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/orient" vcs="Git" />
   </component>
 </project>
 

@@ -1,29 +1,13 @@
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.Statement;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
-import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.DynamicLabel;
 import org.neo4j.graphdb.DynamicRelationshipType;
-import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Label;
-import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.RelationshipType;
-import org.neo4j.helpers.collection.MapUtil;
 import org.neo4j.unsafe.batchinsert.BatchInserter;
 import org.neo4j.unsafe.batchinsert.BatchInserters;
+
+import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Importer {
     Connection conn = null;
@@ -32,11 +16,13 @@ public class Importer {
     HashMap<String, Long> agencyIDs = new HashMap<String, Long>();
     HashMap<String, Long> lobbyingFirmIDs = new HashMap<String, Long>();
     HashMap<String, Long> lobbyingClientIDs = new HashMap<String, Long>();
+    HashMap<String, Long> donationRecipientIDs = new HashMap<String, Long>();
     HashMap<String, Long> donorIDs = new HashMap<String, Long>();
     HashMap<String, Long> partyIDs = new HashMap<String, Long>();
     Label agencyLabel = DynamicLabel.label("Agency");
     Label supplierLabel = DynamicLabel.label("Supplier");
     Label donorLabel = DynamicLabel.label("Political Donor");
+    Label donationRecipientLabel = DynamicLabel.label("Political Party");
     Label partyLabel = DynamicLabel.label("Political Party");
     Label lobbyingClientLabel = DynamicLabel.label("Lobbyist Client");
     Label lobbyistLabel = DynamicLabel.label("Lobbyist");
@@ -94,7 +80,7 @@ public class Importer {
             "(ACT/NSW Bra",
             "(SA/NT)",
             ", WA Branch",
-            "- a coalition of professional associations and firms"}, "|"), "(", "\\("), ")", "\\)"), ".", "\\.") ;
+            "- a coalition of professional associations and firms"}, "|"), "(", "\\("), ")", "\\)"), ".", "\\.");
 
     public static void main(String[] argv) {
         Importer i = new Importer();
@@ -146,9 +132,10 @@ public class Importer {
     {
         Map<String, String> config = new HashMap<String, String>();
         config.put("neostore.nodestore.db.mapped_memory", "90M");
-        inserter = BatchInserters.inserter("target/batchinserter-example-confi", config);
+        inserter = BatchInserters.inserter("target/batchinserter-example-config", config);
         inserter.createDeferredSchemaIndex(agencyLabel).on("name");
         inserter.createDeferredSchemaIndex(donorLabel).on("name");
+        inserter.createDeferredSchemaIndex(donationRecipientLabel).on("name");
         inserter.createDeferredSchemaIndex(partyLabel).on("name");
         inserter.createDeferredSchemaIndex(lobbyingClientLabel).on("name");
         inserter.createDeferredSchemaIndex(lobbyistLabel).on("name");
@@ -171,8 +158,8 @@ public class Importer {
 
         agencySupplierRelationships();
 
-        // donor/donation recipient relationships
-        donorPartyRelationships();
+        // donor/donation recipient/party relationships
+        donorRecipientPartyRelationships();
 
         // lobbying firm/client relationships
         lobbyingFirmClientRelationships();
@@ -201,8 +188,7 @@ public class Importer {
             getWarnings();
 
             // Get a statement from the connection
-        Statement stmt = conn.createStatement();
-
+            Statement stmt = conn.createStatement();
 
 
             ResultSet rs = stmt.executeQuery("SELECT lobbyists.\"lobbyistID\" as \"lobbyistID\", lobbyists.business_name as lobbyist_business_name, lobbyist_clients.\"lobbyistClientID\" as \"lobbyistClientID\", lobbyist_clients.business_name as client_business_name \n" +
@@ -264,37 +250,53 @@ public class Importer {
     }
 
 
-    private void donorPartyRelationships() {
+    private void donorRecipientPartyRelationships() {
         try {
             // Print all warnings
             getWarnings();
 
             // Get a statement from the connection
-        Statement stmt = conn.createStatement();
-                 // select sum("AmountPaid"), party from political_donations inner join donation_recipient_to_party on political_donations."RecipientClientNm" = donation_recipient_to_party."RecipientClientNm" group by party
+            Statement stmt = conn.createStatement();
+            // select sum("AmountPaid"), party from political_donations inner join donation_recipient_to_party on political_donations."RecipientClientNm" = donation_recipient_to_party."RecipientClientNm" group by party
 
             //select sum("AmountPaid"), political_donations."RecipientClientNm" from political_donations inner join donation_recipient_to_party on political_donations."RecipientClientNm" = donation_recipient_to_party."RecipientClientNm" where party is null group by political_donations."RecipientClientNm";
 
-            ResultSet rs = stmt.executeQuery("select \"DonorClientNm\",max(\"RecipientClientNm\") as \"RecipientClientNm\"," +
-                    "             sum(\"AmountPaid\") as \"AmountPaid\" from political_donations group by \"DonorClientNm\" order by \"DonorClientNm\" desc");
+            ResultSet rs = stmt.executeQuery("select \"DonorClientNm\",political_donations.\"RecipientClientNm\", max(party) as party," +
+                    "             sum(\"AmountPaid\") as \"AmountPaid\" from political_donations" +
+                    " inner join donation_recipient_to_party on political_donations.\"RecipientClientNm\" = donation_recipient_to_party.\"RecipientClientNm\"" +
+                    " group by \"DonorClientNm\", political_donations.\"RecipientClientNm\" order by \"DonorClientNm\" desc");
 
 
             // Loop through the result set
             while (rs.next()) {
-                long donorID, partyID;
+                long donorID, donationRecipientID, partyID;
+                partyID = -1;
+                if (rs.getString("party") != null)     {
+                    if (partyIDs.get(rs.getString("party")) == null) {
+                        Map<String, Object> properties = new HashMap<String, Object>();
+                        properties.put("name", rs.getString("party"));
+                        properties.put("political_party", "true");
+                        partyID = inserter.createNode(properties, partyLabel);
+                        partyIDs.put(rs.getString("party"), partyID);
+                        if (partyID % 10 == 0) {
+                            System.out.println("Party " + partyID);
+                        }
+                        partyID = partyIDs.get(rs.getString("party"));
+                    }
+            }
 
-                if (partyIDs.get(rs.getString("RecipientClientNm")) == null) {
+
+                if (donationRecipientIDs.get(rs.getString("RecipientClientNm")) == null) {
                     Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("RecipientClientNm"));
-                    properties.put("political_party", "true");
-                    partyID = inserter.createNode(properties, partyLabel);
-                    partyIDs.put(rs.getString("RecipientClientNm"), partyID);
-                    if (partyID % 10 == 0) {
-                        System.out.println("Party " + partyID);
+                    properties.put("political_donation_recipient", "true");
+                    donationRecipientID = inserter.createNode(properties, donationRecipientLabel);
+                    donationRecipientIDs.put(rs.getString("RecipientClientNm"), donationRecipientID);
+                    if (donationRecipientID % 10 == 0) {
+                        System.out.println("donationRecipient " + donationRecipientID);
                     }
                 }
-                partyID = partyIDs.get(rs.getString("RecipientClientNm"));
-
+                donationRecipientID = donationRecipientIDs.get(rs.getString("RecipientClientNm"));
 
                 // inject some data
                 if (donorIDs.get(rs.getString("DonorClientNm")) == null) {
@@ -314,10 +316,21 @@ public class Importer {
 // instead of null as the last parameter.
                 Map<String, Object> properties = new HashMap<String, Object>();
                 properties.put("value", rs.getDouble("AmountPaid"));
-                inserter.createRelationship(partyID, donorID,
+                if (partyID != -1) {
+                    inserter.createRelationship(partyID, donorID,
+                            DynamicRelationshipType.withName("DONATES_TO"), properties);
+                    inserter.createRelationship(donorID, partyID,
+                            DynamicRelationshipType.withName("RECEIVES_DONATIONS_FROM"), properties);
+                    inserter.createRelationship(donationRecipientID, partyID,
+                            DynamicRelationshipType.withName("ASSOCIATED_WITH"), properties);
+                    inserter.createRelationship(partyID, donationRecipientID,
+                            DynamicRelationshipType.withName("ASSOCIATED_WITH"), properties);
+                }
+                inserter.createRelationship(donationRecipientID, donorID,
                         DynamicRelationshipType.withName("DONATES_TO"), properties);
-                inserter.createRelationship(donorID, partyID,
+                inserter.createRelationship(donorID, donationRecipientID,
                         DynamicRelationshipType.withName("RECEIVES_DONATIONS_FROM"), properties);
+
             }
             // Close the result set, statement and the connection
             rs.close();
@@ -453,7 +466,7 @@ public class Importer {
                     properties.put("name", rs.getString("DonorClientNm"));
                     properties.put("donor", "true");
                     properties.put("lobbying_firm", "true");
-                    long donorID = inserter.createNode(properties,  donorLabel, lobbyingFirmLabel);
+                    long donorID = inserter.createNode(properties, donorLabel, lobbyingFirmLabel);
                     donorIDs.put(rs.getString("DonorClientNm"), donorID);
                     lobbyingFirmIDs.put(rs.getString("lobbyistID"), donorID);
                     if (donorID % 100 == 0) {
@@ -471,6 +484,7 @@ public class Importer {
             getExceptions(se);
         }
     }
+
     private void pregenerateLobbyingClients() {
         try {
             // Print all warnings
@@ -490,7 +504,7 @@ public class Importer {
                     properties.put("name", rs.getString("DonorClientNm"));
                     properties.put("donor", "true");
                     properties.put("lobbying_client", "true");
-                    long donorID = inserter.createNode(properties,  donorLabel, lobbyingClientLabel);
+                    long donorID = inserter.createNode(properties, donorLabel, lobbyingClientLabel);
                     donorIDs.put(rs.getString("DonorClientNm"), donorID);
                     lobbyingClientIDs.put(rs.getString("lobbyistClientID"), donorID);
                     if (donorID % 100 == 0) {
@@ -507,10 +521,14 @@ public class Importer {
             getExceptions(se);
         }
     }
+
     private void getWarnings() {
         try {
             for (SQLWarning warn = conn.getWarnings(); warn != null; warn = warn.getNextWarning()) {
                 System.out.println("SQL Warning:");
+                StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+                StackTraceElement e = stacktrace[2];//maybe this number needs to be corrected
+                System.out.println("Calling method  : " + e.getMethodName());
                 System.out.println("State  : " + warn.getSQLState());
                 System.out.println("Message: " + warn.getMessage());
                 System.out.println("Error  : " + warn.getErrorCode());
@@ -525,6 +543,9 @@ public class Importer {
     private void getExceptions(SQLException se) {
         // Loop through the SQL Exceptions
         while (se != null) {
+            StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+            StackTraceElement e = stacktrace[2];//maybe this number needs to be corrected
+            System.out.println("Calling method  : " + e.getMethodName());
             System.out.println("State  : " + se.getSQLState());
             System.out.println("Message: " + se.getMessage());
             System.out.println("Error  : " + se.getErrorCode());
