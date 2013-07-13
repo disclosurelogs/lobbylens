@@ -13,6 +13,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.DynamicLabel;
 import org.neo4j.graphdb.DynamicRelationshipType;
@@ -41,6 +42,59 @@ public class Importer {
     Label lobbyistLabel = DynamicLabel.label("Lobbyist");
     Label lobbyingFirmLabel = DynamicLabel.label("Lobbying Firm");
     BatchInserter inserter;
+
+    String cleanseRegex = StringUtils.replace(StringUtils.replace(StringUtils.replace(StringUtils.join(new String[]{
+            "Ltd",
+            "Limited",
+            "Australiasia",
+            "The ",
+            "(NSW)",
+            "(QLD)",
+            "Pty",
+            "Ltd",
+            "Aust.",
+            "(NSW/ACT)",
+            "Aust ",
+            "(Aus)",
+            "(Inc)",
+            "(WA)",
+            "(Southern Region)",
+            "Contractors",
+            "P/L",
+            "(N.S.W.)",
+            "(SA Branch)",
+            "NSW",
+            "Inc.",
+            "Inc",
+            "Incorporated",
+            "SA Branch",
+            "ACT",
+            "QLD",
+            ", SA",
+            " WA",
+            "- QLD Services Branch",
+            "- Central and Southern Q",
+            "- SA and NT Branch",
+            "- TAS",
+            "NSW & ACT Services Branch",
+            "SA-NT Branch",
+            "- National Office",
+            "- Victoria Branch",
+            "- National",
+            "- Victoria Branch",
+            "(Greater SA)",
+            "(SA)",
+            "(VIC)",
+            "Hornibrook",
+            "- NATIONAL",
+            ". .",
+            "(IAG)",
+            "(NSW Div)",
+            "(Queensland Branch)",
+            "(ACT/NSW Bra",
+            "(SA/NT)",
+            ", WA Branch",
+            "- a coalition of professional associations and firms"}, "|"), "(", "\\("), ")", "\\)"), ".", "\\.") ;
 
     public static void main(String[] argv) {
         Importer i = new Importer();
@@ -92,10 +146,7 @@ public class Importer {
     {
         Map<String, String> config = new HashMap<String, String>();
         config.put("neostore.nodestore.db.mapped_memory", "90M");
-        inserter = BatchInserters.inserter("target/batchinserter-example-config", config);
-        //BatchInserterIndexProvider indexProvider = new LuceneBatchInserterIndexProvider(inserter);
-        //BatchInserterIndex names = indexProvider.nodeIndex("names", MapUtil.stringMap("type", "exact"));
-        //names.setCacheCapacity("name", 100000);
+        inserter = BatchInserters.inserter("target/batchinserter-example-confi", config);
         inserter.createDeferredSchemaIndex(agencyLabel).on("name");
         inserter.createDeferredSchemaIndex(donorLabel).on("name");
         inserter.createDeferredSchemaIndex(partyLabel).on("name");
@@ -104,10 +155,11 @@ public class Importer {
         inserter.createDeferredSchemaIndex(lobbyingFirmLabel).on("name");
 
         dbSetup();
-
+        System.out.println(cleanseRegex);
         pregenerateSuppliers();
 
         // TODO  regexp_replace('Thomas', '.[mN]a.', 'M') http://www.postgresql.org/docs/9.1/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP
+
 // TODO http://stackoverflow.com/questions/3772584/postgresql-join-using-like-ilike
 
         // pregenerate lobbying firms and mark those firms that are donors
@@ -125,12 +177,6 @@ public class Importer {
         // lobbying firm/client relationships
         lobbyingFirmClientRelationships();
 
-
-//make the changes visible for reading, use this sparsely, requires IO!
-//        names.flush();
-
-// Make sure to shut down the index provider
-//        indexProvider.shutdown();
         dbClose();
         inserter.shutdown();
     }
@@ -225,6 +271,9 @@ public class Importer {
 
             // Get a statement from the connection
         Statement stmt = conn.createStatement();
+                 // select sum("AmountPaid"), party from political_donations inner join donation_recipient_to_party on political_donations."RecipientClientNm" = donation_recipient_to_party."RecipientClientNm" group by party
+
+            //select sum("AmountPaid"), political_donations."RecipientClientNm" from political_donations inner join donation_recipient_to_party on political_donations."RecipientClientNm" = donation_recipient_to_party."RecipientClientNm" where party is null group by political_donations."RecipientClientNm";
 
             ResultSet rs = stmt.executeQuery("select \"DonorClientNm\",max(\"RecipientClientNm\") as \"RecipientClientNm\"," +
                     "             sum(\"AmountPaid\") as \"AmountPaid\" from political_donations group by \"DonorClientNm\" order by \"DonorClientNm\" desc");
