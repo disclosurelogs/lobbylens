@@ -46,8 +46,8 @@ $nodeID = (isset($_REQUEST['node_id']) ? $_REQUEST['node_id'] : "");
 } */
 
 // Connecting to the default port 7474 on localhost
-//$client = new Everyman\Neo4j\Client();
-$client = new Everyman\Neo4j\Client('192.168.1.127');
+$client = new Everyman\Neo4j\Client();
+//$client = new Everyman\Neo4j\Client('192.168.1.127');
 //print_r($client->getServerInfo());
 
 //https://github.com/jadell/neo4jphp/wiki/Caching

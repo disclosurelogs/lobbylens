@@ -11,22 +11,22 @@ ORDER BY random() LIMIT 1; ');
     $result = $agencies->fetch(PDO::FETCH_ASSOC);
     $selectedNodeID = 'agency-' . $result['agencyName'];
 }
-$xml = file_get_contents(local_url() . "ngapi.xml.php?node_id=" . urlencode(stripslashes($selectedNodeID)));
+$xml = file_get_contents(local_url() . "neo4japi.gexf.php?ids=" . urlencode(stripslashes($selectedNodeID)));
 $graph = new SimpleXMLElement($xml);
-$name = $graph->xpath('//name');
+$name = $graph->xpath("//*[name()='node'][1]");
 
-include_header($name[0]);
+include_header($name['label']);
 
-echo "<!--". local_url() . "ngapi.xml.php?node_id=" . urlencode(stripslashes($selectedNodeID)) . "-->";
+echo "<!--". local_url() . "neo4japi.gexf.php?ids=" . urlencode(stripslashes($selectedNodeID)) . "-->";
 echo '<p>Click on nodes to expand the network, hover over nodes, or lines joining nodes, to display more 
 information.</p>';
 echo '<div class="msg_list">
 <p class="msg_head">';
-echo $name[0];
+echo $name['label'];
 echo ' </p>
 <div class="msg_body"><ul>';
 $nodes = Array();
-foreach ($graph->xpath('//node') as $node) {
+foreach ($graph->xpath("//*[name()='node']") as $node) {
     $id = (string) $node['id'];
     if (strstr($id, "donor-"))
         continue;
@@ -39,10 +39,10 @@ foreach ($graph->xpath('//node') as $node) {
         }
     }
 }
-foreach ($graph->xpath('//edge') as $edge) {
-    $message = $edge['tooltip'];
-    $message = str_replace($nodes[(string) $edge['head_node_id']], '<a href="?node_id=' . (string) $edge['head_node_id'] . '">' . htmlspecialchars($nodes[(string) $edge['head_node_id']]) . "</a>", $message);
-    $message = str_replace($nodes[(string) $edge['tail_node_id']], '<a href="?node_id=' . (string) $edge['tail_node_id'] . '">' . htmlspecialchars($nodes[(string) $edge['tail_node_id']]) . "</a>", $message);
+foreach ($graph->xpath("//*[name()='edge']") as $edge) {
+    //$message = $edge['tooltip'];
+    $message = '<a href="?node_id=' . (string) $edge['source'] . '">' . htmlspecialchars($nodes[(string) $edge['source']]) . "</a> ->";
+    $message .= '<a href="?node_id=' . (string) $edge['target'] . '">' . htmlspecialchars($nodes[(string) $edge['target']]) . "</a>";
     echo "<li>$message</li>";
 }
 echo '</ul>
@@ -98,7 +98,7 @@ function init() {
 
   // Parse a GEXF encoded file to fill the graph
   // (requires "sigma.parseGexf.js" to be included)
-  sigInst.parseGexf('neo4japi.gexf.php?node_id=<?php echo urlencode($selectedNodeID) ?>');
+  sigInst.parseGexf('neo4japi.gexf.php?ids=<?php echo urlencode($selectedNodeID) ?>');
  sigInst.bind('downnodes',function(event){
     var nodes = event.content;
  });
