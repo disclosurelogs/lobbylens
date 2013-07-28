@@ -91,15 +91,26 @@ function searchName($input) {
 }
 
 function cleanseName($input) {
-    $cleanseNames = Array(
+    $cleanseNamesCorp = Array(
         "Ltd",
         "Limited",
         "Australiasia",
         "The ",
-        "(NSW)",
-        "(QLD)",
         "Pty",
         "Ltd",
+        "Contractors",
+        "P/L",
+        "Inc.",
+        "Inc",
+        "Incorporated",
+        "Hornibrook",
+        ". .",
+        "(IAG)",
+        "- a coalition of professional associations and firms"
+    );
+    $cleanseNamesPolitical = Array(
+        "(NSW)",
+        "(QLD)",
         "Aust.",
         "(NSW/ACT)",
         "Aust ",
@@ -107,14 +118,9 @@ function cleanseName($input) {
         "(Inc)",
         "(WA)",
         "(Southern Region)",
-        "Contractors",
-        "P/L",
         "(N.S.W.)",
         "(SA Branch)",
         "NSW",
-        "Inc.",
-        "Inc",
-        "Incorporated",
         "SA Branch",
         "ACT",
         "QLD",
@@ -133,7 +139,6 @@ function cleanseName($input) {
         "(Greater SA)",
         "(SA)",
         "(VIC)",
-        "Hornibrook",
         "- NATIONAL",
         ". .",
         "(IAG)",
@@ -142,8 +147,8 @@ function cleanseName($input) {
         "(ACT/NSW Bra",
         "(SA/NT)",
         ", WA Branch",
-        "- a coalition of professional associations and firms"
     );
+    $cleansNames = $cleanseNamesCorp + $cleanseNamesPolitical;
     return trim(str_ireplace($cleanseNames, "", $input));
 }
 

@@ -65,6 +65,15 @@ $requests = Array(
     Array("type" => "node", id=>"101", "options" => Array()),
    // Array("type" => "path", from=>"1234", to=>"4321","options" => Array())
 );
+//preprocess old queries
+foreach ($requests as $request) {
+    $queryString =
+        "MATCH n->()".
+        "WHERE n.agencyID = {nodeId}".
+        "RETURN n";
+    $query = new Everyman\Neo4j\Cypher\Query($client, $queryString, array('nodeId' => 1));
+    $result = $query->getResultSet();
+}
 foreach ($requests as $request) {
     if ($request['type'] == 'node') {
         $character = $client->getNode($request['id']);

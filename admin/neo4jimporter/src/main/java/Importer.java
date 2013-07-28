@@ -133,13 +133,13 @@ public class Importer {
         Map<String, String> config = new HashMap<String, String>();
         config.put("neostore.nodestore.db.mapped_memory", "90M");
         inserter = BatchInserters.inserter("target/batchinserter-example-config", config);
-        inserter.createDeferredSchemaIndex(agencyLabel).on("name");
-        inserter.createDeferredSchemaIndex(donorLabel).on("name");
-        inserter.createDeferredSchemaIndex(donationRecipientLabel).on("name");
-        inserter.createDeferredSchemaIndex(partyLabel).on("name");
-        inserter.createDeferredSchemaIndex(lobbyingClientLabel).on("name");
-        inserter.createDeferredSchemaIndex(lobbyistLabel).on("name");
-        inserter.createDeferredSchemaIndex(lobbyingFirmLabel).on("name");
+        inserter.createDeferredSchemaIndex(agencyLabel).on("agencyID");
+        inserter.createDeferredSchemaIndex(donorLabel).on("donorID");
+        inserter.createDeferredSchemaIndex(donationRecipientLabel).on("donationRecipientID");
+        inserter.createDeferredSchemaIndex(partyLabel).on("partyID");
+        inserter.createDeferredSchemaIndex(lobbyingClientLabel).on("lobbyingClientID");
+        inserter.createDeferredSchemaIndex(lobbyistLabel).on("lobbyistID");
+        inserter.createDeferredSchemaIndex(lobbyingFirmLabel).on("lobbyingFirmID");
 
         dbSetup();
         System.out.println(cleanseRegex);
@@ -206,6 +206,7 @@ public class Importer {
                     Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("lobbyist_business_name"));
                     properties.put("lobbyingFirm", "true");
+                    properties.put("lobbyingFirmID", rs.getString("lobbyistID"));
                     lobbyingFirmID = inserter.createNode(properties, lobbyingFirmLabel);
                     lobbyingFirmIDs.put(rs.getString("lobbyistID"), lobbyingFirmID);
                     if (lobbyingFirmID % 100 == 0) {
@@ -220,6 +221,7 @@ public class Importer {
                     Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("client_business_name"));
                     properties.put("lobbyingClient", "true");
+                    properties.put("lobbyingClientID", rs.getString("lobbyistClientID"));
                     lobbyingClientID = inserter.createNode(properties, lobbyingClientLabel);
                     lobbyingClientIDs.put(rs.getString("lobbyistClientID"), lobbyingClientID);
                     if (lobbyingClientID % 1000 == 0) {
@@ -275,7 +277,8 @@ public class Importer {
                     if (partyIDs.get(rs.getString("party")) == null) {
                         Map<String, Object> properties = new HashMap<String, Object>();
                         properties.put("name", rs.getString("party"));
-                        properties.put("political_party", "true");
+                        properties.put("party", "true");
+                        properties.put("partyID", rs.getString("party"));
                         partyID = inserter.createNode(properties, partyLabel);
                         partyIDs.put(rs.getString("party"), partyID);
                         if (partyID % 10 == 0) {
@@ -289,7 +292,8 @@ public class Importer {
                 if (donationRecipientIDs.get(rs.getString("RecipientClientNm")) == null) {
                     Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("RecipientClientNm"));
-                    properties.put("political_donation_recipient", "true");
+                    properties.put("donationRecipient", "true");
+                    properties.put("donationRecipientID", rs.getString("RecipientClientNm"));
                     donationRecipientID = inserter.createNode(properties, donationRecipientLabel);
                     donationRecipientIDs.put(rs.getString("RecipientClientNm"), donationRecipientID);
                     if (donationRecipientID % 10 == 0) {
@@ -303,6 +307,7 @@ public class Importer {
                     Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("DonorClientNm"));
                     properties.put("donor", "true");
+                    properties.put("donorID", rs.getString("DonorClientNm"));
                     donorID = inserter.createNode(properties, donorLabel);
                     donorIDs.put(rs.getString("DonorClientNm"), donorID);
                     if (donorID % 100 == 0) {
@@ -366,6 +371,7 @@ public class Importer {
                     Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("agencyName"));
                     properties.put("agency", "true");
+                    properties.put("agencyID", rs.getString("agencyName"));
                     agencyID = inserter.createNode(properties, agencyLabel);
                     agencyIDs.put(rs.getString("agencyName"), agencyID);
                     if (agencyID % 10 == 0) {
@@ -416,7 +422,8 @@ public class Importer {
                 long supplierID = getOrCreateSupplier(rs.getString("supplierName"), rs.getString("supplierABN"));
 
                 inserter.setNodeLabels(supplierID, supplierLabel, lobbyingClientLabel); // http://api.neo4j.org/2.0.0-M03/org/neo4j/unsafe/batchinsert/BatchInserter.html#setNodeLabels(long, org.neo4j.graphdb.Label...)
-                inserter.setNodeProperty(supplierID, "lobbyistclient", "true");
+                inserter.setNodeProperty(supplierID, "lobbyingClient", "true");
+                inserter.setNodeProperty(supplierID, "lobbyingClientID", rs.getString("lobbyistClientID"));
                 lobbyingClientIDs.put(rs.getString("lobbyistClientID"), supplierID);
 
             }
@@ -434,6 +441,7 @@ public class Importer {
                     inserter.setNodeLabels(supplierID, supplierLabel, donorLabel);
                 }
                 inserter.setNodeProperty(supplierID, "donor", "true");
+                inserter.setNodeProperty(supplierID, "donorID", rs.getString("DonorClientNm"));
                 donorIDs.put(rs.getString("DonorClientNm"), supplierID);
 
             }
@@ -465,7 +473,9 @@ public class Importer {
                     Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("DonorClientNm"));
                     properties.put("donor", "true");
-                    properties.put("lobbying_firm", "true");
+                    properties.put("donorID", rs.getString("DonorClientNm"));
+                    properties.put("lobbyingFirm", "true");
+                    properties.put("lobbyingFirmID", rs.getString("DonorClientNm"));
                     long donorID = inserter.createNode(properties, donorLabel, lobbyingFirmLabel);
                     donorIDs.put(rs.getString("DonorClientNm"), donorID);
                     lobbyingFirmIDs.put(rs.getString("lobbyistID"), donorID);
@@ -503,7 +513,9 @@ public class Importer {
                     Map<String, Object> properties = new HashMap<String, Object>();
                     properties.put("name", rs.getString("DonorClientNm"));
                     properties.put("donor", "true");
-                    properties.put("lobbying_client", "true");
+                    properties.put("donorID", rs.getString("DonorClientNm"));
+                    properties.put("lobbyingClient", "true");
+                    properties.put("lobbyingClientID", rs.getString("DonorClientNm"));
                     long donorID = inserter.createNode(properties, donorLabel, lobbyingClientLabel);
                     donorIDs.put(rs.getString("DonorClientNm"), donorID);
                     lobbyingClientIDs.put(rs.getString("lobbyistClientID"), donorID);
