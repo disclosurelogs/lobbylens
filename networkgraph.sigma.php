@@ -11,15 +11,16 @@ ORDER BY random() LIMIT 1; ');
     $result = $agencies->fetch(PDO::FETCH_ASSOC);
     $selectedNodeID = 'agency-' . $result['agencyName'];
 }
+//echo "<!--". local_url() . "neo4japi.gexf.php?ids=" . urlencode(stripslashes($selectedNodeID)) . "-->";
 $xml = file_get_contents(local_url() . "neo4japi.gexf.php?ids=" . urlencode(stripslashes($selectedNodeID)));
 $graph = new SimpleXMLElement($xml);
-$name = $graph->xpath("//*[name()='node'][1]");
+$name = $graph->xpath("//*[name()='description'][1]");
 
-include_header($name['label']);
+include_header($name[0]);
 
-echo "<!--". local_url() . "neo4japi.gexf.php?ids=" . urlencode(stripslashes($selectedNodeID)) . "-->";
-echo '<p>Click on nodes to expand the network, hover over nodes, or lines joining nodes, to display more 
+echo '<p>Click on nodes to expand the network, hover over nodes, or lines joining nodes, to display more
 information.</p>';
+echo "<!--". local_url() . "neo4japi.gexf.php?ids=" . urlencode(stripslashes($selectedNodeID)) . "-->";
 echo '<div class="msg_list">
 <p class="msg_head">';
 echo $name['label'];
