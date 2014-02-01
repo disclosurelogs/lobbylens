@@ -69,59 +69,89 @@ echo '</ul>
     autociompleting search box here
 </div>
     <div id="left" style="width:70%">
-     <div id="sigma-example" width="70%" style="min-height:800px;background-color: #333;"></div>
-  <script src="js/sigma.min.js"></script>
-  <script src="js/sigma/plugins/sigma.parseGexf.js"></script>
-  <script src="js/sigma/plugins/sigma.forceatlas2.js"></script>
+     <div id="sigma-container" width="70%" style="min-height:800px;background-color: #333;"></div>
+ <!-- <script src="js/sigma/build/sigma.min.js"></script>-->
+  <script src="js/sigma/build/sigma.min.js"></script>
+  <script src="js/sigma/plugins/sigma.parsers.gexf/gexf-parser.js"></script>
+  <script src="js/sigma/plugins/sigma.parsers.gexf/sigma.parsers.gexf.js"></script>
+  <script src="js/sigma/plugins/sigma.layout.forceAtlas2/sigma.layout.forceAtlas2.js"></script>
   <script type="text/javascript">
-function onClick(event) {
-    window.console.log("clicked!");
-    window.console.log(event.content[0]);
-} 
 
-function init() {
-  // Instanciate sigma.js and customize rendering :
-  var sigInst = sigma.init(document.getElementById('sigma-example')).drawingProperties({
-    defaultLabelColor: '#fff',
-    defaultLabelSize: 14,
-    defaultLabelBGColor: '#fff',
-    defaultLabelHoverColor: '#000',
-    labelThreshold: 6,
-    defaultEdgeType: 'curve'
-  }).graphProperties({
-    minNodeSize: 0.5,
-    maxNodeSize: 15,
-    minEdgeSize: 0.5,
-    maxEdgeSize: 15
-  }).mouseProperties({
-    maxRatio: 32
+  // Add a method to the graph model that returns an
+  // object with every neighbors of a node inside:
+  sigma.classes.graph.addMethod('neighbors', function(nodeId) {
+    var k,
+        neighbors = {},
+        index = this.allNeighborsIndex[nodeId] || {};
+
+    for (k in index)
+      neighbors[k] = this.nodesIndex[k];
+
+    return neighbors;
   });
 
-  // Parse a GEXF encoded file to fill the graph
-  // (requires "sigma.parseGexf.js" to be included)
-  sigInst.parseGexf('neo4japi.gexf.php?ids=<?php echo urlencode($selectedNodeID) ?>');
- sigInst.bind('downnodes',function(event){
-    var nodes = event.content;
- });
-  // Start the ForceAtlas2 algorithm
-  // (requires "sigma.forceatlas2.js" to be included)
-  sigInst.startForceAtlas2();
-    document.getElementById('sigma-example').addEventListener('click',function(){
-         sigInst.stopForceAtlas2();
-    
-    sigInst.position(0,0,1).draw();
-  },true);
-sigInst.bind('downnodes',onClick).draw();
-  // Draw the graph :
-  sigInst.draw();
-}
+  sigma.parsers.gexf(
+    'neo4japi.gexf.php?ids=<?php echo urlencode($selectedNodeID) ?>',
+    {
+      container: 'sigma-container'
+    },
+    function(s) {
+      // We first need to save the original colors of our
+      // nodes and edges, like this:
+      s.graph.nodes().forEach(function(n) {
+        n.originalColor = n.color;
+      });
+      s.graph.edges().forEach(function(e) {
+        e.originalColor = e.color;
+      });
 
-if (document.addEventListener) {
-  document.addEventListener("DOMContentLoaded", init, false);
-} else {
-  window.onload = init;
-}
+      // When a node is clicked, we check for each node
+      // if it is a neighbor of the clicked one. If not,
+      // we set its color as grey, and else, it takes its
+      // original color.
+      // We do the same for the edges, and we only keep
+      // edges that have both extremities colored.
+      s.bind('clickNode', function(e) {
+        var nodeId = e.data.node.id,
+            toKeep = s.graph.neighbors(nodeId);
+        toKeep[nodeId] = e.data.node;
 
+        s.graph.nodes().forEach(function(n) {
+          if (toKeep[n.id])
+            n.color = n.originalColor;
+          else
+            n.color = '#eee';
+        });
+
+        s.graph.edges().forEach(function(e) {
+          if (toKeep[e.source] && toKeep[e.target])
+            e.color = e.originalColor;
+          else
+            e.color = '#eee';
+        });
+
+        // Since the data has been modified, we need to
+        // call the refresh method to make the colors
+        // update effective.
+        s.refresh();
+      });
+
+      // When the stage is clicked, we just color each
+      // node and edge with its original color.
+      s.bind('clickStage', function(e) {
+        s.graph.nodes().forEach(function(n) {
+          n.color = n.originalColor;
+        });
+
+        s.graph.edges().forEach(function(e) {
+          e.color = e.originalColor;
+        });
+
+        // Same as in the previous event:
+        s.refresh();
+      });
+    }
+  );
 </script>
     </div>
 

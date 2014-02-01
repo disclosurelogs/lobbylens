@@ -21,6 +21,10 @@ global $nodes,$nodeList;
     if (!in_array($node->getId(),$nodeList)) {
           $nodes.= "<node id='".urlencode($node->getId())."' label=\"".htmlentities($node->getProperty("name"))."\">"
               ."<viz:color b='".rand(0,255)."' g='".rand(0,255)."' r='".rand(0,255)."'/>"
+              ."<viz:position x='".rand(0,255)."' y='".rand(0,255)."' r='0.0'/>"
+              ."<viz:position x='".rand(0,255)."' y='".rand(0,255)."' r='0.0'/>"
+              ."<viz:size value='10.0'/>"
+
                   ."</node>". PHP_EOL;
         $nodeList[] = $node->getId();
     }
@@ -135,12 +139,12 @@ if (!isset($_REQUEST['debug'])) {
     header('Content-Disposition: attachment; filename="'.urlencode(str_replace(" ","_",strtolower($description))).'.gexf.xml"');
 }
 echo '<?xml version="1.0" encoding="UTF-8"?>
-<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz" version="1.2">
+<gexf xmlns="http://www.gephi.org/gexf" xmlns:viz="http://www.gephi.org/gexf/viz">
     <meta lastmodifieddate="2009-03-20">
         <creator>lobbyist.disclosurelo.gs</creator>
         <description>'. $description. '</description>
     </meta>
-    <graph mode="static" defaultedgetype="directed">
+    <graph type="static">
 
         <nodes>'. $nodes. '</nodes>
         <edges>'. $edges.' </edges>
