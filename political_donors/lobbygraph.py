@@ -19,7 +19,7 @@ for edge in dom.getElementsByTagName('edge'):
 		G.add_edge(edge.attributes["tail_node_id"].value, edge.attributes["head_node_id"].value)
 
 #nx.write_pajek(G,"test.pj")
-nx.write_gexf(G,"test.gexf")
+nx.write_gexf(G,"political_donors.gexf")
 #nx.draw(G)
 #plt.show()
 

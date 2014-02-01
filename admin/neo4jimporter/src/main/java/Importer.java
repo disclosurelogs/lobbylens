@@ -21,12 +21,12 @@ public class Importer {
     HashMap<String, Long> partyIDs = new HashMap<String, Long>();
     Label agencyLabel = DynamicLabel.label("Agency");
     Label supplierLabel = DynamicLabel.label("Supplier");
-    Label donorLabel = DynamicLabel.label("Political Donor");
-    Label donationRecipientLabel = DynamicLabel.label("Political Party");
-    Label partyLabel = DynamicLabel.label("Political Party");
-    Label lobbyingClientLabel = DynamicLabel.label("Lobbyist Client");
+    Label donorLabel = DynamicLabel.label("Political_Donor");
+    Label donationRecipientLabel = DynamicLabel.label("Political_Party");
+    Label partyLabel = DynamicLabel.label("Political_Party");
+    Label lobbyingClientLabel = DynamicLabel.label("Lobbyist_Client");
     Label lobbyistLabel = DynamicLabel.label("Lobbyist");
-    Label lobbyingFirmLabel = DynamicLabel.label("Lobbying Firm");
+    Label lobbyingFirmLabel = DynamicLabel.label("Lobbying_Firm");
     BatchInserter inserter;
 
     String cleanseRegex = StringUtils.replace(StringUtils.replace(StringUtils.replace(StringUtils.join(new String[]{

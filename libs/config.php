@@ -148,7 +148,7 @@ function cleanseName($input) {
         "(SA/NT)",
         ", WA Branch",
     );
-    $cleansNames = $cleanseNamesCorp + $cleanseNamesPolitical;
+    $cleanseNames = $cleanseNamesCorp + $cleanseNamesPolitical;
     return trim(str_ireplace($cleanseNames, "", $input));
 }
 

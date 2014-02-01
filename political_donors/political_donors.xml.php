@@ -93,7 +93,7 @@ function addDonationRecipientNode($name, $party, $value) {
         $node = $nodes->addChild('node');
         $node->addAttribute("id", $head_node_id);
         $node->addAttribute("label", "Donation Recipient: " . $name);
-        $node->addAttribute("weight", (float) $value / $largestRecipient);
+        $node->addAttribute("weight", (float) $value );
         $tail_node_id = "";
         if ($party == "labor") {
             formatLaborNode($node);
@@ -115,7 +115,7 @@ function addDonationRecipientNode($name, $party, $value) {
         //  $link->addAttribute("tooltip", );
         $link->addAttribute("tail_node_id", $tail_node_id);
         $link->addAttribute("head_node_id", $head_node_id);
-        $link->addAttribute("weight", (float) $value / $totalDonations);
+        $link->addAttribute("weight", (float) $value );
     }
 }
 
@@ -125,7 +125,7 @@ function addDonorNode($name, $value) {
     $node = $nodes->addChild('node');
     $node->addAttribute("id", "donor-" . $name);
     $node->addAttribute("label", "Donor: " . $name);
-    $node->addAttribute("weight", (float) $value / $largestDonor);
+    $node->addAttribute("weight", (float) $value );
 }
 
 function addDonationLink($donor, $recipient, $value) {
@@ -136,7 +136,7 @@ function addDonationLink($donor, $recipient, $value) {
     $link->addAttribute("tooltip", $value);
     $link->addAttribute("tail_node_id", "donor-$donor");
     $link->addAttribute("head_node_id", "donationrecipient-$recipient");
-    $link->addAttribute("weight", (float) $value / $largestDonation);
+    $link->addAttribute("weight", (float) $value);
 }
 
 $totalDonations = 235282733; // select sum("AmountPaid") from political_donations
